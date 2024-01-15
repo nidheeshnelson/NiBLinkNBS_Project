@@ -18,6 +18,8 @@ public class NiBLinkNBSfThalukModel {
 	@GeneratedValue
 	private int thaluk_id;
 	private String thaluk;
+	@ManyToMany(mappedBy = "thaluks")
+	private Set<NiBLinkNBSeShiftModel> shift = new HashSet<>();
 	@ManyToOne
 	@JoinColumn(name = "district_id")
 	private NiBLinkNBSfDistrictModel district;
@@ -27,5 +29,46 @@ public class NiBLinkNBSfThalukModel {
 	@ManyToOne
 	@JoinColumn(name = "country_id")
 	private NiBLinkNBSfCountryModel country;
+	public int getThaluk_id() {
+		return thaluk_id;
+	}
+	public void setThaluk_id(int thaluk_id) {
+		this.thaluk_id = thaluk_id;
+	}
+	public String getThaluk() {
+		return thaluk;
+	}
+	public void setThaluk(String thaluk) {
+		this.thaluk = thaluk;
+	}
+	public Set<NiBLinkNBSeShiftModel> getShift() {
+		return shift;
+	}
+	public void setShift(Set<NiBLinkNBSeShiftModel> shift) {
+		this.shift = shift;
+	}
+	public NiBLinkNBSfDistrictModel getDistrict() {
+		return district;
+	}
+	public void setDistrict(NiBLinkNBSfDistrictModel district) {
+		this.district = district;
+	}
+	public NiBLinkNBSfStateModel getState() {
+		return state;
+	}
+	public void setState(NiBLinkNBSfStateModel state) {
+		this.state = state;
+	}
+	public NiBLinkNBSfCountryModel getCountry() {
+		return country;
+	}
+	public void setCountry(NiBLinkNBSfCountryModel country) {
+		this.country = country;
+	}
+	@Override
+	public String toString() {
+		return "NiBLinkNBSfThalukModel [thaluk_id=" + thaluk_id + ", thaluk=" + thaluk + ", shift=" + shift
+				+ ", district=" + district + ", state=" + state + ", country=" + country + "]";
+	}
 	
 }

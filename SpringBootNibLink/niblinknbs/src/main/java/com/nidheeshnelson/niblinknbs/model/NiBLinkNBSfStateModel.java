@@ -26,5 +26,40 @@ public class NiBLinkNBSfStateModel {
 	private List<NiBLinkNBSfDistrictModel> district=new ArrayList<>();
 	@OneToMany(cascade = CascadeType.ALL,mappedBy = "thaluk")
 	private List<NiBLinkNBSfThalukModel> thaluk=new ArrayList<>();
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public String getState() {
+		return state;
+	}
+	public void setState(String state) {
+		this.state = state;
+	}
+	public NiBLinkNBSfCountryModel getCountry() {
+		return country;
+	}
+	public void setCountry(NiBLinkNBSfCountryModel country) {
+		this.country = country;
+	}
+	public List<NiBLinkNBSfDistrictModel> getDistrict() {
+		return district;
+	}
+	public void setDistrict(List<NiBLinkNBSfDistrictModel> district) {
+		this.district = district;
+	}
+	public List<NiBLinkNBSfThalukModel> getThaluk() {
+		return thaluk;
+	}
+	public void setThaluk(List<NiBLinkNBSfThalukModel> thaluk) {
+		this.thaluk = thaluk;
+	}
+	@Override
+	public String toString() {
+		return "NiBLinkNBSfStateModel [id=" + id + ", state=" + state + ", country=" + country + ", district="
+				+ district + ", thaluk=" + thaluk + "]";
+	}
 	
 }

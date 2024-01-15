@@ -1,5 +1,8 @@
 package com.nidheeshnelson.niblinknbs.service;
 
-public class NiBLinkNBScAdminService {
+import org.springframework.stereotype.Service;
+
+@Service
+public class NiBLinkNBScAdminService implements NiBLinkNBSbAdminService{
 
 }

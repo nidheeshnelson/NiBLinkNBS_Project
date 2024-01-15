@@ -18,4 +18,33 @@ public class NiBLinkNBSdCommissionModel {
 	private NiBLinkNBSbExpertModel expert_id;
 	private String datetime;
 	private double commission_amount;
+	public int getCommission_id() {
+		return commission_id;
+	}
+	public void setCommission_id(int commission_id) {
+		this.commission_id = commission_id;
+	}
+	public NiBLinkNBSbExpertModel getExpert_id() {
+		return expert_id;
+	}
+	public void setExpert_id(NiBLinkNBSbExpertModel expert_id) {
+		this.expert_id = expert_id;
+	}
+	public String getDatetime() {
+		return datetime;
+	}
+	public void setDatetime(String datetime) {
+		this.datetime = datetime;
+	}
+	public double getCommission_amount() {
+		return commission_amount;
+	}
+	public void setCommission_amount(double commission_amount) {
+		this.commission_amount = commission_amount;
+	}
+	@Override
+	public String toString() {
+		return "NiBLinkNBSdCommissionModel [commission_id=" + commission_id + ", expert_id=" + expert_id + ", datetime="
+				+ datetime + ", commission_amount=" + commission_amount + "]";
+	}
 }

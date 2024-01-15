@@ -27,5 +27,40 @@ public class NiBLinkNBSfDistrictModel {
 	@ManyToOne
 	@JoinColumn(name = "country_id")
 	private NiBLinkNBSfCountryModel country;
+	public int getDistrict_id() {
+		return district_id;
+	}
+	public void setDistrict_id(int district_id) {
+		this.district_id = district_id;
+	}
+	public String getDistrict() {
+		return district;
+	}
+	public void setDistrict(String district) {
+		this.district = district;
+	}
+	public List<NiBLinkNBSfThalukModel> getThaluk() {
+		return thaluk;
+	}
+	public void setThaluk(List<NiBLinkNBSfThalukModel> thaluk) {
+		this.thaluk = thaluk;
+	}
+	public NiBLinkNBSfStateModel getState() {
+		return state;
+	}
+	public void setState(NiBLinkNBSfStateModel state) {
+		this.state = state;
+	}
+	public NiBLinkNBSfCountryModel getCountry() {
+		return country;
+	}
+	public void setCountry(NiBLinkNBSfCountryModel country) {
+		this.country = country;
+	}
+	@Override
+	public String toString() {
+		return "NiBLinkNBSfDistrictModel [district_id=" + district_id + ", district=" + district + ", thaluk=" + thaluk
+				+ ", state=" + state + ", country=" + country + "]";
+	}
 	
 }
