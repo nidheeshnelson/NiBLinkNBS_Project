@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -16,6 +17,8 @@ public class NiBLinkNBSaJobModel {
 	@Id
 	@GeneratedValue
 	private int job_id;
+	@Column(unique = true)
+	private String job;
 	@OneToMany(mappedBy = "job_id",cascade = CascadeType.ALL)
 	private List<NiBLinkNBSbExpertModel> experts = new ArrayList<>();
 	public int getJob_id() {
@@ -30,9 +33,14 @@ public class NiBLinkNBSaJobModel {
 	public void setExperts(List<NiBLinkNBSbExpertModel> experts) {
 		this.experts = experts;
 	}
+	public String getJob() {
+		return job;
+	}
+	public void setJob(String job) {
+		this.job = job;
+	}
 	@Override
 	public String toString() {
-		return "NiBLinkNBSaJobModel [job_id=" + job_id + ", experts=" + experts + "]";
+		return "NiBLinkNBSaJobModel [job_id=" + job_id + ", job=" + job + ", experts=" + experts + "]";
 	}
-	
 }

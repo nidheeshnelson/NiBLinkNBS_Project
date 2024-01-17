@@ -1,0 +1,24 @@
+Admin
+{
+    "username":"a",
+    "password":"a",
+    "email":"a@a",
+    "phone":1,
+    "status":1
+}
+Expert
+{
+    "username":"a",
+    "password":"a",
+    "email":"a@a",
+    "phone":1,
+    "status":2
+}
+Customer
+{
+    "username":"a",
+    "password":"a",
+    "email":"a@a",
+    "phone":1,
+    "status":3
+}

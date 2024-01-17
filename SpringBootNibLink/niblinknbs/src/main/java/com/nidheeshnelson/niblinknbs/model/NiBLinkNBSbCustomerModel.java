@@ -35,8 +35,7 @@ public class NiBLinkNBSbCustomerModel {
 	private List<NiBLinkNBSdPayedModel> payment_amount = new ArrayList<>();
 	@OneToMany(mappedBy = "customer_id", cascade = CascadeType.ALL)
 	private List<NiBLinkNBSeShiftModel> shifts = new ArrayList<>();
-	@OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "shift_request_id", referencedColumnName = "shift_request_id")
+	@OneToOne(mappedBy = "customer_id", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private NiBLinkNBSeShiftRequestModel shift_request;
 	@OneToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="log_id")

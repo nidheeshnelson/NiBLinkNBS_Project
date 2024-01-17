@@ -1,10 +1,12 @@
 package com.nidheeshnelson.niblinknbs.model;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -17,6 +19,9 @@ public class NiBLinkNBSeShiftRequestModel {
 	@ManyToOne
 	@JoinColumn(name="shift_id")
 	private NiBLinkNBSeShiftModel shift_id;
+	@OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "customer_id", referencedColumnName = "customer_id")
+	private NiBLinkNBSbCustomerModel customer_id;
 	public int getShift_request_id() {
 		return shift_request_id;
 	}
