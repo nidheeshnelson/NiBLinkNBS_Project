@@ -15,7 +15,7 @@ import com.nidheeshnelson.niblinknbs.model.NiBLinkNBSbAdminModel;
 import com.nidheeshnelson.niblinknbs.model.NiBLinkNBSbCustomerModel;
 import com.nidheeshnelson.niblinknbs.model.NiBLinkNBSbExpertModel;
 import com.nidheeshnelson.niblinknbs.service.NiBLinkNBSaLogInService;
-import com.nidheeshnelson.niblinknbs.service.NiBLinkNBSeTypeSignInService;
+import com.nidheeshnelson.niblinknbs.service.NiBLinkNBSTypeSignInService;
 
 @RestController
 @CrossOrigin
@@ -27,9 +27,9 @@ public class NiBLinkNBSLogInControl {
 	private NiBLinkNBSbExpertModel em = new NiBLinkNBSbExpertModel();
 	private NiBLinkNBSbAdminModel am = new NiBLinkNBSbAdminModel();
 	private Object obj = new Object();
-	private NiBLinkNBSeTypeSignInService ts;
+	private NiBLinkNBSTypeSignInService ts;
 
-	@GetMapping("/sp")
+	@GetMapping("/sup")
 	public Map<String, Integer> SignUp(@RequestBody NiBLinkNBSaLogInModel lm) {
 		System.out.println("in signup"+lm);
 		if(lm.getStatus()==1) {
@@ -52,18 +52,24 @@ public class NiBLinkNBSLogInControl {
 		}
 		return mp;
 	}
-	@GetMapping("/")
-	public String logIn(@RequestBody NiBLinkNBSaLogInModel lm) {
+	@GetMapping("/lin")
+	public Map<String,Integer> logIn(@RequestBody NiBLinkNBSaLogInModel lm) {
 		obj = ls.signIn(lm);
 		if(obj.getClass()==cm.getClass()) {
-			
+			cm=(NiBLinkNBSbCustomerModel) obj;
+			mp.put("CUSTOMER", cm.getCustomer_id());
 		}
 		else if(obj.getClass()==em.getClass()) {
-			
+			em=(NiBLinkNBSbExpertModel) obj;
+			mp.put("EXPERT", em.getExpert_id());
 		}
 		else if(obj.getClass()==am.getClass()) {
-			
+			am=(NiBLinkNBSbAdminModel) obj;
+			mp.put("ADMIN", am.getAdmin_id());
 		}
-		return null;
+		else {
+			mp.put("FAILED", 0);
+		}
+		return mp;
 	}
 }

@@ -15,7 +15,7 @@ public class NiBLinkNBScAddressModel {
 	@GeneratedValue
 	private int address_id;
 	private String housename;
-	private String Street;
+	private String street;
 	private String landmark;
 	private String place;
 	private String postoffice;
@@ -47,10 +47,10 @@ public class NiBLinkNBScAddressModel {
 		this.housename = housename;
 	}
 	public String getStreet() {
-		return Street;
+		return street;
 	}
 	public void setStreet(String street) {
-		Street = street;
+		this.street = street;
 	}
 	public String getLandmark() {
 		return landmark;
@@ -127,7 +127,7 @@ public class NiBLinkNBScAddressModel {
 	}
 	@Override
 	public String toString() {
-		return "NiBLinkNBScAddressModel [address_id=" + address_id + ", housename=" + housename + ", Street=" + Street
+		return "NiBLinkNBScAddressModel [address_id=" + address_id + ", housename=" + housename + ", street=" + street
 				+ ", landmark=" + landmark + ", place=" + place + ", postoffice=" + postoffice + ", pincode=" + pincode
 				+ ", localbody=" + localbody + ", thaluk=" + thaluk + ", district=" + district + ", state=" + state
 				+ ", country=" + country + ", admin_id=" + admin_id + ", customer_id=" + customer_id + ", expert_id="

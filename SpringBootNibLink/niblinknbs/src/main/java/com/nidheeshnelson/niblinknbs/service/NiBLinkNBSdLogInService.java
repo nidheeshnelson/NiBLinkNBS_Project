@@ -34,22 +34,22 @@ public class NiBLinkNBSdLogInService implements NiBLinkNBSaLogInService{
 	private List<NiBLinkNBSbExpertModel> lem = new ArrayList<>();
 	private List<NiBLinkNBSbCustomerModel> lcm = new ArrayList<>();
 	private Object obj=new Object();
-public Object signUp(NiBLinkNBSaLogInModel m,NiBLinkNBSeTypeSignInService ts) {
+public Object signUp(NiBLinkNBSaLogInModel m,NiBLinkNBSTypeSignInService ts) {
 		
-		if(ts.equals(NiBLinkNBSeTypeSignInService.ADMIN)) {
+		if(ts.equals(NiBLinkNBSTypeSignInService.ADMIN)) {
 			System.out.println("in admin signup service"+ts);
 			lm=lr.save(m);
 			am.setLog_id(lm);
 			am=ar.save(am);
 			obj=am;
 		}
-		else if(ts.equals(NiBLinkNBSeTypeSignInService.EXPERT)) {
+		else if(ts.equals(NiBLinkNBSTypeSignInService.EXPERT)) {
 			lm=lr.save(m);
 			em.setLog_id(lm);
 			em=er.save(em);
 			obj=em;
 		}
-		else if(ts.equals(NiBLinkNBSeTypeSignInService.CUSTOMER)) {
+		else if(ts.equals(NiBLinkNBSTypeSignInService.CUSTOMER)) {
 			lm=lr.save(m);
 			cm.setLog_id(lm);
 			cm=cr.save(cm);
@@ -63,7 +63,7 @@ public Object signUp(NiBLinkNBSaLogInModel m,NiBLinkNBSeTypeSignInService ts) {
 		lem = er.findAll();
 		lcm = cr.findAll();
 		for(NiBLinkNBSaLogInModel lg : log) {
-			if(lg.getUsername().equals(m.getUsername())) {
+			if(lg.getUsername().equals(m.getUsername())&&lg.getPassword().equals(m.getPassword())) {
 				if(lg.getStatus()==3) {
 					cm.setLog_id(lg);
 					for(NiBLinkNBSbCustomerModel cg :lcm) {

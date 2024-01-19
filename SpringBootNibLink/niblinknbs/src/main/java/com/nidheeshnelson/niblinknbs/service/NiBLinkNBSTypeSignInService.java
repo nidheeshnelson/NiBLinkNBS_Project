@@ -1,5 +1,5 @@
 package com.nidheeshnelson.niblinknbs.service;
 
-public enum NiBLinkNBSeTypeSignInService {
+public enum NiBLinkNBSTypeSignInService {
 CUSTOMER, EXPERT, ADMIN
 }

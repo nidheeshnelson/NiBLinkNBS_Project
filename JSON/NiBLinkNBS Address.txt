@@ -1,0 +1,19 @@
+Add address
+{
+    "housename":"a",
+    "street":"a",
+    "landmark":"a",
+    "place":"a",
+    "postoffice":"a",
+    "pincode":1,
+    "localbody":"a",
+    "thaluk":"a",
+    "district":"a",
+    "state":"a",
+    "country":"a",
+    "status":1,
+    "admin_id":{
+            "admin_id":1
+		}
+    
+}
