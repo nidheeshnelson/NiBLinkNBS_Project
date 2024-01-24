@@ -1,41 +1,36 @@
 package com.nidheeshnelson.niblinknbs.model;
 
-import org.hibernate.validator.constraints.UniqueElements;
-
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
 
 @Entity
 @Table(name="logintable")
 public class NiBLinkNBSaLogInModel {
 	@Id
 	@GeneratedValue
-	private int log_id;
+	private int logid;
 	@Column(unique = true)
+//	@NotBlank(message = "Must have a username")
 	private String username;
+//	@NotBlank(message ="Must have a password")
 	private String password;
 	@Column(unique = true)
+//	@NotBlank(message = "Must have a email id")
 	private String email;
 	@Column(unique = true)
+//	@NotBlank(message = "Must Have a Phone Number")
 	private long phone;
 	private int status;
-	@OneToOne(mappedBy = "log_id", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	private NiBLinkNBSbAdminModel admin_id;
-	@OneToOne(mappedBy = "log_id", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	private NiBLinkNBSbExpertModel expert_id;
-	@OneToOne(mappedBy = "log_id", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	private NiBLinkNBSbCustomerModel customer_id;
-	public int getLog_id() {
-		return log_id;
+	private String generatedid;
+	public int getLogid() {
+		return logid;
 	}
-	public void setLog_id(int log_id) {
-		this.log_id = log_id;
+	public void setLogid(int logid) {
+		this.logid = logid;
 	}
 	public String getUsername() {
 		return username;
@@ -61,35 +56,23 @@ public class NiBLinkNBSaLogInModel {
 	public void setPhone(long phone) {
 		this.phone = phone;
 	}
-	public NiBLinkNBSbAdminModel getAdmin_id() {
-		return admin_id;
-	}
-	public void setAdmin_id(NiBLinkNBSbAdminModel admin_id) {
-		this.admin_id = admin_id;
-	}
-	public NiBLinkNBSbExpertModel getExpert_id() {
-		return expert_id;
-	}
-	public void setExpert_id(NiBLinkNBSbExpertModel expert_id) {
-		this.expert_id = expert_id;
-	}
-	public NiBLinkNBSbCustomerModel getCustomer_id() {
-		return customer_id;
-	}
-	public void setCustomer_id(NiBLinkNBSbCustomerModel customer_id) {
-		this.customer_id = customer_id;
-	}
 	public int getStatus() {
 		return status;
 	}
 	public void setStatus(int status) {
 		this.status = status;
 	}
+	
+	public String getGeneratedid() {
+		return generatedid;
+	}
+	public void setGeneratedid(String generatedid) {
+		this.generatedid = generatedid;
+	}
 	@Override
 	public String toString() {
-		return "NiBLinkNBSaLogInModel [log_id=" + log_id + ", username=" + username + ", password=" + password
-				+ ", email=" + email + ", phone=" + phone + ", status=" + status + ", admin_id=" + admin_id
-				+ ", expert_id=" + expert_id + ", customer_id=" + customer_id + "]";
+		return "NiBLinkNBSaLogInModel [logid=" + logid + ", username=" + username + ", password=" + password
+				+ ", email=" + email + ", phone=" + phone + ", status=" + status + ", generatedid=" + generatedid + "]";
 	}
 	
 }

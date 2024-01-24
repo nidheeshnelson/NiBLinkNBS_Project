@@ -1,3 +1,4 @@
+(/sup)
 Admin
 {
     "username":"a",

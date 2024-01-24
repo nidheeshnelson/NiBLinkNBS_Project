@@ -1,5 +1,6 @@
 package com.nidheeshnelson.niblinknbs.model;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -13,7 +14,10 @@ import jakarta.persistence.Table;
 public class NiBLinkNBScAddressModel {
 	@Id
 	@GeneratedValue
-	private int address_id;
+	private int addressid;
+	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "namelistid", referencedColumnName = "namelistid")
+	private NiBLinkNBSaStatusModel namelistid;
 	private String housename;
 	private String street;
 	private String landmark;
@@ -25,20 +29,17 @@ public class NiBLinkNBScAddressModel {
 	private String district;
 	private String state;
 	private String country;
-	@OneToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="admin_id")
-	private NiBLinkNBSbAdminModel admin_id;
-	@OneToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="customer_id")
-	private NiBLinkNBSbCustomerModel customer_id;
-	@OneToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="expert_id")
-	private NiBLinkNBSbExpertModel expert_id;
-	public int getAddress_id() {
-		return address_id;
+	public int getAddressid() {
+		return addressid;
 	}
-	public void setAddress_id(int address_id) {
-		this.address_id = address_id;
+	public void setAddressid(int addressid) {
+		this.addressid = addressid;
+	}
+	public NiBLinkNBSaStatusModel getNamelistid() {
+		return namelistid;
+	}
+	public void setNamelistid(NiBLinkNBSaStatusModel statusid) {
+		this.namelistid = statusid;
 	}
 	public String getHousename() {
 		return housename;
@@ -106,32 +107,13 @@ public class NiBLinkNBScAddressModel {
 	public void setCountry(String country) {
 		this.country = country;
 	}
-	
-	public NiBLinkNBSbAdminModel getAdmin_id() {
-		return admin_id;
-	}
-	public void setAdmin_id(NiBLinkNBSbAdminModel admin_id) {
-		this.admin_id = admin_id;
-	}
-	public NiBLinkNBSbCustomerModel getCustomer_id() {
-		return customer_id;
-	}
-	public void setCustomer_id(NiBLinkNBSbCustomerModel customer_id) {
-		this.customer_id = customer_id;
-	}
-	public NiBLinkNBSbExpertModel getExpert_id() {
-		return expert_id;
-	}
-	public void setExpert_id(NiBLinkNBSbExpertModel expert_id) {
-		this.expert_id = expert_id;
-	}
 	@Override
 	public String toString() {
-		return "NiBLinkNBScAddressModel [address_id=" + address_id + ", housename=" + housename + ", street=" + street
-				+ ", landmark=" + landmark + ", place=" + place + ", postoffice=" + postoffice + ", pincode=" + pincode
-				+ ", localbody=" + localbody + ", thaluk=" + thaluk + ", district=" + district + ", state=" + state
-				+ ", country=" + country + ", admin_id=" + admin_id + ", customer_id=" + customer_id + ", expert_id="
-				+ expert_id + "]";
+		return "NiBLinkNBScAddressModel [addressid=" + addressid + ", namelistid=" + namelistid + ", housename=" + housename
+				+ ", street=" + street + ", landmark=" + landmark + ", place=" + place + ", postoffice=" + postoffice
+				+ ", pincode=" + pincode + ", localbody=" + localbody + ", thaluk=" + thaluk + ", district=" + district
+				+ ", state=" + state + ", country=" + country + "]";
 	}
+	
 	
 }

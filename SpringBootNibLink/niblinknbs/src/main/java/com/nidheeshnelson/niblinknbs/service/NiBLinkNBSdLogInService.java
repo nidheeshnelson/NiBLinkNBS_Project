@@ -7,13 +7,29 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.nidheeshnelson.niblinknbs.model.NiBLinkNBSaLogInModel;
-import com.nidheeshnelson.niblinknbs.model.NiBLinkNBSbAdminModel;
-import com.nidheeshnelson.niblinknbs.model.NiBLinkNBSbCustomerModel;
-import com.nidheeshnelson.niblinknbs.model.NiBLinkNBSbExpertModel;
+import com.nidheeshnelson.niblinknbs.model.NiBLinkNBSaStatusModel;
+import com.nidheeshnelson.niblinknbs.model.NiBLinkNBSbaAdminModel;
+import com.nidheeshnelson.niblinknbs.model.NiBLinkNBSbcCustomerModel;
+import com.nidheeshnelson.niblinknbs.model.NiBLinkNBScAddressModel;
+import com.nidheeshnelson.niblinknbs.model.NiBLinkNBScBankingDetailsModel;
+import com.nidheeshnelson.niblinknbs.model.NiBLinkNBScIdentityModel;
+import com.nidheeshnelson.niblinknbs.model.NiBLinkNBScPaymentDetailsModel;
+import com.nidheeshnelson.niblinknbs.model.NiBLinkNBScPersonalModel;
+import com.nidheeshnelson.niblinknbs.model.NiBLinkNBScWalletModel;
+import com.nidheeshnelson.niblinknbs.model.NiBLinkNBSbbExpertModel;
 import com.nidheeshnelson.niblinknbs.repositary.NiBLinkNBSaLogInRepository;
+import com.nidheeshnelson.niblinknbs.repositary.NiBLinkNBSaStatusRepository;
 import com.nidheeshnelson.niblinknbs.repositary.NiBLinkNBSbAdminRepository;
 import com.nidheeshnelson.niblinknbs.repositary.NiBLinkNBSbCustomerRepository;
 import com.nidheeshnelson.niblinknbs.repositary.NiBLinkNBSbExpertRepository;
+import com.nidheeshnelson.niblinknbs.repositary.NiBLinkNBScAddressRepository;
+import com.nidheeshnelson.niblinknbs.repositary.NiBLinkNBScBankingDetailsRepository;
+import com.nidheeshnelson.niblinknbs.repositary.NiBLinkNBScIdentityRepository;
+import com.nidheeshnelson.niblinknbs.repositary.NiBLinkNBScPaymentDetailsRepository;
+import com.nidheeshnelson.niblinknbs.repositary.NiBLinkNBScPersonalRepository;
+import com.nidheeshnelson.niblinknbs.repositary.NiBLinkNBScWalletRepository;
+
+import jakarta.transaction.Transactional;
 
 @Service
 public class NiBLinkNBSdLogInService implements NiBLinkNBSaLogInService{
@@ -25,91 +41,96 @@ public class NiBLinkNBSdLogInService implements NiBLinkNBSaLogInService{
 	private NiBLinkNBSbExpertRepository er;
 	@Autowired
 	private NiBLinkNBSbCustomerRepository cr;
-	private NiBLinkNBSbCustomerModel cm = new  NiBLinkNBSbCustomerModel();
-	private NiBLinkNBSbExpertModel em = new NiBLinkNBSbExpertModel();
-	private NiBLinkNBSbAdminModel am = new NiBLinkNBSbAdminModel();
+	@Autowired
+	private NiBLinkNBScAddressRepository adr;
+	@Autowired
+	private NiBLinkNBSaStatusRepository sr;
+	@Autowired
+	private NiBLinkNBScBankingDetailsRepository br;
+	@Autowired
+	private NiBLinkNBScIdentityRepository ir;
+	@Autowired
+	private NiBLinkNBScPaymentDetailsRepository pr;
+	@Autowired
+	private NiBLinkNBScPersonalRepository per;
+	private NiBLinkNBScWalletRepository wr;
+	private NiBLinkNBSbcCustomerModel cm = new  NiBLinkNBSbcCustomerModel();
+	private NiBLinkNBSbbExpertModel em = new NiBLinkNBSbbExpertModel();
+	private NiBLinkNBSbaAdminModel am = new NiBLinkNBSbaAdminModel();
 	private NiBLinkNBSaLogInModel lm = new NiBLinkNBSaLogInModel();
+	private NiBLinkNBScAddressModel asm =new NiBLinkNBScAddressModel();
+	private NiBLinkNBSaStatusModel sm = new NiBLinkNBSaStatusModel();
+	private NiBLinkNBScBankingDetailsModel bm = new NiBLinkNBScBankingDetailsModel();
+	private NiBLinkNBScIdentityModel im = new NiBLinkNBScIdentityModel();
+	private NiBLinkNBScPaymentDetailsModel pm = new NiBLinkNBScPaymentDetailsModel();
+	private NiBLinkNBScPersonalModel pem = new NiBLinkNBScPersonalModel();
+	private NiBLinkNBScWalletModel wm = new NiBLinkNBScWalletModel();
 	private List<NiBLinkNBSaLogInModel> log = new ArrayList<>();
-	private List<NiBLinkNBSbAdminModel> lam = new ArrayList<>();
-	private List<NiBLinkNBSbExpertModel> lem = new ArrayList<>();
-	private List<NiBLinkNBSbCustomerModel> lcm = new ArrayList<>();
+	private List<NiBLinkNBSbaAdminModel> lam = new ArrayList<>();
+	private List<NiBLinkNBSbbExpertModel> lem = new ArrayList<>();
+	private List<NiBLinkNBSbcCustomerModel> lcm = new ArrayList<>();
 	private Object obj=new Object();
-public Object signUp(NiBLinkNBSaLogInModel m,NiBLinkNBSTypeSignInService ts) {
-		
+public NiBLinkNBSaLogInModel signUp(NiBLinkNBSaLogInModel m,NiBLinkNBSTypeSignInService ts) {
+		try {
 		if(ts.equals(NiBLinkNBSTypeSignInService.ADMIN)) {
-			System.out.println("in admin signup service"+ts);
-			lm=lr.save(m);
-			am.setLog_id(lm);
-			am=ar.save(am);
-			obj=am;
+			System.out.println("in admin signup service "+ts);
+			m=lr.save(m);
+			System.out.println("saved"+m);
+			m.setGeneratedid("ADMIN"+m.getLogid());
+			System.out.println(m);
+			m=lr.save(m);
+			sm.setNamelistid(m.getGeneratedid());
+			sm.setStatus(m.getStatus());
+			sm=sr.save(sm);
+			System.out.println(sm);
+			am.setNamelistid(sm);
+			ar.save(am);
 		}
 		else if(ts.equals(NiBLinkNBSTypeSignInService.EXPERT)) {
-			lm=lr.save(m);
-			em.setLog_id(lm);
+			System.out.println("in expert signup service"+ts);
+			m=lr.save(m);
+			m.setGeneratedid("EXPERT"+m.getLogid());
+			System.out.println(m);
+			m=lr.save(m);
+			sm.setNamelistid(m.getGeneratedid());
+			sm.setStatus(m.getStatus());
+			sm=sr.save(sm);
+			em.setNamelistid(sm);
 			em=er.save(em);
-			obj=em;
+			pm.setExpertid(em);
+			pm=pr.save(pm);
 		}
 		else if(ts.equals(NiBLinkNBSTypeSignInService.CUSTOMER)) {
-			lm=lr.save(m);
-			cm.setLog_id(lm);
-			cm=cr.save(cm);
-			obj=cm;
+			System.out.println("in customer signup service "+ts);
+			m=lr.save(m);
+			m.setGeneratedid("CUSTOM"+m.getLogid());
+			System.out.println(m);
+			m=lr.save(m);
+			sm.setNamelistid(m.getGeneratedid());
+			sm.setStatus(m.getStatus());
+			sm=sr.save(sm);
+			cm.setNamelistid(sm);
+			cr.save(cm);
 		}
-		return obj;
-	}
-	public Object signIn(NiBLinkNBSaLogInModel m) {
-		log = lr.findAll();
-		lam = ar.findAll();
-		lem = er.findAll();
-		lcm = cr.findAll();
-		for(NiBLinkNBSaLogInModel lg : log) {
-			if(lg.getUsername().equals(m.getUsername())&&lg.getPassword().equals(m.getPassword())) {
-				if(lg.getStatus()==3) {
-					cm.setLog_id(lg);
-					for(NiBLinkNBSbCustomerModel cg :lcm) {
-						if(cm.getLog_id().equals(cg.getLog_id())) {
-							obj=cg;
-						}
-					}
-				}
-				else if(lg.getStatus()==2) {
-					em.setLog_id(lg);
-					for(NiBLinkNBSbExpertModel eg :lem) {
-						if(em.getLog_id().equals(eg.getLog_id())) {
-							obj=eg;
-						}
-					}
-				}
-				else if(lg.getStatus()==1) {
-					am.setLog_id(lg);
-					for(NiBLinkNBSbAdminModel ag :lam) {
-						if(am.getLog_id().equals(ag.getLog_id())) {
-							obj=ag;
-						}
-					}
-				}
-			}
+		bm.setNamelistid(sm);
+		bm=br.save(bm);
+		System.out.println(bm);
+		asm.setNamelistid(sm);
+		asm=adr.save(asm);
+		System.out.println(asm);
+		im.setNamelistid(sm);
+		im=ir.save(im);
+		System.out.println(im);
+		pem.setNamelistid(sm);
+		pem=per.save(pem);
+		System.out.println(pem);
+		wm.setNamelistid(sm);
+		wm=wr.save(wm);
+		System.out.println(wm);
+		}catch(Exception e) {
+			System.out.println(e);
 		}
-		return obj;
-	}
-	public NiBLinkNBSaLogInModel editUser (NiBLinkNBSaLogInModel m) {
-		lm=lr.findById(m.getLog_id()).get();
-		lm.setUsername(m.getUsername());
-		return lr.save(lm);
-	}
-	public NiBLinkNBSaLogInModel editPassword (NiBLinkNBSaLogInModel m) {
-		lm = lr.findById(m.getLog_id()).get();
-		lm.setPassword(m.getPassword());
-		return lr.save(lm);
-	}
-	public NiBLinkNBSaLogInModel editEmail (NiBLinkNBSaLogInModel m) {
-		lm = lr.findById(m.getLog_id()).get();
-		lm.setEmail(m.getEmail());
-		return lr.save(lm);
-	}
-	public NiBLinkNBSaLogInModel editPhone (NiBLinkNBSaLogInModel m) {
-		lm = lr.findById(m.getLog_id()).get();
-		lm.setPhone(m.getPhone());
-		return lr.save(lm);
+		return m;
+		
 	}
 }

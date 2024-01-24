@@ -8,21 +8,21 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table
-public class NiBLinkNBSdSalaryModel {
+@Table(name="commission_details")
+public class NiBLinkNBSdCommissionPayedModel {
 	@Id
 	@GeneratedValue
-	private int salary_id;
+	private int commission_id;
 //	@ManyToOne
 //	@JoinColumn(name="expert_id")
 //	private NiBLinkNBSbbExpertModel expert_id;
 //	private String datetime;
-//	private double salary_amount;
-//	public int getSalary_id() {
-//		return salary_id;
+//	private double commission_amount;
+//	public int getCommission_id() {
+//		return commission_id;
 //	}
-//	public void setSalary_id(int salary_id) {
-//		this.salary_id = salary_id;
+//	public void setCommission_id(int commission_id) {
+//		this.commission_id = commission_id;
 //	}
 //	public NiBLinkNBSbbExpertModel getExpert_id() {
 //		return expert_id;
@@ -36,16 +36,15 @@ public class NiBLinkNBSdSalaryModel {
 //	public void setDatetime(String datetime) {
 //		this.datetime = datetime;
 //	}
-//	public double getSalary_amount() {
-//		return salary_amount;
+//	public double getCommission_amount() {
+//		return commission_amount;
 //	}
-//	public void setSalary_amount(double salary_amount) {
-//		this.salary_amount = salary_amount;
+//	public void setCommission_amount(double commission_amount) {
+//		this.commission_amount = commission_amount;
 //	}
 //	@Override
 //	public String toString() {
-//		return "NiBLinkNBSdSalaryModel [salary_id=" + salary_id + ", expert_id=" + expert_id + ", datetime=" + datetime
-//				+ ", salary_amount=" + salary_amount + "]";
+//		return "NiBLinkNBSdCommissionModel [commission_id=" + commission_id + ", expert_id=" + expert_id + ", datetime="
+//				+ datetime + ", commission_amount=" + commission_amount + "]";
 //	}
-//	
 }

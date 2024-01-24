@@ -1,1 +1,12 @@
-<p>expertsignup works!</p>
+<h1>SignUp Expert</h1>
+<form #signupexpert="ngForm" (ngSubmit)="register(signupexpert.value)">
+    <label for="user">User Name</label>
+    <input type="text" name="user" ngModel>
+    <label for="pass">Password</label>
+    <input type="text" name="pass" ngModel>
+    <label for="email">email id</label>
+    <input type="text" name="email" ngModel>
+    <label for="phone">Phone Number</label>
+    <input type="number" name="phone" ngModel>
+    <input type="submit" value="Submit">
+</form>

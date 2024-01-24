@@ -17,30 +17,30 @@ public class NiBLinkNBSaJobModel {
 	@Id
 	@GeneratedValue
 	private int job_id;
-	@Column(unique = true)
-	private String job;
-	@OneToMany(mappedBy = "job_id",cascade = CascadeType.ALL)
-	private List<NiBLinkNBSbExpertModel> experts = new ArrayList<>();
-	public int getJob_id() {
-		return job_id;
-	}
-	public void setJob_id(int job_id) {
-		this.job_id = job_id;
-	}
-	public List<NiBLinkNBSbExpertModel> getExperts() {
-		return experts;
-	}
-	public void setExperts(List<NiBLinkNBSbExpertModel> experts) {
-		this.experts = experts;
-	}
-	public String getJob() {
-		return job;
-	}
-	public void setJob(String job) {
-		this.job = job;
-	}
-	@Override
-	public String toString() {
-		return "NiBLinkNBSaJobModel [job_id=" + job_id + ", job=" + job + ", experts=" + experts + "]";
-	}
+//	@Column(unique = true)
+//	private String job;
+//	@OneToMany(mappedBy = "job_id",cascade = CascadeType.ALL)
+//	private List<NiBLinkNBSbbExpertModel> experts = new ArrayList<>();
+//	public int getJob_id() {
+//		return job_id;
+//	}
+//	public void setJob_id(int job_id) {
+//		this.job_id = job_id;
+//	}
+//	public List<NiBLinkNBSbbExpertModel> getExperts() {
+//		return experts;
+//	}
+//	public void setExperts(List<NiBLinkNBSbbExpertModel> experts) {
+//		this.experts = experts;
+//	}
+//	public String getJob() {
+//		return job;
+//	}
+//	public void setJob(String job) {
+//		this.job = job;
+//	}
+//	@Override
+//	public String toString() {
+//		return "NiBLinkNBSaJobModel [job_id=" + job_id + ", job=" + job + ", experts=" + experts + "]";
+//	}
 }
