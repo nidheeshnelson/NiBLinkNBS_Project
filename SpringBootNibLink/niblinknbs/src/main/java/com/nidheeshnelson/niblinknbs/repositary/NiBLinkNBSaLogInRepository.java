@@ -7,5 +7,5 @@ import com.nidheeshnelson.niblinknbs.model.NiBLinkNBSaLogInModel;
 
 @Repository
 public interface NiBLinkNBSaLogInRepository extends JpaRepository<NiBLinkNBSaLogInModel, Integer>{
-
+	NiBLinkNBSaLogInModel findByUsernameAndPassword(String username, String password);
 }

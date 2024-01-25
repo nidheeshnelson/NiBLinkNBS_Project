@@ -12,7 +12,7 @@ import {LoginService} from './login.service';
 })
 export class SigninComponent {
   constructor(private ls:LoginService){}
-  async register(data:any){
+  async login(data:any){
     console.log(data);
     
     let response:any=await this.ls.logIn(data)

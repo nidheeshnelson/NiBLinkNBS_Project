@@ -9,7 +9,6 @@ import com.nidheeshnelson.niblinknbs.model.NiBLinkNBScAddressModel;
 import com.nidheeshnelson.niblinknbs.model.NiBLinkNBScIdentityModel;
 
 @Repository
-public interface NiBLinkNBScIdentityRepository extends JpaRepository<NiBLinkNBScIdentityModel, Integer>{
-	@Query("SELECT a FROM NiBLinkNBScIdentityModel a INNER JOIN FETCH a.namelistid c WHERE c.namelistid = :namelistid")
-	NiBLinkNBScIdentityModel findByNamelistId(@Param("namelistid") String namelistid);
+public interface NiBLinkNBScIdentityRepository extends JpaRepository<NiBLinkNBScIdentityModel, String>{
+	
 }

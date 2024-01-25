@@ -13,24 +13,14 @@ import jakarta.persistence.Table;
 @Table(name="payment_details")
 public class NiBLinkNBScPaymentDetailsModel {
 	@Id
-	@GeneratedValue
-	private int paymentid;
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "experttid",referencedColumnName = "expertid")
-	private NiBLinkNBSbbExpertModel expertid;
+	private String paymentid;
 	private double paymentperhour;
 	private double commission;
-	public int getPaymentid() {
+	public String getPaymentid() {
 		return paymentid;
 	}
-	public void setPaymentid(int paymentid) {
+	public void setPaymentid(String paymentid) {
 		this.paymentid = paymentid;
-	}
-	public NiBLinkNBSbbExpertModel getExpertid() {
-		return expertid;
-	}
-	public void setExpertid(NiBLinkNBSbbExpertModel expert) {
-		this.expertid = expert;
 	}
 	public double getPaymentperhour() {
 		return paymentperhour;
@@ -46,7 +36,7 @@ public class NiBLinkNBScPaymentDetailsModel {
 	}
 	@Override
 	public String toString() {
-		return "NiBLinkNBScPaymentDetailsModel [paymentid=" + paymentid + ", expertid=" + expertid + ", paymentperhour="
+		return "NiBLinkNBScPaymentDetailsModel [paymentid=" + paymentid + ", paymentperhour="
 				+ paymentperhour + ", commission=" + commission + "]";
 	}
 	

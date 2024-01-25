@@ -13,11 +13,7 @@ import jakarta.persistence.Table;
 @Table(name="personal_details")
 public class NiBLinkNBScPersonalModel {
 	@Id
-	@GeneratedValue
-	private int personalid;
-	@OneToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "namelistid", referencedColumnName = "namelistid")
-	private NiBLinkNBSaStatusModel namelistid;
+	private String personalid;
 	private int age;
 	private String dateofbirth;
 	private String gender;
@@ -25,17 +21,11 @@ public class NiBLinkNBScPersonalModel {
 	private String mother;
 	private String spouse;
 	private int children;
-	public int getPersonalid() {
+	public String getPersonalid() {
 		return personalid;
 	}
-	public void setPersonalid(int personalid) {
+	public void setPersonalid(String personalid) {
 		this.personalid = personalid;
-	}
-	public NiBLinkNBSaStatusModel getNamelistid() {
-		return namelistid;
-	}
-	public void setNamelistid(NiBLinkNBSaStatusModel statusid) {
-		this.namelistid = statusid;
 	}
 	public int getAge() {
 		return age;
@@ -81,7 +71,7 @@ public class NiBLinkNBScPersonalModel {
 	}
 	@Override
 	public String toString() {
-		return "NiBLinkNBScPersonalModel [personalid=" + personalid + ", namelistid=" + namelistid + ", age=" + age
+		return "NiBLinkNBScPersonalModel [personalid=" + personalid + ", age=" + age
 				+ ", dateofbirth=" + dateofbirth + ", gender=" + gender + ", father=" + father + ", mother=" + mother
 				+ ", spouse=" + spouse + ", children=" + children + "]";
 	}

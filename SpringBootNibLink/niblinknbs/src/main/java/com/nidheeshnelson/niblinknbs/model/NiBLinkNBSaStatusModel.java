@@ -12,20 +12,6 @@ public class NiBLinkNBSaStatusModel {
 	@Id
 	private String namelistid;
 	private int status;
-	@OneToOne(mappedBy = "namelistid",cascade = CascadeType.ALL)
-	private NiBLinkNBScAddressModel address;
-	@OneToOne(mappedBy = "namelistid",cascade = CascadeType.ALL)
-	private NiBLinkNBSbaAdminModel admin;
-	@OneToOne(mappedBy = "namelistid",cascade = CascadeType.ALL)
-	private NiBLinkNBSbbExpertModel expert;
-	@OneToOne(mappedBy = "namelistid",cascade = CascadeType.ALL)
-	private NiBLinkNBSbcCustomerModel customer;
-	@OneToOne(mappedBy = "namelistid",cascade = CascadeType.ALL)
-	private NiBLinkNBScBankingDetailsModel banking;
-	@OneToOne(mappedBy = "namelistid",cascade = CascadeType.ALL)
-	private NiBLinkNBScIdentityModel identity;
-	@OneToOne(mappedBy = "namelistid",cascade = CascadeType.ALL)
-	private NiBLinkNBScPersonalModel personal;
 	public String getNamelistid() {
 		return namelistid;
 	}

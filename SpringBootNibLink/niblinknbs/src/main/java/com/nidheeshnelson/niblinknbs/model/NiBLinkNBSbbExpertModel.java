@@ -16,27 +16,18 @@ import jakarta.persistence.Table;
 @Table(name="Expert_details")
 public class NiBLinkNBSbbExpertModel {
 	@Id
-	@GeneratedValue
-	private int expertid;
-	@OneToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "namelistid", referencedColumnName = "namelistid")
-	private NiBLinkNBSaStatusModel namelistid;
+	private String expertid;
 	private String firstname;
 	private String middlename;
 	private String lastname;
+	public static final int status=2;
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "expert", cascade = CascadeType.ALL)
     private List<NiBLinkNBSeShiftModel> shiftList;
-	public int getExpertid() {
+	public String getExpertid() {
 		return expertid;
 	}
-	public void setExpertid(int expertid) {
+	public void setExpertid(String expertid) {
 		this.expertid = expertid;
-	}
-	public NiBLinkNBSaStatusModel getNamelistid() {
-		return namelistid;
-	}
-	public void setNamelistid(NiBLinkNBSaStatusModel namelistid) {
-		this.namelistid = namelistid;
 	}
 	public String getFirstname() {
 		return firstname;
@@ -64,9 +55,9 @@ public class NiBLinkNBSbbExpertModel {
 	}
 	@Override
 	public String toString() {
-		return "NiBLinkNBSbbExpertModel [expertid=" + expertid + ", namelistid=" + namelistid + ", firstname="
+		return "NiBLinkNBSbbExpertModel [expertid=" + expertid + ", firstname="
 				+ firstname + ", middlename=" + middlename + ", lastname=" + lastname + ", shiftList=" + shiftList
-				+ "]";
+				+ "]" +", status=" +status;
 	}
 	
 	

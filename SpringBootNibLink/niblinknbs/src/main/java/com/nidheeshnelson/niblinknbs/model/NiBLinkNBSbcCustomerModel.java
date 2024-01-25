@@ -13,25 +13,16 @@ import jakarta.persistence.Table;
 @Table(name="customer_details")
 public class NiBLinkNBSbcCustomerModel {
 	@Id
-	@GeneratedValue
-	private int customerid;
-	@OneToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "namelistid", referencedColumnName = "namelistid")
-	private NiBLinkNBSaStatusModel namelistid;
+	private String customerid;
 	private String firstname;
 	private String middlename;
 	private String lastname;
-	public int getCustomerid() {
+	public static final int status=3;
+	public String getCustomerid() {
 		return customerid;
 	}
-	public void setCustomerid(int customerid) {
+	public void setCustomerid(String customerid) {
 		this.customerid = customerid;
-	}
-	public NiBLinkNBSaStatusModel getNamelistid() {
-		return namelistid;
-	}
-	public void setNamelistid(NiBLinkNBSaStatusModel namelistid) {
-		this.namelistid = namelistid;
 	}
 	public String getFirstname() {
 		return firstname;
@@ -53,8 +44,8 @@ public class NiBLinkNBSbcCustomerModel {
 	}
 	@Override
 	public String toString() {
-		return "NiBLinkNBSbcCustomerModel [customerid=" + customerid + ", namelistid=" + namelistid + ", firstname="
-				+ firstname + ", middlename=" + middlename + ", lastname=" + lastname + "]";
+		return "NiBLinkNBSbcCustomerModel [customerid=" + customerid + ", firstname="
+				+ firstname + ", middlename=" + middlename + ", lastname=" + lastname + "]" +", status=" +status;
 	}
 	
 	

@@ -13,25 +13,15 @@ import jakarta.persistence.Table;
 @Table(name = "identityproof")
 public class NiBLinkNBScIdentityModel {
 	@Id
-	@GeneratedValue
-	private int identityid;
-	@OneToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "namelistid", referencedColumnName = "namelistid")
-	private NiBLinkNBSaStatusModel namelistid;
+	private String identityid;
 	private long adhar;
 	private String pancard;
 	private String electionid;
-	public int getIdentityid() {
+	public String getIdentityid() {
 		return identityid;
 	}
-	public void setIdentityid(int identityid) {
+	public void setIdentityid(String identityid) {
 		this.identityid = identityid;
-	}
-	public NiBLinkNBSaStatusModel getNamelistid() {
-		return namelistid;
-	}
-	public void setNamelistid(NiBLinkNBSaStatusModel statusid) {
-		this.namelistid = statusid;
 	}
 	public long getAdhar() {
 		return adhar;
@@ -53,7 +43,7 @@ public class NiBLinkNBScIdentityModel {
 	}
 	@Override
 	public String toString() {
-		return "NiBLinkNBScIdentityModel [identityid=" + identityid + ", namelistid=" + namelistid + ", adhar=" + adhar
+		return "NiBLinkNBScIdentityModel [identityid=" + identityid + ", adhar=" + adhar
 				+ ", pancard=" + pancard + ", electionid=" + electionid + "]";
 	}
 	

@@ -13,27 +13,18 @@ import jakarta.persistence.Table;
 @Table(name="banking_details")
 public class NiBLinkNBScBankingDetailsModel {
 	@Id
-	private int bankid;
-	@OneToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "namelistid", referencedColumnName = "namelistid")
-	private NiBLinkNBSaStatusModel namelistid;
+	private String bankid;
 	private String bank;
 	private String branch;
 	private String ifsc;
 	private String accountnumber;
 	private int secretpin;
 	private String upiid;
-	public int getBankid() {
+	public String getBankid() {
 		return bankid;
 	}
-	public void setBankid(int bankid) {
+	public void setBankid(String bankid) {
 		this.bankid = bankid;
-	}
-	public NiBLinkNBSaStatusModel getNamelistid() {
-		return namelistid;
-	}
-	public void setNamelistid(NiBLinkNBSaStatusModel statusid) {
-		this.namelistid = statusid;
 	}
 	public String getBank() {
 		return bank;
@@ -73,7 +64,7 @@ public class NiBLinkNBScBankingDetailsModel {
 	}
 	@Override
 	public String toString() {
-		return "NiBLinkNBScBankingDetailsModel [bankid=" + bankid + ", namelistid=" + namelistid + ", bank=" + bank
+		return "NiBLinkNBScBankingDetailsModel [bankid=" + bankid  + ", bank=" + bank
 				+ ", branch=" + branch + ", ifsc=" + ifsc + ", accountnumber=" + accountnumber + ", secretpin="
 				+ secretpin + ", upiid=" + upiid + "]";
 	}

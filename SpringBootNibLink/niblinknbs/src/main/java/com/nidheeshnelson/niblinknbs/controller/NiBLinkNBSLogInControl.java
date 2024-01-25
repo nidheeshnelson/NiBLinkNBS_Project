@@ -23,53 +23,38 @@ import com.nidheeshnelson.niblinknbs.service.NiBLinkNBSTypeSignInService;
 public class NiBLinkNBSLogInControl {
 	@Autowired
 	private NiBLinkNBSaLogInService ls;
-	private Map<String, String> mp = new HashMap<>();
+	private Map<String, Integer> mp = new HashMap<>();
 	private NiBLinkNBSbcCustomerModel cm = new  NiBLinkNBSbcCustomerModel();
 	private NiBLinkNBSbbExpertModel em = new NiBLinkNBSbbExpertModel();
 	private NiBLinkNBSbaAdminModel am = new NiBLinkNBSbaAdminModel();
-	private Object obj = new Object();
-	private NiBLinkNBSTypeSignInService ts;
-
 	@PostMapping("/sup")
-	public Map<String, String> SignUp(@RequestBody NiBLinkNBSaLogInModel lm) {
+	public Map<String, Integer> SignUp(@RequestBody NiBLinkNBSaLogInModel lm) {
 		System.out.println("in signup"+lm);
-		
+		try {
 		if(lm.getStatus()==1) {
-			lm=ls.signUp(lm, ts.ADMIN);
-			mp.put("ADMIN", lm.getGeneratedid());
+			lm=ls.signUp(lm, NiBLinkNBSTypeSignInService.ADMIN);
+			mp.put(lm.getGeneratedid(), lm.getStatus());
 		}
 		else if(lm.getStatus()==2) {
-			lm=ls.signUp(lm,ts.EXPERT);
-			mp.put("EXPERT", lm.getGeneratedid());
+			lm=ls.signUp(lm,NiBLinkNBSTypeSignInService.EXPERT);
+			mp.put(lm.getGeneratedid(), lm.getStatus());
 		}
 		else if(lm.getStatus()==3) {
-			lm=ls.signUp(lm, ts.CUSTOMER);
-			mp.put("CUSTOMER", lm.getGeneratedid());
+			lm=ls.signUp(lm, NiBLinkNBSTypeSignInService.CUSTOMER);
+			mp.put(lm.getGeneratedid(), lm.getStatus());
 		}
 		else {
-			mp.put("FAILED", "NULL");
+			mp.put("FAILED", 0);
 		}
-		
+		}
+		catch(Exception e) {
+			System.out.println(e);
+		}
 		return mp;
 	}
-	@GetMapping("/lin")
-	public Map<String,String> logIn(@RequestBody NiBLinkNBSaLogInModel lm) {
-//		obj = ls.signIn(lm);
-//		if(obj.getClass()==cm.getClass()) {
-//			cm=(NiBLinkNBSbcCustomerModel) obj;
-//			mp.put("CUSTOMER", cm.getCustomer_id());
-//		}
-//		else if(obj.getClass()==em.getClass()) {
-//			em=(NiBLinkNBSbbExpertModel) obj;
-//			mp.put("EXPERT", em.getExpert_id());
-//		}
-//		else if(obj.getClass()==am.getClass()) {
-//			am=(NiBLinkNBSbaAdminModel) obj;
-//			mp.put("ADMIN", am.getAdmin_id());
-//		}
-//		else {
-			mp.put("FAILED", "0");
-//		}
-		return mp;
+	@GetMapping("/lgn")
+	public Map<String, Integer> logIn(@RequestBody NiBLinkNBSaLogInModel lm) {
+		
+		return ls.logIn(lm);
 	}
 }

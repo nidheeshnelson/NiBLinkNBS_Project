@@ -10,7 +10,6 @@ import org.springframework.stereotype.Repository;
 import com.nidheeshnelson.niblinknbs.model.NiBLinkNBScAddressModel;
 
 @Repository
-public interface NiBLinkNBScAddressRepository extends JpaRepository<NiBLinkNBScAddressModel, Integer>{
-	@Query("SELECT a FROM NiBLinkNBScAddressModel a INNER JOIN FETCH a.namelistid c WHERE c.namelistid = :namelistid")
-	NiBLinkNBScAddressModel findAddressByNamelistId(@Param("namelistid") String namelistid);
+public interface NiBLinkNBScAddressRepository extends JpaRepository<NiBLinkNBScAddressModel, String>{
+	
 }

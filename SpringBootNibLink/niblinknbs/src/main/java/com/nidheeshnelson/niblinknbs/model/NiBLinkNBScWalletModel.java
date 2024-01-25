@@ -14,23 +14,13 @@ import jakarta.persistence.Table;
 @Table(name="wallet")
 public class NiBLinkNBScWalletModel {
 	@Id
-	@GeneratedValue
-	private int walletid;
-	@OneToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "namelistid", referencedColumnName = "namelistid")
-	private NiBLinkNBSaStatusModel namelistid;
+	private String walletid;
 	private long amount;
-	public int getWalletid() {
+	public String getWalletid() {
 		return walletid;
 	}
-	public void setWalletid(int walletid) {
+	public void setWalletid(String walletid) {
 		this.walletid = walletid;
-	}
-	public NiBLinkNBSaStatusModel getNamelistid() {
-		return namelistid;
-	}
-	public void setNamelistid(NiBLinkNBSaStatusModel statusid) {
-		this.namelistid = statusid;
 	}
 	public long getAmount() {
 		return amount;
@@ -40,7 +30,7 @@ public class NiBLinkNBScWalletModel {
 	}
 	@Override
 	public String toString() {
-		return "NiBLinkNBScWalletModel [walletid=" + walletid + ", namelistid=" + namelistid + ", amount=" + amount + "]";
+		return "NiBLinkNBScWalletModel [walletid=" + walletid + ", amount=" + amount + "]";
 	}
 	
 	

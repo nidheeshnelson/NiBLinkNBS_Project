@@ -8,7 +8,6 @@ import org.springframework.stereotype.Repository;
 import com.nidheeshnelson.niblinknbs.model.NiBLinkNBScPersonalModel;
 
 @Repository
-public interface NiBLinkNBScPersonalRepository extends JpaRepository<NiBLinkNBScPersonalModel, Integer>{
-	@Query("SELECT a FROM NiBLinkNBScPersonalModel a INNER JOIN FETCH a.namelistid c WHERE c.namelistid = :namelistid")
-	NiBLinkNBScPersonalModel findByNamelistId(@Param("namelistid") String namelistid);
+public interface NiBLinkNBScPersonalRepository extends JpaRepository<NiBLinkNBScPersonalModel, String>{
+	
 }
