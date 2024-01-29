@@ -1,12 +1,8 @@
 package com.nidheeshnelson.niblinknbs.model;
 
-import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -14,8 +10,11 @@ import jakarta.persistence.Table;
 public class NiBLinkNBScIdentityModel {
 	@Id
 	private String identityid;
-	private long adhar;
+	@Column(unique = true)
+	private String adhar;
+	@Column(unique = true)
 	private String pancard;
+	@Column(unique = true)
 	private String electionid;
 	public String getIdentityid() {
 		return identityid;
@@ -23,10 +22,10 @@ public class NiBLinkNBScIdentityModel {
 	public void setIdentityid(String identityid) {
 		this.identityid = identityid;
 	}
-	public long getAdhar() {
+	public String getAdhar() {
 		return adhar;
 	}
-	public void setAdhar(long adhar) {
+	public void setAdhar(String adhar) {
 		this.adhar = adhar;
 	}
 	public String getPancard() {

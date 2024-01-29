@@ -1,6 +1,14 @@
-(/ads)
-Add address
+Show Address
+@PostMapping("/shad")
 {
+    "addressid":"ADMIN552"
+}
+
+
+Edit/Add Address
+@PostMapping("/edad")
+{
+    "addressid":"ADMIN552",
     "housename":"a",
     "street":"a",
     "landmark":"a",
@@ -11,10 +19,5 @@ Add address
     "thaluk":"a",
     "district":"a",
     "state":"a",
-    "country":"a",
-    "status":1,
-    "admin_id":{
-            "admin_id":1
-		}
-    
+    "country":"a"
 }

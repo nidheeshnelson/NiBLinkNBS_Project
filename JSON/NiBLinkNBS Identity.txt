@@ -1,0 +1,14 @@
+save/ edit 
+@PostMapping("/edi")
+{
+	"identityid":"ADMIN552",
+	"adhar":"a",
+	"pancard":"a",
+	"electionid":"a"	
+}
+
+show
+@PostMapping("/shi")
+{
+	"identityid":"ADMIN552"
+}

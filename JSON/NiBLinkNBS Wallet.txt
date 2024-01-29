@@ -1,0 +1,12 @@
+save/edit
+@PostMapping("/ewa")
+{
+	"walletid":"ADMIN552",
+	"amount":"1"
+}
+
+show
+@PostMapping("/swa")
+{
+	"walletid":"ADMIN552"
+}

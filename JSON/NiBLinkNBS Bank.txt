@@ -1,0 +1,16 @@
+edit/add bank
+@PostMapping("/sbe")
+{
+	"bankid":"ADMIN552",
+	"bank":"a",
+	"branch":"a",
+	"ifsc":"a",
+	"accountnumber":"a",
+	"secretpin":"a",
+	"upiid":""
+}
+show bank
+@PostMapping("/sbs")
+{
+	"bankid":"ADMIN552"
+}

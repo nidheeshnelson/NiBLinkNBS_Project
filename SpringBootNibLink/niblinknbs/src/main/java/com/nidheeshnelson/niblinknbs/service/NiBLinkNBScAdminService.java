@@ -1,17 +1,6 @@
 package com.nidheeshnelson.niblinknbs.service;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import com.nidheeshnelson.niblinknbs.model.NiBLinkNBSaJobModel;
-import com.nidheeshnelson.niblinknbs.model.NiBLinkNBSbaAdminModel;
-import com.nidheeshnelson.niblinknbs.model.NiBLinkNBScAddressModel;
-import com.nidheeshnelson.niblinknbs.repositary.NiBLinkNBSaJobRepository;
-import com.nidheeshnelson.niblinknbs.repositary.NiBLinkNBSbAdminRepository;
-import com.nidheeshnelson.niblinknbs.repositary.NiBLinkNBScAddressRepository;
 
 @Service
 public class NiBLinkNBScAdminService implements NiBLinkNBSbAdminService{

@@ -9,5 +9,5 @@ import com.nidheeshnelson.niblinknbs.model.NiBLinkNBScWalletModel;
 
 @Repository
 public interface NiBLinkNBScWalletRepository extends JpaRepository<NiBLinkNBScWalletModel, String>{
-	
+	NiBLinkNBScWalletModel findByWalletid (String s);
 }

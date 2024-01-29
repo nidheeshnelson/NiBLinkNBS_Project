@@ -1,0 +1,13 @@
+add/edit
+@PostMapping("/epdm")
+{
+	"paymentid":"ADMIN552",
+	"paymentperhour":1,
+	"commission":1.5
+}
+
+show
+@PostMapping("/spdm")
+{
+	"paymentid":"ADMIN552"
+}

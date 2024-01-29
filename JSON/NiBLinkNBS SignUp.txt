@@ -1,4 +1,4 @@
-(/sup)
+@PostMapping("/sup")
 Admin
 {
     "username":"a",

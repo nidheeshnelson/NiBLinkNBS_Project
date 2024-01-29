@@ -5,16 +5,10 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.nidheeshnelson.niblinknbs.model.NiBLinkNBSaLogInModel;
-import com.nidheeshnelson.niblinknbs.model.NiBLinkNBSbaAdminModel;
-import com.nidheeshnelson.niblinknbs.model.NiBLinkNBSbcCustomerModel;
-import com.nidheeshnelson.niblinknbs.model.NiBLinkNBSbbExpertModel;
 import com.nidheeshnelson.niblinknbs.service.NiBLinkNBSaLogInService;
 import com.nidheeshnelson.niblinknbs.service.NiBLinkNBSTypeSignInService;
 
@@ -24,9 +18,6 @@ public class NiBLinkNBSLogInControl {
 	@Autowired
 	private NiBLinkNBSaLogInService ls;
 	private Map<String, Integer> mp = new HashMap<>();
-	private NiBLinkNBSbcCustomerModel cm = new  NiBLinkNBSbcCustomerModel();
-	private NiBLinkNBSbbExpertModel em = new NiBLinkNBSbbExpertModel();
-	private NiBLinkNBSbaAdminModel am = new NiBLinkNBSbaAdminModel();
 	@PostMapping("/sup")
 	public Map<String, Integer> SignUp(@RequestBody NiBLinkNBSaLogInModel lm) {
 		System.out.println("in signup"+lm);
@@ -52,7 +43,7 @@ public class NiBLinkNBSLogInControl {
 		}
 		return mp;
 	}
-	@GetMapping("/lgn")
+	@PostMapping("/lgn")
 	public Map<String, Integer> logIn(@RequestBody NiBLinkNBSaLogInModel lm) {
 		
 		return ls.logIn(lm);

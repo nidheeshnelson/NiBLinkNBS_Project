@@ -1,0 +1,17 @@
+edit/save
+@PostMapping("/epr")
+{
+	"personalid":"ADMIN552",
+	"age":1,
+	"dateofbirth":"a",
+	"gender":"a",
+	"father":"a",
+	"mother":"a",
+	"spouse":"a",
+	"children":1
+}
+show
+@PostMapping("/spr")
+{
+	"personalid":"ADMIN552"
+}

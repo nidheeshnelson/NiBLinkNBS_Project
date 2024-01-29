@@ -1,13 +1,8 @@
 package com.nidheeshnelson.niblinknbs.model;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -15,48 +10,30 @@ import jakarta.persistence.Table;
 public class NiBLinkNBSfCountryModel {
 	@Id
 	@GeneratedValue
-	private int country_id;
-	private String country;
-	@OneToMany(cascade = CascadeType.ALL,mappedBy = "state")
-	private List<NiBLinkNBSfStateModel> state=new ArrayList<>();
-	@OneToMany(cascade = CascadeType.ALL,mappedBy = "district")
-	private List<NiBLinkNBSfDistrictModel> district=new ArrayList<>();
-	@OneToMany(cascade = CascadeType.ALL,mappedBy = "thaluk")
-	private List<NiBLinkNBSfThalukModel> thaluk=new ArrayList<>();
-	public int getCountry_id() {
-		return country_id;
+	private int countryid;
+	private String countryname;
+	private String countrycode;
+	public int getCountryid() {
+		return countryid;
 	}
-	public void setCountry_id(int country_id) {
-		this.country_id = country_id;
+	public void setCountryid(int countryid) {
+		this.countryid = countryid;
 	}
-	public String getCountry() {
-		return country;
+	public String getCountryname() {
+		return countryname;
 	}
-	public void setCountry(String country) {
-		this.country = country;
+	public void setCountryname(String countryname) {
+		this.countryname = countryname;
 	}
-	public List<NiBLinkNBSfStateModel> getState() {
-		return state;
+	public String getCountrycode() {
+		return countrycode;
 	}
-	public void setState(List<NiBLinkNBSfStateModel> state) {
-		this.state = state;
-	}
-	public List<NiBLinkNBSfDistrictModel> getDistrict() {
-		return district;
-	}
-	public void setDistrict(List<NiBLinkNBSfDistrictModel> district) {
-		this.district = district;
-	}
-	public List<NiBLinkNBSfThalukModel> getThaluk() {
-		return thaluk;
-	}
-	public void setThaluk(List<NiBLinkNBSfThalukModel> thaluk) {
-		this.thaluk = thaluk;
+	public void setCountrycode(String countrycode) {
+		this.countrycode = countrycode;
 	}
 	@Override
 	public String toString() {
-		return "NiBLinkNBSfCountryModel [country_id=" + country_id + ", country=" + country + ", state=" + state
-				+ ", district=" + district + ", thaluk=" + thaluk + "]";
+		return "NiBLinkNBSfCountryModel [countryid=" + countryid + ", countryname=" + countryname + ", countrycode="
+				+ countrycode + "]";
 	}
-	
 }

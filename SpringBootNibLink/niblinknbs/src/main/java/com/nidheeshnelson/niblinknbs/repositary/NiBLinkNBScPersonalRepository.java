@@ -9,5 +9,5 @@ import com.nidheeshnelson.niblinknbs.model.NiBLinkNBScPersonalModel;
 
 @Repository
 public interface NiBLinkNBScPersonalRepository extends JpaRepository<NiBLinkNBScPersonalModel, String>{
-	
+	NiBLinkNBScPersonalModel findByPersonalid (String s);
 }

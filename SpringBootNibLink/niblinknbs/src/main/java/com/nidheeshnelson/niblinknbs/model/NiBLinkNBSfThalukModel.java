@@ -1,14 +1,8 @@
 package com.nidheeshnelson.niblinknbs.model;
 
-import java.util.HashSet;
-import java.util.Set;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -16,59 +10,52 @@ import jakarta.persistence.Table;
 public class NiBLinkNBSfThalukModel {
 	@Id
 	@GeneratedValue
-	private int thaluk_id;
-	private String thaluk;
-	@ManyToMany(mappedBy = "thaluks")
-	private Set<NiBLinkNBSeShiftModel> shift = new HashSet<>();
-	@ManyToOne
-	@JoinColumn(name = "district_id")
-	private NiBLinkNBSfDistrictModel district;
-	@ManyToOne
-	@JoinColumn(name = "state_id")
-	private NiBLinkNBSfStateModel state;
-	@ManyToOne
-	@JoinColumn(name = "country_id")
-	private NiBLinkNBSfCountryModel country;
-	public int getThaluk_id() {
-		return thaluk_id;
+	private int thalukid;
+	private String thalukname;
+	private String thalukcode;
+	private String districtcode;
+	private String statecode;
+	private String countrycode;
+	public int getThalukid() {
+		return thalukid;
 	}
-	public void setThaluk_id(int thaluk_id) {
-		this.thaluk_id = thaluk_id;
+	public void setThalukid(int thalukid) {
+		this.thalukid = thalukid;
 	}
-	public String getThaluk() {
-		return thaluk;
+	public String getThalukname() {
+		return thalukname;
 	}
-	public void setThaluk(String thaluk) {
-		this.thaluk = thaluk;
+	public void setThalukname(String thalukname) {
+		this.thalukname = thalukname;
 	}
-	public Set<NiBLinkNBSeShiftModel> getShift() {
-		return shift;
+	public String getThalukcode() {
+		return thalukcode;
 	}
-	public void setShift(Set<NiBLinkNBSeShiftModel> shift) {
-		this.shift = shift;
+	public void setThalukcode(String thalukcode) {
+		this.thalukcode = thalukcode;
 	}
-	public NiBLinkNBSfDistrictModel getDistrict() {
-		return district;
+	public String getDistrictcode() {
+		return districtcode;
 	}
-	public void setDistrict(NiBLinkNBSfDistrictModel district) {
-		this.district = district;
+	public void setDistrictcode(String districtcode) {
+		this.districtcode = districtcode;
 	}
-	public NiBLinkNBSfStateModel getState() {
-		return state;
+	public String getStatecode() {
+		return statecode;
 	}
-	public void setState(NiBLinkNBSfStateModel state) {
-		this.state = state;
+	public void setStatecode(String statecode) {
+		this.statecode = statecode;
 	}
-	public NiBLinkNBSfCountryModel getCountry() {
-		return country;
+	public String getCountrycode() {
+		return countrycode;
 	}
-	public void setCountry(NiBLinkNBSfCountryModel country) {
-		this.country = country;
+	public void setCountrycode(String countrycode) {
+		this.countrycode = countrycode;
 	}
 	@Override
 	public String toString() {
-		return "NiBLinkNBSfThalukModel [thaluk_id=" + thaluk_id + ", thaluk=" + thaluk + ", shift=" + shift
-				+ ", district=" + district + ", state=" + state + ", country=" + country + "]";
+		return "NiBLinkNBSfThalukModel [thalukid=" + thalukid + ", thalukname=" + thalukname + ", thalukcode="
+				+ thalukcode + ", districtcode=" + districtcode + ", statecode=" + statecode + ", countrycode="
+				+ countrycode + "]";
 	}
-	
 }

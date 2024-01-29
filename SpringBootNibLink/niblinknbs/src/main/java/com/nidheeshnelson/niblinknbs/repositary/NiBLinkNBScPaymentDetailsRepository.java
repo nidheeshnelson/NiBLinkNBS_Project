@@ -10,6 +10,6 @@ import com.nidheeshnelson.niblinknbs.model.NiBLinkNBScPaymentDetailsModel;
 
 @Repository
 public interface NiBLinkNBScPaymentDetailsRepository extends JpaRepository<NiBLinkNBScPaymentDetailsModel, String>{
-	
+	NiBLinkNBScPaymentDetailsModel findByPaymentid (String s);
 
 }

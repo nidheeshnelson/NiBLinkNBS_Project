@@ -1,14 +1,8 @@
 package com.nidheeshnelson.niblinknbs.model;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -16,31 +10,30 @@ import jakarta.persistence.Table;
 public class NiBLinkNBSaJobModel {
 	@Id
 	@GeneratedValue
-	private int job_id;
-//	@Column(unique = true)
-//	private String job;
-//	@OneToMany(mappedBy = "job_id",cascade = CascadeType.ALL)
-//	private List<NiBLinkNBSbbExpertModel> experts = new ArrayList<>();
-//	public int getJob_id() {
-//		return job_id;
-//	}
-//	public void setJob_id(int job_id) {
-//		this.job_id = job_id;
-//	}
-//	public List<NiBLinkNBSbbExpertModel> getExperts() {
-//		return experts;
-//	}
-//	public void setExperts(List<NiBLinkNBSbbExpertModel> experts) {
-//		this.experts = experts;
-//	}
-//	public String getJob() {
-//		return job;
-//	}
-//	public void setJob(String job) {
-//		this.job = job;
-//	}
-//	@Override
-//	public String toString() {
-//		return "NiBLinkNBSaJobModel [job_id=" + job_id + ", job=" + job + ", experts=" + experts + "]";
-//	}
+	private int jobid;
+	private String jobname;
+	private String jobcode;
+	public int getJobid() {
+		return jobid;
+	}
+	public void setJobid(int jobid) {
+		this.jobid = jobid;
+	}
+	public String getJobname() {
+		return jobname;
+	}
+	public void setJobname(String jobname) {
+		this.jobname = jobname;
+	}
+	public String getJobcode() {
+		return jobcode;
+	}
+	public void setJobcode(String jobcode) {
+		this.jobcode = jobcode;
+	}
+	@Override
+	public String toString() {
+		return "NiBLinkNBSaJobModel [jobid=" + jobid + ", jobname=" + jobname + ", jobcode=" + jobcode + "]";
+	}
+	
 }
