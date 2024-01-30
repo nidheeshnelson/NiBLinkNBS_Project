@@ -1,12 +1,7 @@
 package com.nidheeshnelson.niblinknbs.model;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -15,7 +10,7 @@ public class NiBLinkNBScPaymentDetailsModel {
 	@Id
 	private String paymentid;
 	private double paymentperhour;
-	private double commission;
+	private String commissionid;
 	public String getPaymentid() {
 		return paymentid;
 	}
@@ -28,17 +23,16 @@ public class NiBLinkNBScPaymentDetailsModel {
 	public void setPaymentperhour(double paymentperhour) {
 		this.paymentperhour = paymentperhour;
 	}
-	public double getCommission() {
-		return commission;
+	public String getCommissionid() {
+		return commissionid;
 	}
-	public void setCommission(double commission) {
-		this.commission = commission;
+	public void setCommissionid(String commissionid) {
+		this.commissionid = commissionid;
 	}
 	@Override
 	public String toString() {
-		return "NiBLinkNBScPaymentDetailsModel [paymentid=" + paymentid + ", paymentperhour="
-				+ paymentperhour + ", commission=" + commission + "]";
+		return "NiBLinkNBScPaymentDetailsModel [paymentid=" + paymentid + ", paymentperhour=" + paymentperhour
+				+ ", commissionid=" + commissionid + "]";
 	}
-	
 	
 }

@@ -7,5 +7,5 @@ import com.nidheeshnelson.niblinknbs.model.NiBLinkNBSaJobModel;
 
 @Repository
 public interface NiBLinkNBSaJobRepository extends JpaRepository<NiBLinkNBSaJobModel, Integer>{
-
+	NiBLinkNBSaJobModel findByJobcode(String s);
 }

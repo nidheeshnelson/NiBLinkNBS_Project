@@ -1,15 +1,9 @@
 package com.nidheeshnelson.niblinknbs.model;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import jakarta.persistence.CascadeType;
+import java.time.LocalDateTime;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -17,43 +11,38 @@ import jakarta.persistence.Table;
 public class NiBLinkNBSdWalletHistoryModel {
 	@Id
 	@GeneratedValue
-	private int wallet_history_id;
-//	@OneToMany(mappedBy = "wallet_history_id",cascade = CascadeType.ALL)
-//	private List<NiBLinkNBScWalletModel> wallet = new ArrayList<>();
-//	@ManyToOne
-//	@JoinColumn(name="customer_id")
-//	private NiBLinkNBSbcCustomerModel customer_id;
-//	@ManyToOne
-//	@JoinColumn(name="expert_id")
-//	private NiBLinkNBSbbExpertModel expert_id;
-//	public int getWallet_history_id() {
-//		return wallet_history_id;
-//	}
-//	public void setWallet_history_id(int wallet_history_id) {
-//		this.wallet_history_id = wallet_history_id;
-//	}
-//	public List<NiBLinkNBScWalletModel> getWallet() {
-//		return wallet;
-//	}
-//	public void setWallet(List<NiBLinkNBScWalletModel> wallet) {
-//		this.wallet = wallet;
-//	}
-//	public NiBLinkNBSbcCustomerModel getCustomer_id() {
-//		return customer_id;
-//	}
-//	public void setCustomer_id(NiBLinkNBSbcCustomerModel customer_id) {
-//		this.customer_id = customer_id;
-//	}
-//	public NiBLinkNBSbbExpertModel getExpert_id() {
-//		return expert_id;
-//	}
-//	public void setExpert_id(NiBLinkNBSbbExpertModel expert_id) {
-//		this.expert_id = expert_id;
-//	}
-//	@Override
-//	public String toString() {
-//		return "NiBLinkNBSdWalletHistoryModel [wallet_history_id=" + wallet_history_id + ", wallet=" + wallet
-//				+ ", customer_id=" + customer_id + ", expert_id=" + expert_id + "]";
-//	}
-//	
+	private int wallethistoryid;
+	private String walletid;
+	private long addedamount;
+	private LocalDateTime adddatetime;
+	public int getWallethistoryid() {
+		return wallethistoryid;
+	}
+	public void setWallethistoryid(int wallethistoryid) {
+		this.wallethistoryid = wallethistoryid;
+	}
+	public String getWalletid() {
+		return walletid;
+	}
+	public void setWalletid(String walletid) {
+		this.walletid = walletid;
+	}
+	public LocalDateTime getAdddatetime() {
+		return adddatetime;
+	}
+	public void setAdddatetime(LocalDateTime adddatetime) {
+		this.adddatetime = adddatetime;
+	}
+	public long getAddedamount() {
+		return addedamount;
+	}
+	public void setAddedamount(long addedamount) {
+		this.addedamount = addedamount;
+	}
+	@Override
+	public String toString() {
+		return "NiBLinkNBSdWalletHistoryModel [wallethistoryid=" + wallethistoryid + ", walletid=" + walletid
+				+ ", addedamount=" + addedamount + ", adddatetime=" + adddatetime + "]";
+	}
+	
 }

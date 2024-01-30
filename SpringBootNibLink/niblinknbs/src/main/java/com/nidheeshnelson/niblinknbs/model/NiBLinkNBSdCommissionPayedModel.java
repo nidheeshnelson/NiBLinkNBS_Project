@@ -1,10 +1,10 @@
 package com.nidheeshnelson.niblinknbs.model;
 
+import java.time.LocalDateTime;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -12,39 +12,89 @@ import jakarta.persistence.Table;
 public class NiBLinkNBSdCommissionPayedModel {
 	@Id
 	@GeneratedValue
-	private int commission_id;
-//	@ManyToOne
-//	@JoinColumn(name="expert_id")
-//	private NiBLinkNBSbbExpertModel expert_id;
-//	private String datetime;
-//	private double commission_amount;
-//	public int getCommission_id() {
-//		return commission_id;
-//	}
-//	public void setCommission_id(int commission_id) {
-//		this.commission_id = commission_id;
-//	}
-//	public NiBLinkNBSbbExpertModel getExpert_id() {
-//		return expert_id;
-//	}
-//	public void setExpert_id(NiBLinkNBSbbExpertModel expert_id) {
-//		this.expert_id = expert_id;
-//	}
-//	public String getDatetime() {
-//		return datetime;
-//	}
-//	public void setDatetime(String datetime) {
-//		this.datetime = datetime;
-//	}
-//	public double getCommission_amount() {
-//		return commission_amount;
-//	}
-//	public void setCommission_amount(double commission_amount) {
-//		this.commission_amount = commission_amount;
-//	}
-//	@Override
-//	public String toString() {
-//		return "NiBLinkNBSdCommissionModel [commission_id=" + commission_id + ", expert_id=" + expert_id + ", datetime="
-//				+ datetime + ", commission_amount=" + commission_amount + "]";
-//	}
+	private int commissionpayedid;
+	private String commissionid;
+	private String shiftid;
+	private String expertid;
+	private String customerid;
+	private double commissionpersentage;
+	private double commissionamount;
+	private LocalDateTime datetimeofcommission;
+	private String thalukcode;
+	private boolean workfinished;
+	private boolean commissionpayed;
+	public int getCommissionpayedid() {
+		return commissionpayedid;
+	}
+	public void setCommissionpayedid(int commissionpayedid) {
+		this.commissionpayedid = commissionpayedid;
+	}
+	public String getCommissionid() {
+		return commissionid;
+	}
+	public void setCommissionid(String commissionid) {
+		this.commissionid = commissionid;
+	}
+	public String getShiftid() {
+		return shiftid;
+	}
+	public void setShiftid(String shiftid) {
+		this.shiftid = shiftid;
+	}
+	public String getExpertid() {
+		return expertid;
+	}
+	public void setExpertid(String expertid) {
+		this.expertid = expertid;
+	}
+	public String getCustomerid() {
+		return customerid;
+	}
+	public void setCustomerid(String customerid) {
+		this.customerid = customerid;
+	}
+	public double getCommissionpersentage() {
+		return commissionpersentage;
+	}
+	public void setCommissionpersentage(double commissionpersentage) {
+		this.commissionpersentage = commissionpersentage;
+	}
+	public double getCommissionamount() {
+		return commissionamount;
+	}
+	public void setCommissionamount(double commissionamount) {
+		this.commissionamount = commissionamount;
+	}
+	public LocalDateTime getDatetimeofcommission() {
+		return datetimeofcommission;
+	}
+	public void setDatetimeofcommission(LocalDateTime datetimeofcommission) {
+		this.datetimeofcommission = datetimeofcommission;
+	}
+	public String getThalukcode() {
+		return thalukcode;
+	}
+	public void setThalukcode(String thalukcode) {
+		this.thalukcode = thalukcode;
+	}
+	public boolean isWorkfinished() {
+		return workfinished;
+	}
+	public void setWorkfinished(boolean workfinished) {
+		this.workfinished = workfinished;
+	}
+	public boolean isCommissionpayed() {
+		return commissionpayed;
+	}
+	public void setCommissionpayed(boolean commissionpayed) {
+		this.commissionpayed = commissionpayed;
+	}
+	@Override
+	public String toString() {
+		return "NiBLinkNBSdCommissionPayedModel [commissionpayedid=" + commissionpayedid + ", commissionid="
+				+ commissionid + ", shiftid=" + shiftid + ", expertid=" + expertid + ", customerid=" + customerid
+				+ ", commissionpersentage=" + commissionpersentage + ", commissionamount=" + commissionamount
+				+ ", datetimeofcommission=" + datetimeofcommission + ", thalukcode=" + thalukcode + ", workfinished="
+				+ workfinished + ", commissionpayed=" + commissionpayed + "]";
+	}
 }

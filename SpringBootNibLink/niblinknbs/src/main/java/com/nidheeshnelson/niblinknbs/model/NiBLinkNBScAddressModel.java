@@ -16,10 +16,10 @@ public class NiBLinkNBScAddressModel {
 	private String postoffice;
 	private int pincode;
 	private String localbody;
-	private String thaluk;
-	private String district;
-	private String state;
-	private String country;
+	private String thalukcode;
+	private String districtcode;
+	private String statecode;
+	private String countrycode;
 	public String getAddressid() {
 		return addressid;
 	}
@@ -68,36 +68,36 @@ public class NiBLinkNBScAddressModel {
 	public void setLocalbody(String localbody) {
 		this.localbody = localbody;
 	}
-	public String getThaluk() {
-		return thaluk;
+	public String getThalukcode() {
+		return thalukcode;
 	}
-	public void setThaluk(String thaluk) {
-		this.thaluk = thaluk;
+	public void setThalukcode(String thalukcode) {
+		this.thalukcode = thalukcode;
 	}
-	public String getDistrict() {
-		return district;
+	public String getDistrictcode() {
+		return districtcode;
 	}
-	public void setDistrict(String district) {
-		this.district = district;
+	public void setDistrictcode(String districtcode) {
+		this.districtcode = districtcode;
 	}
-	public String getState() {
-		return state;
+	public String getStatecode() {
+		return statecode;
 	}
-	public void setState(String state) {
-		this.state = state;
+	public void setStatecode(String statecode) {
+		this.statecode = statecode;
 	}
-	public String getCountry() {
-		return country;
+	public String getCountrycode() {
+		return countrycode;
 	}
-	public void setCountry(String country) {
-		this.country = country;
+	public void setCountrycode(String countrycode) {
+		this.countrycode = countrycode;
 	}
 	@Override
 	public String toString() {
-		return "NiBLinkNBScAddressModel [addressid=" + addressid + ", housename=" + housename
-				+ ", street=" + street + ", landmark=" + landmark + ", place=" + place + ", postoffice=" + postoffice
-				+ ", pincode=" + pincode + ", localbody=" + localbody + ", thaluk=" + thaluk + ", district=" + district
-				+ ", state=" + state + ", country=" + country + "]";
+		return "NiBLinkNBScAddressModel [addressid=" + addressid + ", housename=" + housename + ", street=" + street
+				+ ", landmark=" + landmark + ", place=" + place + ", postoffice=" + postoffice + ", pincode=" + pincode
+				+ ", localbody=" + localbody + ", thalukcode=" + thalukcode + ", districtcode=" + districtcode
+				+ ", statecode=" + statecode + ", countrycode=" + countrycode + "]";
 	}
 	
 }

@@ -1,5 +1,6 @@
 package com.nidheeshnelson.niblinknbs.model;
 
+import java.time.LocalDateTime;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -11,21 +12,35 @@ public class NiBLinkNBSeShiftRequestModel {
 	@Id
 	@GeneratedValue
 	private int shiftrequestid;
-	private String shiftcode;
+	private String shiftid;
+	private LocalDateTime requesteddatetime;
+	private LocalDateTime startdatetime;
 	private String expertid;
 	private String customerid;
-	private boolean accepted;
+	private ShiftStatus status;
 	public int getShiftrequestid() {
 		return shiftrequestid;
 	}
 	public void setShiftrequestid(int shiftrequestid) {
 		this.shiftrequestid = shiftrequestid;
 	}
-	public String getShiftcode() {
-		return shiftcode;
+	public String getShiftid() {
+		return shiftid;
 	}
-	public void setShiftcode(String shiftcode) {
-		this.shiftcode = shiftcode;
+	public void setShiftid(String shiftid) {
+		this.shiftid = shiftid;
+	}
+	public LocalDateTime getRequesteddatetime() {
+		return requesteddatetime;
+	}
+	public void setRequesteddatetime(LocalDateTime requesteddatetime) {
+		this.requesteddatetime = requesteddatetime;
+	}
+	public LocalDateTime getStartdatetime() {
+		return startdatetime;
+	}
+	public void setStartdatetime(LocalDateTime startdatetime) {
+		this.startdatetime = startdatetime;
 	}
 	public String getExpertid() {
 		return expertid;
@@ -39,16 +54,17 @@ public class NiBLinkNBSeShiftRequestModel {
 	public void setCustomerid(String customerid) {
 		this.customerid = customerid;
 	}
-	public boolean isAccepted() {
-		return accepted;
+	public ShiftStatus getStatus() {
+		return status;
 	}
-	public void setAccepted(boolean accepted) {
-		this.accepted = accepted;
+	public void setStatus(ShiftStatus status) {
+		this.status = status;
 	}
 	@Override
 	public String toString() {
-		return "NiBLinkNBSeShiftRequestModel [shiftrequestid=" + shiftrequestid + ", shiftcode=" + shiftcode
-				+ ", expertid=" + expertid + ", customerid=" + customerid + ", accepted=" + accepted + "]";
+		return "NiBLinkNBSeShiftRequestModel [shiftrequestid=" + shiftrequestid + ", shiftid=" + shiftid
+				+ ", requesteddatetime=" + requesteddatetime + ", startdatetime=" + startdatetime + ", expertid="
+				+ expertid + ", customerid=" + customerid + ", status=" + status + "]";
 	}
 	
 }
