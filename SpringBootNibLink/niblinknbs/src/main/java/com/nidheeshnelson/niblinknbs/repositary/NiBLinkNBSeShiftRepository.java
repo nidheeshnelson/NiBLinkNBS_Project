@@ -15,7 +15,7 @@ public interface NiBLinkNBSeShiftRepository extends JpaRepository<NiBLinkNBSeShi
 	List<NiBLinkNBSeShiftModel> findByJobcode(String s);
 	List<NiBLinkNBSeShiftModel> findByExpertid(String s);
 	List<NiBLinkNBSeShiftModel> findByCustomerid(String s);
-	List<NiBLinkNBSeShiftModel> findByThalukcodeAndStatus(String s, ShiftStatus ss);
+	List<NiBLinkNBSeShiftModel> findByThalukcodeAndStatusAndJobcode(String s, ShiftStatus ss, String sss);
 	List<NiBLinkNBSeShiftModel> findByExpertidAndStatus(String s, ShiftStatus ss);
 	List<NiBLinkNBSeShiftModel> findByCustomeridAndStatus(String s, ShiftStatus ss);
 	List<NiBLinkNBSeShiftModel> findByJobcodeAndStatus(String s, ShiftStatus ss);

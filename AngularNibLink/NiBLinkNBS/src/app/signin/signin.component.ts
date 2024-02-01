@@ -20,6 +20,7 @@ export class SigninComponent {
     let response:any=await this.ls.logIn(data)
     console.log(response);
     
+    
   }
   
 }
