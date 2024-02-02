@@ -12,7 +12,7 @@ import com.nidheeshnelson.niblinknbs.service.NiBLinkNBSeShiftService;
 public class NiBLinkNBSShiftControl {
 	private NiBLinkNBSeShiftService ss;
 	public NiBLinkNBSeShiftModel createShift(@RequestBody NiBLinkNBSeShiftModel sm) {
-		sm=ss.createShift(sm);
+//		sm=ss.createShift(sm);
 		return sm;
 	}
 

@@ -3,6 +3,7 @@ import {CommonModule} from '@angular/common';
 import {FormsModule} from '@angular/forms';
 import {LoginService} from './login.service';
 import { map } from 'rxjs';
+import { json } from 'stream/consumers';
 @Component({
   selector: 'app-signin',
   standalone: true,
@@ -18,7 +19,9 @@ export class SigninComponent {
     console.log(data);
     
     let response:any=await this.ls.logIn(data)
-    console.log(response);
+    console.log(response.ADMIN552);
+    
+    
     
     
   }

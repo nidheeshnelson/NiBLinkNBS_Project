@@ -1,6 +1,10 @@
 package com.nidheeshnelson.niblinknbs.model;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.util.Date;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -14,7 +18,9 @@ public class NiBLinkNBSeShiftRequestModel {
 	private int shiftrequestid;
 	private String shiftid;
 	private LocalDateTime requesteddatetime;
-	private LocalDateTime startdatetime;
+	private LocalDate shiftdate;
+	private LocalTime shifttime;
+	private LocalDateTime acceptorrejectdatetime;
 	private String expertid;
 	private String customerid;
 	private ShiftStatus status;
@@ -36,11 +42,23 @@ public class NiBLinkNBSeShiftRequestModel {
 	public void setRequesteddatetime(LocalDateTime requesteddatetime) {
 		this.requesteddatetime = requesteddatetime;
 	}
-	public LocalDateTime getStartdatetime() {
-		return startdatetime;
+	public LocalDate getShiftdate() {
+		return shiftdate;
 	}
-	public void setStartdatetime(LocalDateTime startdatetime) {
-		this.startdatetime = startdatetime;
+	public void setShiftdate(LocalDate shiftdate) {
+		this.shiftdate = shiftdate;
+	}
+	public LocalTime getShifttime() {
+		return shifttime;
+	}
+	public void setShifttime(LocalTime shifttime) {
+		this.shifttime = shifttime;
+	}
+	public LocalDateTime getAcceptorrejectdatetime() {
+		return acceptorrejectdatetime;
+	}
+	public void setAcceptorrejectdatetime(LocalDateTime acceptorrejectdatetime) {
+		this.acceptorrejectdatetime = acceptorrejectdatetime;
 	}
 	public String getExpertid() {
 		return expertid;
@@ -63,8 +81,9 @@ public class NiBLinkNBSeShiftRequestModel {
 	@Override
 	public String toString() {
 		return "NiBLinkNBSeShiftRequestModel [shiftrequestid=" + shiftrequestid + ", shiftid=" + shiftid
-				+ ", requesteddatetime=" + requesteddatetime + ", startdatetime=" + startdatetime + ", expertid="
-				+ expertid + ", customerid=" + customerid + ", status=" + status + "]";
+				+ ", requesteddatetime=" + requesteddatetime + ", shiftdate=" + shiftdate + ", shifttime=" + shifttime
+				+ ", acceptorrejectdatetime=" + acceptorrejectdatetime + ", expertid=" + expertid + ", customerid="
+				+ customerid + ", status=" + status + "]";
 	}
 	
 }

@@ -1,6 +1,8 @@
 package com.nidheeshnelson.niblinknbs.model;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -14,12 +16,15 @@ public class NiBLinkNBSeShiftModel {
 	private int shiftid;
 	private String generatedshiftid;
 	private LocalDateTime generateddatetime;
-	private LocalDateTime alloteddatetime;
+	private LocalDate shiftdate;
+	private LocalTime shifttime;
+	private LocalDateTime accepteddatetime;
 	private LocalDateTime cancelleddatetime;
 	private LocalDateTime startdatetime;
-	private int hours;
+	private double salaryperhour;
+	private double commissionpercent;
 	private LocalDateTime enddatetime;
-	private int hoursforwork;
+	private double hoursforwork;
 	private double payedbycustomer;
 	private double commission;
 	private double salary;
@@ -46,12 +51,6 @@ public class NiBLinkNBSeShiftModel {
 	public void setGenerateddatetime(LocalDateTime generateddatetime) {
 		this.generateddatetime = generateddatetime;
 	}
-	public LocalDateTime getAlloteddatetime() {
-		return alloteddatetime;
-	}
-	public void setAlloteddatetime(LocalDateTime alloteddatetime) {
-		this.alloteddatetime = alloteddatetime;
-	}
 	public LocalDateTime getCancelleddatetime() {
 		return cancelleddatetime;
 	}
@@ -64,11 +63,11 @@ public class NiBLinkNBSeShiftModel {
 	public void setStartdatetime(LocalDateTime startdatetime) {
 		this.startdatetime = startdatetime;
 	}
-	public int getHours() {
-		return hours;
+	public double getSalaryPerHours() {
+		return salaryperhour;
 	}
-	public void setHours(int hours) {
-		this.hours = hours;
+	public void setSalaryPerHours(double salaryperhour) {
+		this.salaryperhour = salaryperhour;
 	}
 	public LocalDateTime getEnddatetime() {
 		return enddatetime;
@@ -76,10 +75,10 @@ public class NiBLinkNBSeShiftModel {
 	public void setEnddatetime(LocalDateTime enddatetime) {
 		this.enddatetime = enddatetime;
 	}
-	public int getHoursforwork() {
+	public double getHoursforwork() {
 		return hoursforwork;
 	}
-	public void setHoursforwork(int hoursforwork) {
+	public void setHoursforwork(double hoursforwork) {
 		this.hoursforwork = hoursforwork;
 	}
 	public double getPayedbycustomer() {
@@ -130,15 +129,41 @@ public class NiBLinkNBSeShiftModel {
 	public void setStatus(ShiftStatus status) {
 		this.status = status;
 	}
+	
+	public LocalDate getShiftdate() {
+		return shiftdate;
+	}
+	public void setShiftdate(LocalDate shiftdate) {
+		this.shiftdate = shiftdate;
+	}
+	public LocalTime getShifttime() {
+		return shifttime;
+	}
+	public void setShifttime(LocalTime shifttime) {
+		this.shifttime = shifttime;
+	}
+	public LocalDateTime getAccepteddatetime() {
+		return accepteddatetime;
+	}
+	public void setAccepteddatetime(LocalDateTime accepteddatetime) {
+		this.accepteddatetime = accepteddatetime;
+	}
+	public double getCommissionpercent() {
+		return commissionpercent;
+	}
+	public void setCommissionpercent(double commissionpercent) {
+		this.commissionpercent = commissionpercent;
+	}
 	@Override
 	public String toString() {
 		return "NiBLinkNBSeShiftModel [shiftid=" + shiftid + ", generatedshiftid=" + generatedshiftid
-				+ ", generateddatetime=" + generateddatetime + ", alloteddatetime=" + alloteddatetime
-				+ ", cancelleddatetime=" + cancelleddatetime + ", startdatetime=" + startdatetime + ", hours=" + hours
-				+ ", enddatetime=" + enddatetime + ", hoursforwork=" + hoursforwork + ", payedbycustomer="
-				+ payedbycustomer + ", commission=" + commission + ", salary=" + salary + ", thalukcode=" + thalukcode
-				+ ", jobcode=" + jobcode + ", expertid=" + expertid + ", customerid=" + customerid + ", status="
-				+ status + "]";
+				+ ", generateddatetime=" + generateddatetime + ", shiftdate=" + shiftdate + ", shifttime=" + shifttime
+				+ ", accepteddatetime=" + accepteddatetime + ", cancelleddatetime=" + cancelleddatetime
+				+ ", startdatetime=" + startdatetime + ", salaryperhour=" + salaryperhour + ", commissionpercent="
+				+ commissionpercent + ", enddatetime=" + enddatetime + ", hoursforwork=" + hoursforwork
+				+ ", payedbycustomer=" + payedbycustomer + ", commission=" + commission + ", salary=" + salary
+				+ ", thalukcode=" + thalukcode + ", jobcode=" + jobcode + ", expertid=" + expertid + ", customerid="
+				+ customerid + ", status=" + status + "]";
 	}
 	
 }

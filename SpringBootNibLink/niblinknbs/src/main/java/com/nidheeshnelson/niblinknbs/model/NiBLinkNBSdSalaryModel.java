@@ -19,8 +19,7 @@ public class NiBLinkNBSdSalaryModel {
 	private String customerid;
 	private String thalukcode;
 	private LocalDateTime salarypayeddatetime;
-	private boolean workfinished;
-	private boolean salarypayed;
+	private ShiftStatus status;
 	public int getSalaryid() {
 		return salaryid;
 	}
@@ -63,24 +62,17 @@ public class NiBLinkNBSdSalaryModel {
 	public void setSalarypayeddatetime(LocalDateTime salarypayeddatetime) {
 		this.salarypayeddatetime = salarypayeddatetime;
 	}
-	public boolean isWorkfinished() {
-		return workfinished;
+		public ShiftStatus getStatus() {
+		return status;
 	}
-	public void setWorkfinished(boolean workfinished) {
-		this.workfinished = workfinished;
+	public void setStatus(ShiftStatus status) {
+		this.status = status;
 	}
-	public boolean isSalarypayed() {
-		return salarypayed;
-	}
-	public void setSalarypayed(boolean salarypayed) {
-		this.salarypayed = salarypayed;
-	}
-	@Override
-	public String toString() {
-		return "NiBLinkNBSdSalaryModel [salaryid=" + salaryid + ", commissionid=" + commissionid + ", shiftid="
-				+ shiftid + ", expertid=" + expertid + ", customerid=" + customerid + ", thalukcode=" + thalukcode
-				+ ", salarypayeddatetime=" + salarypayeddatetime + ", workfinished=" + workfinished + ", salarypayed="
-				+ salarypayed + "]";
-	}
+		@Override
+		public String toString() {
+			return "NiBLinkNBSdSalaryModel [salaryid=" + salaryid + ", commissionid=" + commissionid + ", shiftid="
+					+ shiftid + ", expertid=" + expertid + ", customerid=" + customerid + ", thalukcode=" + thalukcode
+					+ ", salarypayeddatetime=" + salarypayeddatetime + ", status=" + status + "]";
+		}
 	
 }

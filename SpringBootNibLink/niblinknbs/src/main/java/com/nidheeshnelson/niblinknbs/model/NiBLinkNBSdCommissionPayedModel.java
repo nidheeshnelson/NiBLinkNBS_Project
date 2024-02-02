@@ -21,8 +21,7 @@ public class NiBLinkNBSdCommissionPayedModel {
 	private double commissionamount;
 	private LocalDateTime datetimeofcommission;
 	private String thalukcode;
-	private boolean workfinished;
-	private boolean commissionpayed;
+	private ShiftStatus status;
 	public int getCommissionpayedid() {
 		return commissionpayedid;
 	}
@@ -77,24 +76,18 @@ public class NiBLinkNBSdCommissionPayedModel {
 	public void setThalukcode(String thalukcode) {
 		this.thalukcode = thalukcode;
 	}
-	public boolean isWorkfinished() {
-		return workfinished;
+	public ShiftStatus getStatus() {
+		return status;
 	}
-	public void setWorkfinished(boolean workfinished) {
-		this.workfinished = workfinished;
-	}
-	public boolean isCommissionpayed() {
-		return commissionpayed;
-	}
-	public void setCommissionpayed(boolean commissionpayed) {
-		this.commissionpayed = commissionpayed;
+	public void setStatus(ShiftStatus status) {
+		this.status = status;
 	}
 	@Override
 	public String toString() {
 		return "NiBLinkNBSdCommissionPayedModel [commissionpayedid=" + commissionpayedid + ", commissionid="
 				+ commissionid + ", shiftid=" + shiftid + ", expertid=" + expertid + ", customerid=" + customerid
 				+ ", commissionpersentage=" + commissionpersentage + ", commissionamount=" + commissionamount
-				+ ", datetimeofcommission=" + datetimeofcommission + ", thalukcode=" + thalukcode + ", workfinished="
-				+ workfinished + ", commissionpayed=" + commissionpayed + "]";
+				+ ", datetimeofcommission=" + datetimeofcommission + ", thalukcode=" + thalukcode + ", status=" + status
+				+ "]";
 	}
 }
