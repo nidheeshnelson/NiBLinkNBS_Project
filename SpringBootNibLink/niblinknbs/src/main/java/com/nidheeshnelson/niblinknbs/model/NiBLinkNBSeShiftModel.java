@@ -32,6 +32,7 @@ public class NiBLinkNBSeShiftModel {
 	private String jobcode;
 	private String expertid;
 	private String customerid;
+	private String commissionid;
 	private ShiftStatus status;
 	public int getShiftid() {
 		return shiftid;
@@ -154,6 +155,12 @@ public class NiBLinkNBSeShiftModel {
 	public void setCommissionpercent(double commissionpercent) {
 		this.commissionpercent = commissionpercent;
 	}
+	public String getCommissionid() {
+		return commissionid;
+	}
+	public void setCommissionid(String commissionid) {
+		this.commissionid = commissionid;
+	}
 	@Override
 	public String toString() {
 		return "NiBLinkNBSeShiftModel [shiftid=" + shiftid + ", generatedshiftid=" + generatedshiftid
@@ -163,7 +170,7 @@ public class NiBLinkNBSeShiftModel {
 				+ commissionpercent + ", enddatetime=" + enddatetime + ", hoursforwork=" + hoursforwork
 				+ ", payedbycustomer=" + payedbycustomer + ", commission=" + commission + ", salary=" + salary
 				+ ", thalukcode=" + thalukcode + ", jobcode=" + jobcode + ", expertid=" + expertid + ", customerid="
-				+ customerid + ", status=" + status + "]";
+				+ customerid + ", commissionid=" + commissionid + ", status=" + status + "]";
 	}
 	
 }

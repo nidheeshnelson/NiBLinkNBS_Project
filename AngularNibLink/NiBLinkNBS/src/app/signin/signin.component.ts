@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FormsModule} from '@angular/forms';
 import {LoginService} from './login.service';
@@ -16,27 +16,28 @@ import {CustomerComponent} from '../signin/customer/customer.component';
   styleUrl: './signin.component.css'
 })
 export class SigninComponent {
-  // response: Map<number, string> = new Map<number, string>();
   
   constructor(private ls:LoginService){}
   isLoggedIn:boolean= false;
-  // loggedInContent:any='';
-
+  
   response:any;
    async login(data:any){
     console.log(data);
      this.response=await this.ls.logIn(data)
-    console.log(this.response);
+    console.log(`in signin.component.ts ${this.response.ID}`);
   }
   checkFirstLetters1(str: string): boolean {
+    console.log("in admin");
     this.isLoggedIn= true;
     return str.substring(0, 1) === 'A';
   }
   checkFirstLetters2(str: string): boolean {
+    console.log("in expert");
     this.isLoggedIn= true;
     return str.substring(0, 1) === 'E';
   }
   checkFirstLetters3(str: string): boolean {
+    console.log("in customer");
     this.isLoggedIn= true;
     return str.substring(0, 1) === 'C';
   }

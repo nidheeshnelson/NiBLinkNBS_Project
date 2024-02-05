@@ -1,24 +1,21 @@
 <p>signin works!</p>
-
-<form #signin="ngForm" (ngSubmit)="login(signin.value)" *ngIf="!isLoggedIn; else loggedInContent">
+<!-- <div *ngIf="!isLoggedIn"> -->
+<form #signin="ngForm" (ngSubmit)="login(signin.value)">
     <label for="user">User Name</label>
-    <input type="text" name="user" ngModel><br>
+    <input type="text" name="user" ngModel required><br>
     <label for="pass">Password</label>
-    <input type="text" name="pass" ngModel><br>
+    <input type="text" name="pass" ngModel required><br>
     <input type="submit" value="Submit">
 </form>
-<ng-template #loggedInContent>
-    <div *ngIf="checkFirstLetters1(response['ID'])">  
+<!-- </div> -->
+<!-- <div *ngIf="isLoggedIn"> -->
+    <div *ngIf="checkFirstLetters1(response?.ID)">  
     <app-admin></app-admin>
     </div>
-    <div *ngIf="checkFirstLetters2(response['ID'])">
+    <div *ngIf="checkFirstLetters2(response?.ID)">
     <app-expert></app-expert>
     </div>
-     <div *ngIf="checkFirstLetters3(response['ID'])">
+     <div *ngIf="checkFirstLetters3(response?.ID)">
     <app-customer></app-customer>
     </div>
-</ng-template>
-
-
-  
-  
+<!-- </div> -->
