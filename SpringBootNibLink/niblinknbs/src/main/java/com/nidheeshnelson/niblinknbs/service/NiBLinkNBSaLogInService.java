@@ -6,5 +6,5 @@ import com.nidheeshnelson.niblinknbs.model.NiBLinkNBSaLogInModel;
 
 public interface NiBLinkNBSaLogInService {
 	public NiBLinkNBSaLogInModel signUp(NiBLinkNBSaLogInModel m,NiBLinkNBSTypeSignInService ts);
-	public Map<String, Integer> logIn(NiBLinkNBSaLogInModel lm);
+	public Map<String, String> logIn(NiBLinkNBSaLogInModel lm);
 }

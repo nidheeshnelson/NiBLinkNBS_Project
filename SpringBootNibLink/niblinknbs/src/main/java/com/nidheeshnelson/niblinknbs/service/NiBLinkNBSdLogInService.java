@@ -62,7 +62,7 @@ public class NiBLinkNBSdLogInService implements NiBLinkNBSaLogInService{
 	private NiBLinkNBScPaymentDetailsModel pdm = new NiBLinkNBScPaymentDetailsModel();
 	private NiBLinkNBScPersonalModel plm = new NiBLinkNBScPersonalModel();
 	private NiBLinkNBScWalletModel wm = new NiBLinkNBScWalletModel();
-	private Map<String,Integer> mp = new HashMap<>();
+	private Map<String, String> mp = new HashMap<>();
 	public NiBLinkNBSaLogInModel signUp(NiBLinkNBSaLogInModel m,NiBLinkNBSTypeSignInService ts) {
 		try {
 		if(ts.equals(NiBLinkNBSTypeSignInService.ADMIN)) {
@@ -120,12 +120,11 @@ public class NiBLinkNBSdLogInService implements NiBLinkNBSaLogInService{
 			System.out.println(e);
 		}
 		return m;
-		
 	}
-	public Map<String, Integer> logIn(NiBLinkNBSaLogInModel lm) {
+	public Map<String, String> logIn(NiBLinkNBSaLogInModel lm) {
 		try {
 		lm=lr.findByUsernameAndPassword(lm.getUsername(), lm.getPassword());
-		mp.put(lm.getGeneratedid(), lm.getStatus());
+		mp.put("ID", lm.getGeneratedid());
 		System.out.println(mp); 
 		}
 		catch(Exception e) {

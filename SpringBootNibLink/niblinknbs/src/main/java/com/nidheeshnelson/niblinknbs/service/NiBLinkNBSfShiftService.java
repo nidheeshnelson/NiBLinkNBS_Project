@@ -45,6 +45,13 @@ public NiBLinkNBSeShiftModel createShiftExpert(NiBLinkNBSeShiftModel sm) {
 	sm=sr.save(sm);
 	sm.setGeneratedshiftid("SHIFT"+sm.getShiftid());
 	sm=sr.save(sm);
+	cpm.setShiftid(sm.getGeneratedshiftid());
+	cpm.setExpertid(sm.getExpertid());
+	cpm.setCustomerid(sm.getCustomerid());
+	cpm=cpr.save(cpm);
+	pm.setShiftid(sm.getGeneratedshiftid());
+	pm.setExpertid(sm.getExpertid());
+	pm.setCustomerid(sm.getCustomerid());
 	
 	return sm;
 }

@@ -44,7 +44,7 @@ public class NiBLinkNBSLogInControl {
 		return mp;
 	}
 	@PostMapping("/lgn")
-	public Map<String, Integer> logIn(@RequestBody NiBLinkNBSaLogInModel lm) {
+	public Map<String, String> logIn(@RequestBody NiBLinkNBSaLogInModel lm) {
 		
 		return ls.logIn(lm);
 	}
