@@ -10,4 +10,5 @@ import com.nidheeshnelson.niblinknbs.model.NiBLinkNBSfThalukModel;
 @Repository
 public interface NiBLinkNBSfThalukRepository extends JpaRepository<NiBLinkNBSfThalukModel, Integer>{
 	List<NiBLinkNBSfThalukModel> findByDistrictcode(String s);
+	List<NiBLinkNBSfThalukModel> findByDistrictcodeAndStatecodeAndCountrycode(String s,String ss,String sss);
 }

@@ -3,6 +3,7 @@ package com.nidheeshnelson.niblinknbs.service;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -37,7 +38,9 @@ public class NiBLinkNBSfShiftService implements NiBLinkNBSeShiftService{
 	private NiBLinkNBSdPayedModel pm = new NiBLinkNBSdPayedModel();
 	private NiBLinkNBSdSalaryModel slm = new NiBLinkNBSdSalaryModel();
 	
-public NiBLinkNBSeShiftModel createShiftExpert(NiBLinkNBSeShiftModel sm) {
+	
+public Map<String, String> createShiftExpert(NiBLinkNBSeShiftModel sm) {
+	Map<String, String> m = null;
 	sm.setGenerateddatetime(LocalDateTime.now());
 	sm.setStatus(ShiftStatus.ACTIVE);
 	sm.setSalaryPerHours(pdr.findByPaymentid(sm.getExpertid()).getPaymentperhour());
@@ -64,7 +67,8 @@ public NiBLinkNBSeShiftModel createShiftExpert(NiBLinkNBSeShiftModel sm) {
 	slm.setCommissionid(sm.getCommissionid());
 	slm.setStatus(ShiftStatus.NOTPAYED);
 	slm=slr.save(slm);
-	return sm;
+	m.put("SHIFTID", sm.getGeneratedshiftid());
+	return m;
 }
 
 public NiBLinkNBSeShiftModel CancelShiftExpert(String s) {

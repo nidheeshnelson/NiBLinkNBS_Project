@@ -10,4 +10,5 @@ import com.nidheeshnelson.niblinknbs.model.NiBLinkNBSfDistrictModel;
 @Repository
 public interface NiBLinkNBSfDistrictRepository extends JpaRepository<NiBLinkNBSfDistrictModel, Integer>{
 	List<NiBLinkNBSfDistrictModel> findByStatecode(String s);
+	List<NiBLinkNBSfDistrictModel> findByStatecodeAndCountrycode(String s, String ss);
 }

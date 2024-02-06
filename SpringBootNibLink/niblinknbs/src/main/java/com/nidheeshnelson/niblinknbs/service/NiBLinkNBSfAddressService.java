@@ -10,12 +10,51 @@ import com.nidheeshnelson.niblinknbs.repositary.NiBLinkNBScAddressRepository;
 public class NiBLinkNBSfAddressService implements NiBLinkNBSeAddressService{
 	@Autowired
 	private NiBLinkNBScAddressRepository ar;
-	public NiBLinkNBScAddressModel showAddress(NiBLinkNBScAddressModel am) {
-		am=ar.findByAddressid(am.getAddressid());
+	private NiBLinkNBScAddressModel am;
+	public NiBLinkNBScAddressModel showAddress(String s) {
+		return ar.findByAddressid(s);
+	}
+	
+	public NiBLinkNBScAddressModel addAddress(NiBLinkNBScAddressModel am) {
+		am=ar.save(am);
 		return am;
 	}
+	
 	public NiBLinkNBScAddressModel editAddress(NiBLinkNBScAddressModel am) {
-		am=ar.save(am);
+		this.am=ar.findByAddressid(am.getAddressid());
+		if(am.getCountrycode()!=null) {
+			
+		}
+		if(am.getDistrictcode()!=null) {
+			
+		}
+		if(am.getHousename()!=null) {
+			
+		}
+		if(am.getLandmark()!=null) {
+			
+		}
+		if(am.getLocalbody()!=null) {
+			
+		}
+		if(am.getPincode()!=0) {
+			
+		}
+		if(am.getPlace()!=null) {
+			
+		}
+		if(am.getPostoffice()!=null) {
+			
+		}
+		if(am.getStatecode()!=null) {
+			
+		}
+		if(am.getStreet()!=null) {
+			
+		}
+		if(am.getThalukcode()!=null) {
+			
+		}
 		return am;
 	}
 }

@@ -1,6 +1,7 @@
 package com.nidheeshnelson.niblinknbs.service;
 
 import java.util.List;
+import java.util.Map;
 
 import com.nidheeshnelson.niblinknbs.model.NiBLinkNBSdPayedModel;
 import com.nidheeshnelson.niblinknbs.model.NiBLinkNBSeShiftModel;
@@ -8,7 +9,7 @@ import com.nidheeshnelson.niblinknbs.model.NiBLinkNBSeShiftRequestModel;
 import com.nidheeshnelson.niblinknbs.model.NiBLinkNBSgThalukAndJobModel;
 
 public interface NiBLinkNBSeShiftService {
-	public NiBLinkNBSeShiftModel createShiftExpert(NiBLinkNBSeShiftModel sm);
+	public Map<String, String> createShiftExpert(NiBLinkNBSeShiftModel sm);
 	public NiBLinkNBSeShiftModel CancelShiftExpert(String s);
 	public List<NiBLinkNBSeShiftModel> findJobShifts(NiBLinkNBSgThalukAndJobModel tj);
 	public NiBLinkNBSeShiftRequestModel requestShiftCustomer(NiBLinkNBSeShiftRequestModel srm);
