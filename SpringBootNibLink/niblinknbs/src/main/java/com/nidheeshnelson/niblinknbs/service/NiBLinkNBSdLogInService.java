@@ -29,7 +29,7 @@ import com.nidheeshnelson.niblinknbs.repositary.NiBLinkNBScPersonalRepository;
 import com.nidheeshnelson.niblinknbs.repositary.NiBLinkNBScWalletRepository;
 
 @Service
-public class NiBLinkNBSdLogInService implements NiBLinkNBSaLogInService{
+public class NiBLinkNBSdLogInService implements NiBLinkNBSaiaLogInService{
 	@Autowired
 	private NiBLinkNBSaLogInRepository lr;
 	@Autowired

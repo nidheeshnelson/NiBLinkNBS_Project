@@ -1,9 +1,15 @@
 <p>customer works!</p>
 <div>
-    <a href="">Address</a>
-    <a href="">Banking</a>
-    <a href="">Identity</a>
-    <a href="">Personal</a>
-    <a href="">Wallet</a>
-    <a href="">Book Shifts</a>
+    <a href="">Profile</a>
+    <a href="/bookings">Bookings</a>
 </div>
+
+<button (click)="activateDiv(1)">Profile</button>
+<button (click)="activateDiv(2)">Bookings</button>
+<div *ngIf="activeDiv === 1"> <!-- Show this block when button 1 is clicked -->
+    <p>Block 1 is activated!</p>
+  </div>
+  
+  <div *ngIf="activeDiv === 2"> <!-- Show this block when button 2 is clicked -->
+    <p>Block 2 is activated!</p>
+  </div>

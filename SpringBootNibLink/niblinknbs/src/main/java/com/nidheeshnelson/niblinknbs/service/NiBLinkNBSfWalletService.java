@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 import com.nidheeshnelson.niblinknbs.model.NiBLinkNBScWalletModel;
 import com.nidheeshnelson.niblinknbs.repositary.NiBLinkNBScWalletRepository;
 @Service
-public class NiBLinkNBSfWalletService implements NiBLinkNBSeWalletService{
+public class NiBLinkNBSfWalletService implements NiBLinkNBSaieWalletService{
 	@Autowired
 	private NiBLinkNBScWalletRepository wr;
 public NiBLinkNBScWalletModel editWallet(NiBLinkNBScWalletModel wm) {

@@ -24,7 +24,7 @@ import com.nidheeshnelson.niblinknbs.repositary.NiBLinkNBSeShiftRepository;
 import com.nidheeshnelson.niblinknbs.repositary.NiBLinkNBSeShiftRequestRepository;
 
 @Service
-public class NiBLinkNBSfShiftService implements NiBLinkNBSeShiftService{
+public class NiBLinkNBSfShiftService implements NiBLinkNBSaieShiftService{
 	@Autowired
 	private NiBLinkNBSeShiftRepository sr;
 	private NiBLinkNBSeShiftRequestRepository srr;
@@ -33,14 +33,14 @@ public class NiBLinkNBSfShiftService implements NiBLinkNBSeShiftService{
 	private NiBLinkNBSdCommissionPayedRepository cpr;
 	private NiBLinkNBSdPaymentRepository pr;
 	private NiBLinkNBSdSalaryRepository slr;
-	private NiBLinkNBSeShiftModel smm = new NiBLinkNBSeShiftModel();
-	private NiBLinkNBSdCommissionPayedModel cpm = new NiBLinkNBSdCommissionPayedModel();
-	private NiBLinkNBSdPayedModel pm = new NiBLinkNBSdPayedModel();
-	private NiBLinkNBSdSalaryModel slm = new NiBLinkNBSdSalaryModel();
-	
+	private NiBLinkNBSeShiftModel smm;
+	private NiBLinkNBSdCommissionPayedModel cpm;
+	private NiBLinkNBSdPayedModel pm;
+	private NiBLinkNBSdSalaryModel slm;
+	Map<String, String> m;
 	
 public Map<String, String> createShiftExpert(NiBLinkNBSeShiftModel sm) {
-	Map<String, String> m = null;
+	try {
 	sm.setGenerateddatetime(LocalDateTime.now());
 	sm.setStatus(ShiftStatus.ACTIVE);
 	sm.setSalaryPerHours(pdr.findByPaymentid(sm.getExpertid()).getPaymentperhour());
@@ -68,6 +68,10 @@ public Map<String, String> createShiftExpert(NiBLinkNBSeShiftModel sm) {
 	slm.setStatus(ShiftStatus.NOTPAYED);
 	slm=slr.save(slm);
 	m.put("SHIFTID", sm.getGeneratedshiftid());
+	}
+	catch(Exception e) {
+		System.out.println(e);
+	}
 	return m;
 }
 
@@ -116,6 +120,7 @@ public List<NiBLinkNBSeShiftRequestModel> allRequestedShifts(String expertid){
 }
 
 public NiBLinkNBSeShiftModel acceptRequestExpert(NiBLinkNBSeShiftRequestModel srm){
+	try {
 	List<NiBLinkNBSeShiftRequestModel> rm=srr.findByShiftid(srm.getShiftid());
 	for(NiBLinkNBSeShiftRequestModel srtm :rm) {
 		if(srtm.getCustomerid().equals(srm.getCustomerid())) {
@@ -132,6 +137,10 @@ public NiBLinkNBSeShiftModel acceptRequestExpert(NiBLinkNBSeShiftRequestModel sr
 			srtm.setStatus(ShiftStatus.REJECTED);
 			srr.save(srtm);
 		}
+	}
+	}
+	catch(Exception e) {
+		System.out.println(e);
 	}
 	return smm;
 }
@@ -174,6 +183,7 @@ public NiBLinkNBSeShiftModel shiftFinished(String s) {
 }
 
 public NiBLinkNBSdPayedModel shiftPayed(String s) {
+	try {
 	pm=pr.findByShiftid(s);
 	pm.setStatus(ShiftStatus.PAYED);
 	pm.setCommissiondatetime(LocalDateTime.now());
@@ -186,6 +196,10 @@ public NiBLinkNBSdPayedModel shiftPayed(String s) {
 	slm.setStatus(ShiftStatus.PAYED);
 	slm.setSalarypayeddatetime(LocalDateTime.now());
 	slm=slr.save(slm);
+	}
+	catch(Exception e) {
+		System.out.println(e);
+	}
 	return pm;
 }
 }

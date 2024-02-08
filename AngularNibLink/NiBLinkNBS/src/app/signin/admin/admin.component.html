@@ -1,22 +1,58 @@
 <p>admin works!</p>
-<div>
-    <a href="">Address</a>
-    <a href="">Banking</a>
-    <a href="">Identity</a>
-    <a href="">Personal</a>
-    <a href="">Wallet</a>
-    <a href="">Book Shifts</a>
-</div>
-<div>
-    <a href="">Edit Experts</a>
-</div>
-<div>
-    <a href="">Edit Customers</a>
-</div>
-<div>
-    <h3>Edit Place</h3>
-    <a href="">country</a>
-    <a href="">State</a>
-    <a href="">District</a>
-    <a href="">Thaluk</a>
-</div>
+
+<button (click)="activateDiv(1)">Profile</button>
+<button (click)="activateDiv(2)">Experts</button>
+<button (click)="activateDiv(3)">Customers</button>
+<button (click)="activateDiv(4)">Place Settings</button>
+<button (click)="activateDiv(5)">Job Settings</button>
+<div *ngIf="activeDiv === 1"> 
+    <p>Block 1 is activated!</p>
+  </div>
+  
+  <div *ngIf="activeDiv === 2"> 
+    <p>Block 2 is activated!</p>
+  </div>
+  <div *ngIf="activeDiv === 3"> 
+    <p>Block 3 is activated!</p>
+  </div>
+        <div *ngIf="activeDiv === 4"> 
+        <p>Block 4 is activated!</p>
+        <button (click)="activate4Div(1)">Country</button>
+        <button (click)="activate4Div(2)">Add New State</button>
+        <button (click)="activate4Div(3)">Add New District</button>
+        <button (click)="activate4Div(4)">Add New Taluk</button>
+        <div *ngIf="active4Div === 1"> 
+        <p>Block 1 is activated!</p>
+            <button (click)="activate41Div(1)">Add New Country</button>
+            <button (click)="activate41Div(2)" (click)="countryList()">List of Country</button>
+            <div *ngIf="active41Div === 1"> 
+                <p>Block 1 is activated!</p>
+                <form #countryform="ngForm" (ngSubmit)="country(countryform.value)">
+                    <label for="countryname">Country Name</label>
+                    <input type="text" name="countryname" ngModel required><br>
+                    <input type="submit" value="Submit" >
+                </form>
+            </div>
+            <div *ngIf="active41Div === 2"> 
+                <p>Block 2 is activated!</p>
+                <div *ngFor="let dataItem of response1">
+                    <p>{{ dataItem.countryname }}</p>
+                    <p>{{ dataItem.countrycode }}</p>
+                    <!-- Add more properties as needed -->
+                  </div>
+            </div>
+        
+        </div>
+        <div *ngIf="active4Div === 2"> 
+        <p>Block 2 is activated!</p>
+        </div>
+        <div *ngIf="active4Div === 3"> 
+        <p>Block 3 is activated!</p>
+        </div>
+        <div *ngIf="active4Div === 4"> 
+        <p>Block 4 is activated!</p>
+        </div>
+        </div>
+  <div *ngIf="activeDiv === 5"> 
+    <p>Block 5 is activated!</p>
+  </div>

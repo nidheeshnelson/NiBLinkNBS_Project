@@ -16,7 +16,7 @@ import com.nidheeshnelson.niblinknbs.repositary.NiBLinkNBSfStateRepository;
 import com.nidheeshnelson.niblinknbs.repositary.NiBLinkNBSfThalukRepository;
 
 @Service
-public class NiBLinkNBSfPlace implements NiBLinkNBSePlace{
+public class NiBLinkNBSfPlace implements NiBLinkNBSaiePlace{
 	@Autowired
 	private NiBLinkNBSfCountryRepository cr;
 	@Autowired
@@ -32,6 +32,12 @@ public Map<String, String> addCountry(NiBLinkNBSfCountryModel cm){
 	cm=cr.save(cm);
 	return Map.of("COUNTRYCODE", cm.getCountrycode());
 }
+
+public List<NiBLinkNBSfCountryModel> countryList(){
+	return cr.findAll();
+}
+
+
 
 public Map<String, String> addState(NiBLinkNBSfStateModel sm){
 	sm=sr.save(sm);

@@ -9,7 +9,7 @@ export class LoginService {
   logIn=(data:any)=>{
     console.log(`in admin signup${data}`)
     return new Promise((resolve,reject)=>{
-      let url='http://localhost:8080/lgn'
+      let url='http://localhost:8080/log/lgn'
       let encode={
         method:"POST",
         headers:{'Content-Type': 'application/json'},

@@ -7,16 +7,32 @@ import com.nidheeshnelson.niblinknbs.model.NiBLinkNBScPaymentDetailsModel;
 import com.nidheeshnelson.niblinknbs.repositary.NiBLinkNBScPaymentDetailsRepository;
 
 @Service
-public class NiBLinkNBSfPaymentDetailsService implements NiBLinkNBSePaymentDetailsService{
+public class NiBLinkNBSfPaymentDetailsService implements NiBLinkNBSaiePaymentDetailsService{
 	@Autowired
 	private NiBLinkNBScPaymentDetailsRepository pr;
-	public NiBLinkNBScPaymentDetailsModel editPaymentDet (NiBLinkNBScPaymentDetailsModel pd) {
-		System.out.println(pd);
-		pd=pr.save(pd);
-		return pd;
+	private NiBLinkNBScPaymentDetailsModel pm;
+	public NiBLinkNBScPaymentDetailsModel showPaymentDet (String s) {
+		return pr.findByPaymentid(s);
 	}
-	public NiBLinkNBScPaymentDetailsModel showPaymentDet (NiBLinkNBScPaymentDetailsModel pd) {
-		pd=pr.findByPaymentid(pd.getPaymentid());
-		return pd;
+	
+	public NiBLinkNBScPaymentDetailsModel addPaymentDet (NiBLinkNBScPaymentDetailsModel pm) {
+		return pr.save(pm);
 	}
+	
+	public NiBLinkNBScPaymentDetailsModel editPaymentDet (NiBLinkNBScPaymentDetailsModel pm) {
+		this.pm=pr.findByPaymentid(pm.getPaymentid());
+		try {
+		if(pm.getCommissionid()!=null) {
+			this.pm.setCommissionid(pm.getCommissionid());
+		}
+		if(pm.getPaymentperhour()!=0) {
+			this.pm.setPaymentperhour(pm.getPaymentperhour());
+		}
+		}
+		catch(Exception e) {
+			System.out.println(e);
+		}
+		return pr.save(this.pm);
+	}
+	
 }

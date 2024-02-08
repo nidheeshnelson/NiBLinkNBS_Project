@@ -9,7 +9,7 @@ export class ExpertService {
   signUpExpert=(data:any)=>{
     console.log(`in admin signup${data}`)
     return new Promise((resolve,reject)=>{
-      let url='http://localhost:8080/sup'
+      let url='http://localhost:8080/log/sup'
       let encode={
         method:"POST",
         headers:{'Content-Type': 'application/json'},

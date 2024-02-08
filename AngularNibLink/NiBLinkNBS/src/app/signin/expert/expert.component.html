@@ -1,10 +1,25 @@
 <p>expert works!</p>
-<div>
-    <a href="">Address</a>
-    <a href="">Banking</a>
-    <a href="">Identity</a>
-    <a href="">Personal</a>
-    <a href="">Wallet</a>
-    <a href="">Payment settings</a>
-    <a href="">Book Shifts</a>
-</div>
+
+<button (click)="activateDiv(1)">Profile</button>
+<button (click)="activateDiv(2)">My Shifts</button>
+<div *ngIf="activeDiv === 1"> <!-- Show this block when button 1 is clicked -->
+    <p>Block 1 is activated!</p>
+  </div>
+  
+  <div *ngIf="activeDiv === 2"> <!-- Show this block when button 2 is clicked -->
+    <p>Block 2 is activated!</p>
+    <button (click)="activate1Div(1)">My Shifts</button>
+    <button (click)="activate1Div(2)">Create Shift</button>
+    <button (click)="activate1Div(3)">Shift Requests</button>
+    
+
+    <div *ngIf="active1Div === 1"> <!-- Show this block when button 1 is clicked -->
+        <p>Block 3 is activated!</p>
+      </div>
+      <div *ngIf="active1Div === 2"> <!-- Show this block when button 1 is clicked -->
+        <p>Block 4 is activated!</p>
+      </div>
+      <div *ngIf="active1Div === 3"> <!-- Show this block when button 1 is clicked -->
+        <p>Block 5 is activated!</p>
+      </div>
+  </div>
