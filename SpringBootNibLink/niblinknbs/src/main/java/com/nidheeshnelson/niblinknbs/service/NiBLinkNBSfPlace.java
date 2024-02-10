@@ -37,13 +37,15 @@ public List<NiBLinkNBSfCountryModel> countryList(){
 	return cr.findAll();
 }
 
-
-
 public Map<String, String> addState(NiBLinkNBSfStateModel sm){
 	sm=sr.save(sm);
 	sm.setStatecode("STATE"+sm.getId());
 	sm=sr.save(sm);
 	return Map.of("STATECODE", sm.getStatecode());
+}
+
+public List<NiBLinkNBSfStateModel> stateList(){
+	return sr.findAll();
 }
 
 public Map<String, String> addDistrict(NiBLinkNBSfDistrictModel dm){

@@ -18,7 +18,7 @@
         <div *ngIf="activeDiv === 4"> 
         <p>Block 4 is activated!</p>
         <button (click)="activate4Div(1)">Country</button>
-        <button (click)="activate4Div(2)">Add New State</button>
+        <button (click)="activate4Div(2)">State</button>
         <button (click)="activate4Div(3)">Add New District</button>
         <button (click)="activate4Div(4)">Add New Taluk</button>
         <div *ngIf="active4Div === 1"> 
@@ -41,10 +41,34 @@
                     <!-- Add more properties as needed -->
                   </div>
             </div>
-        
         </div>
+
         <div *ngIf="active4Div === 2"> 
         <p>Block 2 is activated!</p>
+            <button (click)="activate42Div(1)" (click)="countryList()">Add New State</button>
+            <button (click)="activate42Div(2)" (click)="stateList()">List of State</button>
+            <div *ngIf="active42Div === 1"> 
+              <p>Block 1 is activated!</p>
+              <form #stateform="ngForm" (ngSubmit)="state(stateform.value)">
+                <label for="itemSelect">Select Country:</label>
+                <select id="itemSelect" [(ngModel)]="selectedItem" name="selectedItem">
+                <option *ngFor="let dataItem of response1" [ngValue]="dataItem">{{ dataItem.countryname }}</option>
+                </select>
+                <p>You selected: {{ selectedItem?.countrycode }}</p>
+                  <label for="statename">State Name</label>
+                  <input type="text" name="statename" [(ngModel)]="statename" required><br>
+                  <input type="submit" value="Submit" >
+              </form>
+            </div>
+            <div *ngIf="active42Div === 2"> 
+              <p>Block 2 is activated!</p>
+              <div *ngFor="let dataItem of response2">
+                <p>{{ dataItem.statename }}</p>
+                <p>{{ dataItem.statecode }}</p>
+                <p>{{ dataItem.countrycode }}</p>
+                <!-- Add more properties as needed -->
+              </div>
+            </div>
         </div>
         <div *ngIf="active4Div === 3"> 
         <p>Block 3 is activated!</p>

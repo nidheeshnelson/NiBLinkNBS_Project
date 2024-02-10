@@ -10,7 +10,9 @@ import com.nidheeshnelson.niblinknbs.model.NiBLinkNBSfThalukModel;
 
 public interface NiBLinkNBSaiePlace {
 	public Map<String, String> addCountry(NiBLinkNBSfCountryModel cm);
+	public List<NiBLinkNBSfCountryModel> countryList();
 	public Map<String, String> addState(NiBLinkNBSfStateModel sm);
+	public List<NiBLinkNBSfStateModel> stateList();
 	public Map<String, String> addDistrict(NiBLinkNBSfDistrictModel dm);
 	public Map<String, String> addThaluk(NiBLinkNBSfThalukModel tm);
 	public List<NiBLinkNBSfThalukModel> talukList(NiBLinkNBSfThalukModel tm);

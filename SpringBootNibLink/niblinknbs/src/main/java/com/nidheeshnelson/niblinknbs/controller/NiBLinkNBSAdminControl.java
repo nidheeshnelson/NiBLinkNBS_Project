@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.nidheeshnelson.niblinknbs.model.NiBLinkNBSfCountryModel;
+import com.nidheeshnelson.niblinknbs.model.NiBLinkNBSfStateModel;
 import com.nidheeshnelson.niblinknbs.service.NiBLinkNBSaiePlace;
 
 @RestController
@@ -26,6 +27,15 @@ public class NiBLinkNBSAdminControl {
 	}
 	@GetMapping("/allcountry")
 	public List<NiBLinkNBSfCountryModel> countryList(){
-		return p.countryList(null);
+		return p.countryList();
+	}
+	@PostMapping("/addstate")
+	public Map<String, String> addstate(@RequestBody NiBLinkNBSfStateModel sm){
+		System.out.println(sm);
+		return p.addState(sm);
+	}
+	@GetMapping("/allstate")
+	public List<NiBLinkNBSfStateModel> stateList(){
+		return p.stateList();
 	}
 }

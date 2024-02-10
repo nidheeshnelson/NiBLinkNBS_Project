@@ -125,7 +125,7 @@ public class NiBLinkNBSdLogInService implements NiBLinkNBSaiaLogInService{
 		try {
 		lm=lr.findByUsernameAndPassword(lm.getUsername(), lm.getPassword());
 		mp.put("ID", lm.getGeneratedid());
-		System.out.println(mp); 
+		System.out.println(mp ); 
 		}
 		catch(Exception e) {
 			System.out.println(e);
