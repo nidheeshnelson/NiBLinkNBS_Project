@@ -48,11 +48,23 @@ public List<NiBLinkNBSfStateModel> stateList(){
 	return sr.findAll();
 }
 
+public List<NiBLinkNBSfStateModel> stateListByCountryCode(String ccd){
+	return sr.findByCountrycode(ccd);
+}
+
 public Map<String, String> addDistrict(NiBLinkNBSfDistrictModel dm){
 	dm=dr.save(dm);
 	dm.setDistrictcode("DIST"+dm.getDistrictid());
 	dm=dr.save(dm);
 	return Map.of("DISTRICTCODE", dm.getDistrictcode());
+}
+
+public List<NiBLinkNBSfDistrictModel> districtList(){
+	return dr.findAll();
+}
+
+public List<NiBLinkNBSfDistrictModel> districtListByStateCode(String statecode){
+	return dr.findByStatecode(statecode);
 }
 
 public Map<String, String> addThaluk(NiBLinkNBSfThalukModel tm){

@@ -13,7 +13,10 @@ public interface NiBLinkNBSaiePlace {
 	public List<NiBLinkNBSfCountryModel> countryList();
 	public Map<String, String> addState(NiBLinkNBSfStateModel sm);
 	public List<NiBLinkNBSfStateModel> stateList();
+	public List<NiBLinkNBSfStateModel> stateListByCountryCode(String ccd);
 	public Map<String, String> addDistrict(NiBLinkNBSfDistrictModel dm);
+	public List<NiBLinkNBSfDistrictModel> districtList();
+	public List<NiBLinkNBSfDistrictModel> districtListByStateCode(String statecode);
 	public Map<String, String> addThaluk(NiBLinkNBSfThalukModel tm);
 	public List<NiBLinkNBSfThalukModel> talukList(NiBLinkNBSfThalukModel tm);
 	public List<NiBLinkNBSfDistrictModel> districtList(NiBLinkNBSfDistrictModel dm);

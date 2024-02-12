@@ -26,7 +26,6 @@ export class AdminService {
       })
     })
   }
-
   countryList=()=>{
     return new Promise((resolve,reject)=>{
       let url='http://localhost:8080/admin/allcountry'
@@ -44,6 +43,7 @@ export class AdminService {
       })
     })
   }
+
 
   stateAdd=(data:any)=>{
     console.log(`in admin state${data}`)
@@ -68,9 +68,6 @@ export class AdminService {
       })
     })
   }
-  
-  
-
   stateList=()=>{
     return new Promise((resolve,reject)=>{
       let url='http://localhost:8080/admin/allstate'
@@ -88,5 +85,73 @@ export class AdminService {
       })
     })
   }
+  stateListByCountry=(data:string)=>{
+    console.log(`in stateListByCountry ${data}`)
+    return new Promise((resolve,reject)=>{
+      let url=`http://localhost:8080/admin/statebycountry`
+      let encode={
+        method:"POST",
+        headers:{'Content-Type': 'application/json'},
+        body: JSON.stringify({ countrycode: data }) 
+      }
+      fetch(url,encode)
+      .then(async(response)=>{
+        response=await response.json()
+        console.log(`response from spring add data${JSON.stringify(response)}`)
+        resolve(response)
+      })
+      .catch((error)=>{
+        reject(error)
+      })
+    })
+  }
+
+
+  districtAdd=(data:any)=>{
+    console.log(`in admin state${data}`)
+    return new Promise((resolve,reject)=>{
+      let url='http://localhost:8080/admin/adddistrict'
+      let encode={
+        method:"POST",
+        headers:{'Content-Type': 'application/json'},
+        body:JSON.stringify({
+          districtname:data['districtname'],
+          countrycode:data['selectedItem1'],
+          statecode:data['selectedItem2']
+        })
+      }
+      fetch(url,encode)
+      .then(async(response)=>{
+        response=await response.json()
+        console.log(`response from spring add data${JSON.stringify(response)}`)
+        resolve(response)
+      })
+      .catch((error)=>{
+        reject(error)
+      })
+    })
+  }
+  districtList=()=>{
+    return new Promise((resolve,reject)=>{
+      let url='http://localhost:8080/admin/alldistrict'
+      let encode={
+         headers:{'Content-Type': 'application/json'},
+     }
+      fetch(url,encode)
+      .then(async(response)=>{
+        response=await response.json()
+        console.log(`response from spring add data${JSON.stringify(response)}`)
+        resolve(response)
+      })
+      .catch((error)=>{
+        reject(error)
+      })
+    })
+  }
 
 }
+
+
+
+
+

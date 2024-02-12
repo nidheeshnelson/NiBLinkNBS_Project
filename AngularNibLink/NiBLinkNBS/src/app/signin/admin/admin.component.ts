@@ -16,11 +16,18 @@ export class AdminComponent {
   active4Div: number | null = null;
   active41Div: number | null = null;
   active42Div: number | null = null;
+  active43Div: number | null = null;
   response:any;
   response1:any[]=[];
   response2:any[]=[];
+  response3:any[]=[];
+  response4:any[]=[];
   selectedItem:any;
+  selectedItem1:any;
+  selectedItem2:any;
   statename:string='';
+  districtname:string='';
+
   
    async country(data:any){
     console.log(data);
@@ -53,6 +60,35 @@ export class AdminComponent {
     console.log(`in signin.component.ts ${this.response2}`);
     }catch(error){console.error(`Error in countryList:`, error);}
   }
+  async byCountryCode() {
+    const countrycode = this.selectedItem1?.countrycode;
+    if (countrycode) {
+        console.log(`Selected Country Code: ${countrycode}`);
+        const result = await this.as.stateListByCountry(countrycode);
+        this.response4 = result as any[];
+        console.log(this.response4)
+    } else {
+        console.log('Country code is null or undefined.');
+    }
+}
+
+ 
+  async district(data:any){
+    console.log(data);
+    const districtname = data.districtname;
+    const selectedItem1 = data.selectedItem1.countrycode;
+    const selectedItem2 = data.selectedItem2.statecode;
+    this.response=await this.as.districtAdd({ districtname, selectedItem1, selectedItem2 })
+    console.log(`in signin.component.ts ${this.response.DISTRICTCODE}`);
+  }
+  async districtList(){
+    // console.log(data);
+    try{
+      const result = await this.as.districtList();
+     this.response3=result as any[];
+    console.log(`in signin.component.ts ${this.response3}`);
+    }catch(error){console.error(`Error in countryList:`, error);}
+  }
   activateDiv(divNumber: number): void {
     this.activeDiv = divNumber;
   }
@@ -64,5 +100,8 @@ export class AdminComponent {
   }
   activate42Div(divNumber: number): void {
     this.active42Div = divNumber;
+  }
+  activate43Div(divNumber: number): void {
+    this.active43Div = divNumber;
   }
 }
