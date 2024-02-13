@@ -27,11 +27,17 @@ import com.nidheeshnelson.niblinknbs.repositary.NiBLinkNBSeShiftRequestRepositor
 public class NiBLinkNBSfShiftService implements NiBLinkNBSaieShiftService{
 	@Autowired
 	private NiBLinkNBSeShiftRepository sr;
+	@Autowired
 	private NiBLinkNBSeShiftRequestRepository srr;
+	@Autowired
 	private NiBLinkNBScPaymentDetailsRepository pdr;
+	@Autowired
 	private NiBLinkNBScCommissionRepository cmr;
+	@Autowired
 	private NiBLinkNBSdCommissionPayedRepository cpr;
+	@Autowired
 	private NiBLinkNBSdPaymentRepository pr;
+	@Autowired
 	private NiBLinkNBSdSalaryRepository slr;
 	private NiBLinkNBSeShiftModel smm;
 	private NiBLinkNBSdCommissionPayedModel cpm;

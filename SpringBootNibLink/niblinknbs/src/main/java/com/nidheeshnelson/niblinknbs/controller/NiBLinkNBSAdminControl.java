@@ -9,12 +9,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.nidheeshnelson.niblinknbs.model.NiBLinkNBSaJobModel;
 import com.nidheeshnelson.niblinknbs.model.NiBLinkNBSfCountryModel;
 import com.nidheeshnelson.niblinknbs.model.NiBLinkNBSfDistrictModel;
 import com.nidheeshnelson.niblinknbs.model.NiBLinkNBSfStateModel;
+import com.nidheeshnelson.niblinknbs.model.NiBLinkNBSfThalukModel;
+import com.nidheeshnelson.niblinknbs.service.NiBLinkNBSaieJobService;
 import com.nidheeshnelson.niblinknbs.service.NiBLinkNBSaiePlace;
 
 @RestController
@@ -23,6 +25,8 @@ import com.nidheeshnelson.niblinknbs.service.NiBLinkNBSaiePlace;
 public class NiBLinkNBSAdminControl {
 	@Autowired
 	private NiBLinkNBSaiePlace p;
+	@Autowired
+	private NiBLinkNBSaieJobService j;
 	@PostMapping("/addcountry")
 	public Map<String, String> addCountry(@RequestBody NiBLinkNBSfCountryModel cm){
 		return p.addCountry(cm);
@@ -47,7 +51,7 @@ public class NiBLinkNBSAdminControl {
 		return p.stateListByCountryCode(countrycode);
 	}
 	@PostMapping("/adddistrict")
-	public Map<String, String> addstate(@RequestBody NiBLinkNBSfDistrictModel dm){
+	public Map<String, String> adddistrict(@RequestBody NiBLinkNBSfDistrictModel dm){
 		System.out.println(dm);
 		return p.addDistrict(dm);
 	}
@@ -60,5 +64,27 @@ public class NiBLinkNBSAdminControl {
 	    String statecode = requestBody.get("statecode");
 		System.out.println(statecode);
 		return p.districtListByStateCode(statecode);
+	}
+	@PostMapping("/addtaluk")
+	public Map<String, String> addtaluk(@RequestBody NiBLinkNBSfThalukModel tm){
+		System.out.println(tm);
+		return p.addThaluk(tm);
+	}
+	@GetMapping("/alltaluk")
+	public List<NiBLinkNBSfThalukModel> talukList(){
+		return p.talukList();
+	}
+	@PostMapping("/talukbydiststatcount")
+	public List<NiBLinkNBSfThalukModel> talukByDistrictStateCountry(@RequestBody NiBLinkNBSfThalukModel tm) {
+	    return p.talukListByCountryStateDistrict(tm);
+	}
+	@PostMapping("/addjob")
+	public Map<String, String> addJob(@RequestBody NiBLinkNBSaJobModel jm){
+		System.out.println(jm);
+		return j.addJob(jm);
+	}
+	@GetMapping("/alljob")
+	public List<NiBLinkNBSaJobModel> allJob(){
+		return j.jobList();
 	}
 }

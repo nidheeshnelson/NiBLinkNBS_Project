@@ -71,10 +71,15 @@ public Map<String, String> addThaluk(NiBLinkNBSfThalukModel tm){
 	tm=tr.save(tm);
 	tm.setThalukcode("TALUK"+tm.getThalukid());
 	tm=tr.save(tm);
+	System.out.println(tm);
 	return Map.of("TALUK",tm.getThalukcode());
 }
 
-public List<NiBLinkNBSfThalukModel> talukList(NiBLinkNBSfThalukModel tm){
+public List<NiBLinkNBSfThalukModel> talukList(){
+	return tr.findAll();
+}
+
+public List<NiBLinkNBSfThalukModel> talukListByCountryStateDistrict(NiBLinkNBSfThalukModel tm){
 	return tr.findByDistrictcodeAndStatecodeAndCountrycode(tm.getDistrictcode(), tm.getStatecode(), tm.getCountrycode());
 }
 

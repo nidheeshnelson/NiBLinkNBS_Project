@@ -1,6 +1,6 @@
 <p>admin works!</p>
 
-<button (click)="activateDiv(1)">Profile</button>
+<button (click)="activateDiv(1)">My Profile</button>
 <button (click)="activateDiv(2)">Experts</button>
 <button (click)="activateDiv(3)">Customers</button>
 <button (click)="activateDiv(4)">Locations</button>
@@ -12,6 +12,22 @@
 
   <div *ngIf="activeDiv === 2"> 
     <p>Block 2 is activated!</p>
+    <button (click)="activate2Div(1)">Profile</button>
+    <button (click)="activate2Div(2)">Commission</button>
+
+        <div *ngIf="active2Div === 1"> 
+        <p>Block 21 is activated!</p>
+        
+        </div>
+
+        <div *ngIf="active2Div === 2"> 
+          <p>Block 51 is activated!</p>
+          <form #jobform="ngForm" (ngSubmit)="commission(jobform.value)">
+              <label for="jobname">Add Job Name</label>
+              <input type="text" name="jobname" ngModel required><br>
+              <input type="submit" value="Submit" >
+          </form>
+          </div>
   </div>
 
 
@@ -19,7 +35,7 @@
     <p>Block 3 is activated!</p>
   </div>
 
-
+<!-- PLACE PLACE PLACE PLACE PLACE PLACE PLACE PLACE PLACE PLACE PLACE -->
   <div *ngIf="activeDiv === 4"> 
     <p>Block 4 is activated!</p>
     <button (click)="activate4Div(1)">Country</button>
@@ -94,7 +110,7 @@
             <!-- Update your template code at line 83 -->
             <select id="itemSelect1" [(ngModel)]="selectedItem1" name="selectedItem1" (change)="byCountryCode()">
             <option *ngFor="let dataItem1 of response1" [ngValue]="dataItem1">{{ dataItem1.countryname }}</option>
-            </select>
+            </select><br>
             <label for="itemSelect2">Select Country:</label>
             <select id="itemSelect2" [(ngModel)]="selectedItem2" name="selectedItem2">
             <option *ngFor="let dataItem2 of response4" [ngValue]="dataItem2">{{ dataItem2.state }}</option>
@@ -121,10 +137,64 @@
 
         <div *ngIf="active4Div === 4"> 
         <p>Block 44 is activated!</p>
+        <button (click)="activate44Div(1)" (click)="countryList()">Add New Taluk</button>
+        <button (click)="activate44Div(2)" (click)="talukList()">List of Taluk</button>
+
+            <div *ngIf="active44Div === 1"> 
+            <p>Block 441 is activated!</p>
+            <form #districtform="ngForm" (ngSubmit)="taluk(districtform.value)">
+            <label for="itemSelect11">Select Country:</label>
+            <select id="itemSelect11" [(ngModel)]="selectedItem1" name="selectedItem1" (change)="byCountryCode()">
+            <option *ngFor="let dataItem11 of response1" [ngValue]="dataItem11">{{ dataItem11.countryname }}</option>
+            </select><br>
+            <label for="itemSelect12">Select State:</label>
+            <select id="itemSelect12" [(ngModel)]="selectedItem2" name="selectedItem2" (change)="byStateCode()">
+            <option *ngFor="let dataItem12 of response4" [ngValue]="dataItem12">{{ dataItem12.state }}</option>
+            </select><br>
+            <label for="itemSelect13">Select District:</label>
+            <select id="itemSelect13" [(ngModel)]="selectedItem3" name="selectedItem3">
+            <option *ngFor="let dataItem13 of response6" [ngValue]="dataItem13">{{ dataItem13.districtname }}</option>
+            </select>
+            <p>You selected: {{ selectedItem1?.countrycode }}</p>
+            <p>You selected: {{ selectedItem2?.statecode }}</p>
+            <p>You selected: {{ selectedItem3?.districtcode }}</p>
+            <label for="talukname">Taluk Name</label>
+            <input type="text" name="talukname" [(ngModel)]="talukname" required><br>
+            <input type="submit" value="Submit" >
+            </form>
+            </div>
+
+            <div *ngIf="active44Div === 2"> 
+            <p>Block 442 is activated!</p>
+            <div *ngFor="let dataItem of response7">
+            <p>{{ dataItem.thalukname }} {{ dataItem.thalukcode }} {{ dataItem.districtcode }} {{ dataItem.statecode }} {{ dataItem.countrycode }}</p>
+            <!-- Add more properties as needed -->
+            </div>
+            </div>
         </div>
   </div>
 
-
+<!-- JOB JOB JOB JOB JOB JOB JOB JOB JOB JOB JOB JOB JOB JOB JOB JOB JOB JOB JOB -->
   <div *ngIf="activeDiv === 5"> 
-    <p>Block 55 is activated!</p>
+    <p>Block 5 is activated!</p>
+    <button (click)="activate5Div(1)">Add New Job</button>
+    <button (click)="activate5Div(2)" (click)="jobList()">List of Job</button>
+
+        <div *ngIf="active5Div === 1"> 
+        <p>Block 51 is activated!</p>
+        <form #jobform="ngForm" (ngSubmit)="job(jobform.value)">
+            <label for="jobname">Add Job Name</label>
+            <input type="text" name="jobname" ngModel required><br>
+            <input type="submit" value="Submit" >
+        </form>
+        </div>
+
+        <div *ngIf="active5Div === 2">
+          <p>Block 52 is activated!</p>
+          <div *ngFor="let dataItem of response8">
+            <p>{{ dataItem.jobname }}</p>
+            <p>{{ dataItem.jobcode }}</p>
+            <!-- Add more properties as needed -->
+      </div>
+        </div>
   </div>
