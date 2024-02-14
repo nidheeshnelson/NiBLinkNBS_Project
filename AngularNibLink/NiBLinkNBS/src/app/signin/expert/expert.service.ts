@@ -6,4 +6,30 @@ import { Injectable } from '@angular/core';
 export class ExpertService {
 
   constructor() { }
+
+  paymentDetails=(data:any)=>{
+    console.log(`in expert payment details${data}`)
+    return new Promise((resolve,reject)=>{
+      let url='http://localhost:8080/admin/addcountry'
+      let encode={
+        method:"POST",
+        headers:{'Content-Type': 'application/json'},
+        body:JSON.stringify({
+          paymentperhour:data.paymentperhour,
+          commissionid:data.commissionid,
+          paymentid:data.paymentid
+        })
+      }
+      fetch(url,encode)
+      .then(async(response)=>{
+        response=await response.json()
+        console.log(`response from spring add data${JSON.stringify(response)}`)
+        resolve(response)
+      })
+      .catch((error)=>{
+        reject(error)
+      })
+    })
+  }
+
 }

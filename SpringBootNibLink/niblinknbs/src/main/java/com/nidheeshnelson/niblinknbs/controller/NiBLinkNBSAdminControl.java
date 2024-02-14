@@ -12,10 +12,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.nidheeshnelson.niblinknbs.model.NiBLinkNBSaJobModel;
+import com.nidheeshnelson.niblinknbs.model.NiBLinkNBScCommissionModel;
 import com.nidheeshnelson.niblinknbs.model.NiBLinkNBSfCountryModel;
 import com.nidheeshnelson.niblinknbs.model.NiBLinkNBSfDistrictModel;
 import com.nidheeshnelson.niblinknbs.model.NiBLinkNBSfStateModel;
 import com.nidheeshnelson.niblinknbs.model.NiBLinkNBSfThalukModel;
+import com.nidheeshnelson.niblinknbs.service.NiBLinkNBSaieCommissionService;
 import com.nidheeshnelson.niblinknbs.service.NiBLinkNBSaieJobService;
 import com.nidheeshnelson.niblinknbs.service.NiBLinkNBSaiePlace;
 
@@ -27,6 +29,8 @@ public class NiBLinkNBSAdminControl {
 	private NiBLinkNBSaiePlace p;
 	@Autowired
 	private NiBLinkNBSaieJobService j;
+	@Autowired
+	private NiBLinkNBSaieCommissionService c;
 	@PostMapping("/addcountry")
 	public Map<String, String> addCountry(@RequestBody NiBLinkNBSfCountryModel cm){
 		return p.addCountry(cm);
@@ -86,5 +90,15 @@ public class NiBLinkNBSAdminControl {
 	@GetMapping("/alljob")
 	public List<NiBLinkNBSaJobModel> allJob(){
 		return j.jobList();
+	}
+	@PostMapping("/addcommission")
+	public Map<String, String> addCommission(@RequestBody NiBLinkNBScCommissionModel cm){
+		System.out.println(cm);
+		return c.addCommission(cm);
+	}
+	@GetMapping("/allcommission")
+	public List<NiBLinkNBScCommissionModel> commissionList(){
+		System.out.println("allcommission");
+		return c.commissionList();
 	}
 }

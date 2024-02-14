@@ -1,4 +1,4 @@
-import { Component} from '@angular/core';
+import { Component, Input} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {FormsModule} from '@angular/forms';
 import {AdminService} from './admin.service';
@@ -12,9 +12,14 @@ import {AdminService} from './admin.service';
   styleUrl: './admin.component.css'
 })
 export class AdminComponent {
-
-  constructor(private as:AdminService){}
+  @Input() adminResponse: any;
+  adminid: string;
+  constructor(private as:AdminService){
+    this.adminid = this.adminResponse?.ID;
+  }
   activeDiv: number | null = null; // Variable to track active div, initially set to null
+  active2Div: number | null = null;
+  active22Div: number | null = null;
   active4Div: number | null = null;
   active41Div: number | null = null;
   active42Div: number | null = null;
@@ -30,6 +35,7 @@ export class AdminComponent {
   response6:any[]=[];
   response7:any[]=[];
   response8:any[]=[];
+  response9:any[]=[];
   selectedItem:any;
   selectedItem1:any;
   selectedItem2:any;
@@ -144,8 +150,29 @@ async jobList(){
   }catch(error){console.error(`Error in countryList:`, error);}
 }
 
+
+async commission(data:any){
+  console.log(`in commission component${data}`)
+  this.response=await this.as.commissionAdding(data);
+  console.log(`data returned${this.response}`)
+}
+async commissionList(){
+  // console.log(data);
+  try{
+    const result = await this.as.commissionListing();
+   this.response9=result as any[];
+  console.log(`in signin.component.ts ${this.response9}`);
+  }catch(error){console.error(`Error in countryList:`, error);}
+}
+
   activateDiv(divNumber: number): void {
     this.activeDiv = divNumber;
+  }
+  activate2Div(divNumber: number): void {
+    this.active2Div = divNumber;
+  }
+  activate22Div(divNumber: number): void {
+    this.active22Div = divNumber;
   }
   activate4Div(divNumber: number): void {
     this.active4Div = divNumber;

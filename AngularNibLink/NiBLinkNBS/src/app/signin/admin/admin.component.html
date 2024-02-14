@@ -1,15 +1,17 @@
 <p>admin works!</p>
-
+<div>
+  <p>{{ adminResponse.ID }}</p>
+</div>
 <button (click)="activateDiv(1)">My Profile</button>
 <button (click)="activateDiv(2)">Experts</button>
 <button (click)="activateDiv(3)">Customers</button>
 <button (click)="activateDiv(4)">Locations</button>
-<button (click)="activateDiv(5)">Occupations</button>
-<div *ngIf="activeDiv === 1"> 
+<button (click)="activateDiv(5)">Jobs</button>
+  <div *ngIf="activeDiv === 1"> 
     <p>Block 1 is activated!</p>
   </div>
   
-
+<!-- EXPERT EXPERT EXPERT EXPERT EXPERT EXPERT EXPERT EXPERT EXPERT EXPERT -->
   <div *ngIf="activeDiv === 2"> 
     <p>Block 2 is activated!</p>
     <button (click)="activate2Div(1)">Profile</button>
@@ -17,20 +19,33 @@
 
         <div *ngIf="active2Div === 1"> 
         <p>Block 21 is activated!</p>
-        
         </div>
 
         <div *ngIf="active2Div === 2"> 
-          <p>Block 51 is activated!</p>
-          <form #jobform="ngForm" (ngSubmit)="commission(jobform.value)">
-              <label for="jobname">Add Job Name</label>
-              <input type="text" name="jobname" ngModel required><br>
-              <input type="submit" value="Submit" >
-          </form>
-          </div>
+          <p>Block 22 is activated!</p>
+          <button (click)="activate22Div(1)">Add Commission</button>
+          <button (click)="activate22Div(2)" (click)="commissionList()">Commission List</button>
+
+              <div *ngIf="active22Div === 1"> 
+                <p>Block 221 is activated!</p>
+                <form #commissionform="ngForm" (ngSubmit)="commission(commissionform.value)">
+                <label for="commission">Enter Commission Percentage</label>
+                <input type="number" name="commission" ngModel required><br>
+                <input type="submit" value="Submit" >
+                </form>
+              </div>
+
+              <div *ngIf="active22Div === 2"> 
+                <p>Block 222 is activated!</p>
+                <div *ngFor="let dataItem2 of response9">
+                <p>{{ dataItem2.generatedcommissionid }}</p>
+                <p>{{ dataItem2.commissionpersentage }}</p>
+                </div>
+              </div>
+        </div>
   </div>
 
-
+<!-- CUSTOMER CUSTOMER CUSTOMER CUSTOMER CUSTOMER CUSTOMER CUSTOMER CUSTOMER -->
   <div *ngIf="activeDiv === 3"> 
     <p>Block 3 is activated!</p>
   </div>

@@ -1,25 +1,84 @@
 <p>expert works!</p>
-
+<div>
+  <p>{{ expertResponse.ID }}</p>
+</div>
 <button (click)="activateDiv(1)">Profile</button>
-<button (click)="activateDiv(2)">My Shifts</button>
-<div *ngIf="activeDiv === 1"> <!-- Show this block when button 1 is clicked -->
+<button (click)="activateDiv(2)">Shifts</button>
+<!-- PROFILE PROFILE PROFILE PROFILE PROFILE PROFILE PROFILE -->
+    <div *ngIf="activeDiv === 1"> 
     <p>Block 1 is activated!</p>
-  </div>
-  
-  <div *ngIf="activeDiv === 2"> <!-- Show this block when button 2 is clicked -->
-    <p>Block 2 is activated!</p>
-    <button (click)="activate1Div(1)">My Shifts</button>
-    <button (click)="activate1Div(2)">Create Shift</button>
-    <button (click)="activate1Div(3)">Shift Requests</button>
-    
+    <button (click)="activate1Div(1)">My Profile</button>
+    <button (click)="activate1Div(2)">Edit Profile</button>
 
-    <div *ngIf="active1Div === 1"> <!-- Show this block when button 1 is clicked -->
-        <p>Block 3 is activated!</p>
-      </div>
-      <div *ngIf="active1Div === 2"> <!-- Show this block when button 1 is clicked -->
-        <p>Block 4 is activated!</p>
-      </div>
-      <div *ngIf="active1Div === 3"> <!-- Show this block when button 1 is clicked -->
-        <p>Block 5 is activated!</p>
-      </div>
-  </div>
+        <div *ngIf="active1Div === 1"> 
+        <p>Block 11 is activated!</p>
+        </div>
+
+        <div *ngIf="active1Div === 2"> 
+        <p>Block 12 is activated!</p>
+        <button (click)="activate12Div(1)">Name</button>
+        <button (click)="activate12Div(2)">Address</button>
+        <button (click)="activate12Div(3)">Banking</button>
+        <button (click)="activate12Div(4)">Identity</button>
+        <button (click)="activate12Div(5)">Payment Related</button>
+        <button (click)="activate12Div(6)">Identity</button>
+        <button (click)="activate12Div(7)">Personal</button>
+
+              <div *ngIf="active12Div === 1"> 
+              <p>Block 121 is activated!</p>
+              </div>
+
+              <div *ngIf="active12Div === 2"> 
+              <p>Block 122 is activated!</p>
+              </div>
+
+              <div *ngIf="active12Div === 3"> 
+              <p>Block 123 is activated!</p>
+              </div>
+              
+              <div *ngIf="active12Div === 4"> 
+              <p>Block 124 is activated!</p>
+              </div>
+
+              <div *ngIf="active12Div === 5"> 
+              <p>Block 125 is activated!</p>
+              <form #paymentrelatedform="ngForm" (ngSubmit)="paymentrelated(paymentrelatedform.value)">
+                <label for="payment">Enter your payment per hour</label>
+                <input type="number" name="payment" ngModel required><br>
+                <label for="commission">Select commission to company</label>
+                <select id="itemSelect" [(ngModel)]="selectedItem" name="commission">
+                <option *ngFor="let dataItem of response1" [ngValue]="dataItem">{{ dataItem.commissionpersentage }}</option>
+                </select>
+                <input type="submit" value="Submit" >
+              </form>
+              </div>
+
+              <div *ngIf="active12Div === 6"> 
+              <p>Block 126 is activated!</p>
+              </div>
+
+              <div *ngIf="active12Div === 7"> 
+              <p>Block 127 is activated!</p>
+              </div>
+        </div>
+    </div>
+  
+<!-- SHIFT SHIFT SHIFT SHIFT SHIFT SHIFT SHIFT SHIFT SHIFT -->
+    <div *ngIf="activeDiv === 2"> 
+    <p>Block 2 is activated!</p>
+    <button (click)="activate2Div(1)">My Shifts</button>
+    <button (click)="activate2Div(2)">Create Shift</button>
+    <button (click)="activate2Div(3)">Shift Requests</button>
+    
+        <div *ngIf="active2Div === 1"> 
+        <p>Block 21 is activated!</p>
+        </div>
+
+        <div *ngIf="active2Div === 2"> 
+        <p>Block 22 is activated!</p>
+        </div>
+
+        <div *ngIf="active2Div === 3"> 
+        <p>Block 23 is activated!</p>
+        </div>
+    </div>

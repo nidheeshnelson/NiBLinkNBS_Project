@@ -276,6 +276,46 @@ export class AdminService {
       })
     })
   }
+
+
+  commissionAdding=(data:any)=>{
+    console.log(`in commission adding ${data.commission}`)
+    return new Promise((resolve,reject)=>{
+      let url=`http://localhost:8080/admin/addcommission`
+      let encode={
+        method:"POST",
+        headers:{'Content-Type': 'application/json'},
+        body: JSON.stringify({ commissionpersentage: data.commission }) 
+      }
+      fetch(url,encode)
+      .then(async(response)=>{
+        response=await response.json()
+        console.log(`response from spring add data${JSON.stringify(response)}`)
+        resolve(response)
+      })
+      .catch((error)=>{
+        reject(error)
+      })
+    })
+  }
+  commissionListing=()=>{
+    return new Promise((resolve,reject)=>{
+      let url='http://localhost:8080/admin/allcommission'
+      let encode={
+         headers:{'Content-Type': 'application/json'},
+     }
+      fetch(url,encode)
+      .then(async(response)=>{
+        response=await response.json()
+        console.log(`response from spring add data${JSON.stringify(response)}`)
+        resolve(response)
+      })
+      .catch((error)=>{
+        reject(error)
+      })
+    })
+  }
+
 }
 
 

@@ -27,30 +27,26 @@ export class SigninComponent {
      this.response=await this.ls.logIn(data)
     console.log(`in signin.component.ts ${this.response.ID}`);
     this.isLoggedIn = true;
+    this.showoff=false;
   }
 
   logout() {
     // Implement a logout method and reset the isLoggedIn flag
     this.isLoggedIn = false;
+    this.showoff=true;
   }
   
 
   checkFirstLetters1(str: string): boolean {
     console.log("in admin");
-    // this.isLoggedIn= true;
-    this.showoff=false;
     return str.substring(0, 1) === 'A';
   }
   checkFirstLetters2(str: string): boolean {
     console.log("in expert");
-    // this.isLoggedIn= true;
-    this.showoff=false;
     return str.substring(0, 1) === 'E';
   }
   checkFirstLetters3(str: string): boolean {
     console.log("in customer");
-    // this.isLoggedIn= true;
-    this.showoff=false;
     return str.substring(0, 1) === 'C';
   }
   

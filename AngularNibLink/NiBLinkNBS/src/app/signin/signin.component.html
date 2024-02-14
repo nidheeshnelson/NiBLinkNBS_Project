@@ -9,13 +9,13 @@
 <div *ngIf="isLoggedIn">
     <input *ngIf="isLoggedIn" type="button" value="Logout" (click)="logout()">
     <div *ngIf="checkFirstLetters1(response?.ID)">  
-    <app-admin></app-admin>
+    <app-admin [adminResponse]="response"></app-admin>
     </div>
     <div *ngIf="checkFirstLetters2(response?.ID)">
-    <app-expert></app-expert>
+    <app-expert [expertResponse]="response"></app-expert>
     </div>
      <div *ngIf="checkFirstLetters3(response?.ID)">
-    <app-customer></app-customer>
+    <app-customer [customerResponse]="response"></app-customer>
     </div>
 </div>
 

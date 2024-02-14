@@ -1,15 +1,14 @@
 <p>customer works!</p>
 <div>
-    <a href="">Profile</a>
-    <a href="/bookings">Bookings</a>
+  <p>{{ customerResponse.ID }}</p>
 </div>
-
 <button (click)="activateDiv(1)">Profile</button>
 <button (click)="activateDiv(2)">Bookings</button>
-<div *ngIf="activeDiv === 1"> <!-- Show this block when button 1 is clicked -->
+<!-- Show this block when button 1 is clicked -->
+<div *ngIf="activeDiv === 1"> 
     <p>Block 1 is activated!</p>
   </div>
   
-  <div *ngIf="activeDiv === 2"> <!-- Show this block when button 2 is clicked -->
+  <div *ngIf="activeDiv === 2"> 
     <p>Block 2 is activated!</p>
   </div>
