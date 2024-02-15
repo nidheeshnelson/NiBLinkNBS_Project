@@ -79,6 +79,10 @@ public List<NiBLinkNBSfThalukModel> talukList(){
 	return tr.findAll();
 }
 
+public List<NiBLinkNBSfThalukModel> talukListByDiscrictCode(String s){
+	return tr.findByDistrictcode(s);
+}
+
 public List<NiBLinkNBSfThalukModel> talukListByCountryStateDistrict(NiBLinkNBSfThalukModel tm){
 	return tr.findByDistrictcodeAndStatecodeAndCountrycode(tm.getDistrictcode(), tm.getStatecode(), tm.getCountrycode());
 }

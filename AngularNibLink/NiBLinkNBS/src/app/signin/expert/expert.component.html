@@ -20,7 +20,7 @@
         <button (click)="activate12Div(2)">Address</button>
         <button (click)="activate12Div(3)">Banking</button>
         <button (click)="activate12Div(4)">Identity</button>
-        <button (click)="activate12Div(5)">Payment Related</button>
+        <button (click)="activate12Div(5)" (click)="commissionList()">Payment Related</button>
         <button (click)="activate12Div(6)">Identity</button>
         <button (click)="activate12Div(7)">Personal</button>
 
@@ -44,7 +44,7 @@
               <p>Block 125 is activated!</p>
               <form #paymentrelatedform="ngForm" (ngSubmit)="paymentrelated(paymentrelatedform.value)">
                 <label for="payment">Enter your payment per hour</label>
-                <input type="number" name="payment" ngModel required><br>
+                <input type="number" name="payment" [(ngModel)]="payment" required><br>
                 <label for="commission">Select commission to company</label>
                 <select id="itemSelect" [(ngModel)]="selectedItem" name="commission">
                 <option *ngFor="let dataItem of response1" [ngValue]="dataItem">{{ dataItem.commissionpersentage }}</option>
@@ -67,7 +67,7 @@
     <div *ngIf="activeDiv === 2"> 
     <p>Block 2 is activated!</p>
     <button (click)="activate2Div(1)">My Shifts</button>
-    <button (click)="activate2Div(2)">Create Shift</button>
+    <button (click)="activate2Div(2)" (click)="countryList()" (click)="jobList()">Create Shift</button>
     <button (click)="activate2Div(3)">Shift Requests</button>
     
         <div *ngIf="active2Div === 1"> 
@@ -76,6 +76,33 @@
 
         <div *ngIf="active2Div === 2"> 
         <p>Block 22 is activated!</p>
+        <form #shiftform="ngForm" (ngSubmit)="createShift(shiftform.value)">
+          <label for="shiftdate">Enter Shift Date</label>
+          <input type="date" name="shiftdate" [(ngModel)]="shiftdate" required><br>
+          <label for="shifttime">Enter Shift Time</label>
+          <input type="time" name="shifttime" [(ngModel)]="shifttime" required><br>
+          <label for="country">Select country</label>
+          <select id="itemSelect1" [(ngModel)]="selectedItem1" name="country" (change)="stateByCountryCode()">
+          <option *ngFor="let dataItem1 of response2" [ngValue]="dataItem1">{{ dataItem1.countryname }}</option>
+          </select>
+          <label for="state">Select state</label>
+          <select id="itemSelect2" [(ngModel)]="selectedItem2" name="state" (change)="districtByStateCode()">
+          <option *ngFor="let dataItem2 of response3" [ngValue]="dataItem2">{{ dataItem2.state }}</option>
+          </select>
+          <label for="district">Select district</label>
+          <select id="itemSelect3" [(ngModel)]="selectedItem3" name="district" (change)="talukbyDistrictCode()">
+          <option *ngFor="let dataItem3 of response4" [ngValue]="dataItem3">{{ dataItem3.districtname }}</option>
+          </select>
+          <label for="taluk">Select taluk</label>
+          <select id="itemSelect4" [(ngModel)]="selectedItem4" name="taluk">
+          <option *ngFor="let dataItem4 of response5" [ngValue]="dataItem4">{{ dataItem4.thalukname }}</option>
+          </select>
+          <label for="job">Select job</label>
+          <select id="itemSelect5" [(ngModel)]="selectedItem5" name="job">
+          <option *ngFor="let dataItem5 of response6" [ngValue]="dataItem5">{{ dataItem5.jobname }}</option>
+          </select>
+          <input type="submit" value="Submit" >
+        </form>
         </div>
 
         <div *ngIf="active2Div === 3"> 

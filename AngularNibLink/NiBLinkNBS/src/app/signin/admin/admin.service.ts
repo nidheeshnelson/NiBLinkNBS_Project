@@ -236,7 +236,26 @@ export class AdminService {
       })
     })
   }
-
+  talukListByDistrict=(data:string)=>{
+    console.log(`in stateListByCountry ${data}`)
+    return new Promise((resolve,reject)=>{
+      let url=`http://localhost:8080/admin/talukbydistrict`
+      let encode={
+        method:"POST",
+        headers:{'Content-Type': 'application/json'},
+        body: JSON.stringify({ districtcode: data }) 
+      }
+      fetch(url,encode)
+      .then(async(response)=>{
+        response=await response.json()
+        console.log(`response from spring add data${JSON.stringify(response)}`)
+        resolve(response)
+      })
+      .catch((error)=>{
+        reject(error)
+      })
+    })
+  }
 
 
   jobAdding=(data:any)=>{

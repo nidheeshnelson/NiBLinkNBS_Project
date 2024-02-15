@@ -1,5 +1,7 @@
 package com.nidheeshnelson.niblinknbs.service;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,8 +17,9 @@ public class NiBLinkNBSfPaymentDetailsService implements NiBLinkNBSaiePaymentDet
 		return pr.findByPaymentid(s);
 	}
 	
-	public NiBLinkNBScPaymentDetailsModel addPaymentDet (NiBLinkNBScPaymentDetailsModel pm) {
-		return pr.save(pm);
+	public Map<String, String> addPaymentDet (NiBLinkNBScPaymentDetailsModel pm) {
+		pm=pr.save(pm);
+		return Map.of("PAYDET",pm.getPaymentid());
 	}
 	
 	public NiBLinkNBScPaymentDetailsModel editPaymentDet (NiBLinkNBScPaymentDetailsModel pm) {

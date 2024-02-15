@@ -10,7 +10,7 @@ export class ExpertService {
   paymentDetails=(data:any)=>{
     console.log(`in expert payment details${data}`)
     return new Promise((resolve,reject)=>{
-      let url='http://localhost:8080/admin/addcountry'
+      let url='http://localhost:8080/expert/addpaymentdetails'
       let encode={
         method:"POST",
         headers:{'Content-Type': 'application/json'},

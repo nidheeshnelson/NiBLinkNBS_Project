@@ -19,6 +19,7 @@ public interface NiBLinkNBSaiePlace {
 	public List<NiBLinkNBSfDistrictModel> districtListByStateCode(String statecode);
 	public Map<String, String> addThaluk(NiBLinkNBSfThalukModel tm);
 	public List<NiBLinkNBSfThalukModel> talukList();
+	public List<NiBLinkNBSfThalukModel> talukListByDiscrictCode(String s);
 	public List<NiBLinkNBSfThalukModel> talukListByCountryStateDistrict(NiBLinkNBSfThalukModel tm);
 	public List<NiBLinkNBSfDistrictModel> districtList(NiBLinkNBSfDistrictModel dm);
 	public List<NiBLinkNBSfStateModel> stateList(NiBLinkNBSfStateModel sm);

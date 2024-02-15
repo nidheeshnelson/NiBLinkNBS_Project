@@ -55,24 +55,28 @@ public Map<String, String> createShiftExpert(NiBLinkNBSeShiftModel sm) {
 	sm=sr.save(sm);
 	sm.setGeneratedshiftid("SHIFT"+sm.getShiftid());
 	sm=sr.save(sm);
+	System.out.println(sm);
 	cpm.setShiftid(sm.getGeneratedshiftid());
 	cpm.setExpertid(sm.getExpertid());
 	cpm.setCustomerid(sm.getCustomerid());
 	cpm.setCommissionid(sm.getCommissionid());
 	cpm.setStatus(ShiftStatus.NOTPAYED);
 	cpm=cpr.save(cpm);
+	System.out.println(cpm);
 	pm.setShiftid(sm.getGeneratedshiftid());
 	pm.setExpertid(sm.getExpertid());
 	pm.setCustomerid(sm.getCustomerid());
 	pm.setCommissionid(sm.getCommissionid());
 	pm.setStatus(ShiftStatus.NOTPAYED);
 	pm=pr.save(pm);
+	System.out.println(pm);
 	slm.setShiftid(sm.getGeneratedshiftid());
 	slm.setExpertid(sm.getExpertid());
 	slm.setCustomerid(sm.getCustomerid());
 	slm.setCommissionid(sm.getCommissionid());
 	slm.setStatus(ShiftStatus.NOTPAYED);
 	slm=slr.save(slm);
+	System.out.println(slm);
 	m.put("SHIFTID", sm.getGeneratedshiftid());
 	}
 	catch(Exception e) {

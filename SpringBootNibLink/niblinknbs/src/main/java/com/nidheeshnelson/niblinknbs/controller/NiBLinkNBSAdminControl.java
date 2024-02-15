@@ -78,6 +78,12 @@ public class NiBLinkNBSAdminControl {
 	public List<NiBLinkNBSfThalukModel> talukList(){
 		return p.talukList();
 	}
+	@PostMapping("/talukbydistrict")
+	public List<NiBLinkNBSfThalukModel> talukByDistrictCode(@RequestBody Map<String, String> requestBody) {
+	    String districtcode = requestBody.get("districtcode");
+		System.out.println(districtcode);
+		return p.talukListByDiscrictCode(districtcode);
+	}
 	@PostMapping("/talukbydiststatcount")
 	public List<NiBLinkNBSfThalukModel> talukByDistrictStateCountry(@RequestBody NiBLinkNBSfThalukModel tm) {
 	    return p.talukListByCountryStateDistrict(tm);

@@ -36,6 +36,7 @@ export class AdminComponent {
   response7:any[]=[];
   response8:any[]=[];
   response9:any[]=[];
+  response10:any[]=[];
   selectedItem:any;
   selectedItem1:any;
   selectedItem2:any;
@@ -48,14 +49,14 @@ export class AdminComponent {
    async country(data:any){
     console.log(data);
      this.response=await this.as.countryAdd(data)
-    console.log(`in signin.component.ts ${this.response.COUNTRYCODE}`);
+    console.log(`in admin.component.ts ${this.response.COUNTRYCODE}`);
   }
   async countryList(){
     // console.log(data);
     try{
       const result = await this.as.countryList();
      this.response1=result as any[];
-    console.log(`in signin.component.ts ${this.response1}`);
+    console.log(`in admin.component.ts ${this.response1}`);
     }catch(error){console.error(`Error in countryList:`, error);}
   }
 
@@ -66,7 +67,7 @@ export class AdminComponent {
     console.log(statename);
     console.log(selectedItem);
      this.response=await this.as.stateAdd({ statename, selectedItem })
-    console.log(`in signin.component.ts ${this.response.STATECODE}`);
+    console.log(`in admin.component.ts ${this.response.STATECODE}`);
   }
   async stateList(){
     // console.log(data);
@@ -134,6 +135,17 @@ async talukList(){
    this.response7=result as any[];
   console.log(`in signin.component.ts ${this.response7}`);
   }catch(error){console.error(`Error in countryList:`, error);}
+}
+async byDistrictCode() {
+  const districtcode = this.selectedItem2?.districtcode;
+  if (districtcode) {
+      console.log(`Selected Country Code: ${districtcode}`);
+      const result = await this.as.talukListByDistrict(districtcode);
+      this.response10 = result as any[];
+      console.log(this.response10)
+  } else {
+      console.log('Country code is null or undefined.');
+  }
 }
 
 async job(data:any){
