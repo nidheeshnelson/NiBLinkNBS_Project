@@ -3,12 +3,137 @@
   <p>{{ customerResponse.ID }}</p>
 </div>
 <button (click)="activateDiv(1)">Profile</button>
-<button (click)="activateDiv(2)">Bookings</button>
-<!-- Show this block when button 1 is clicked -->
-<div *ngIf="activeDiv === 1"> 
+<button (click)="activateDiv(2)">Shifts</button>
+<!-- PROFILE PROFILE PROFILE PROFILE PROFILE PROFILE PROFILE -->
+    <div *ngIf="activeDiv === 1"> 
     <p>Block 1 is activated!</p>
-  </div>
+    <button (click)="activate1Div(1)">My Profile</button>
+    <button (click)="activate1Div(2)">Edit Profile</button>
+
+        <div *ngIf="active1Div === 1"> 
+        <p>Block 11 is activated!</p>
+        </div>
+
+        <div *ngIf="active1Div === 2"> 
+        <p>Block 12 is activated!</p>
+        <button (click)="activate12Div(1)">Name</button>
+        <button (click)="activate12Div(2)">Address</button>
+        <button (click)="activate12Div(3)">Banking</button>
+        <button (click)="activate12Div(4)">Identity</button>
+        <button (click)="activate12Div(5)">Personal</button>
+
+              <div *ngIf="active12Div === 1"> 
+              <p>Block 121 is activated!</p>
+              </div>
+
+              <div *ngIf="active12Div === 2"> 
+              <p>Block 122 is activated!</p>
+              </div>
+
+              <div *ngIf="active12Div === 3"> 
+              <p>Block 123 is activated!</p>
+              </div>
+              
+              <div *ngIf="active12Div === 4"> 
+              <p>Block 124 is activated!</p>
+              </div>
+
+              <div *ngIf="active12Div === 5"> 
+              <p>Block 125 is activated!</p>
+              </div>
+
+        </div>
+    </div>
   
-  <div *ngIf="activeDiv === 2"> 
+<!-- SHIFT SHIFT SHIFT SHIFT SHIFT SHIFT SHIFT SHIFT SHIFT -->
+    <div *ngIf="activeDiv === 2"> 
     <p>Block 2 is activated!</p>
-  </div>
+    <button (click)="activate2Div(1)">My Bookings</button>
+    <button (click)="activate2Div(2)">Book Shift</button>
+    <button (click)="activate2Div(3)">Shift Requests</button>
+    
+        <div *ngIf="active2Div === 1"> 
+        <p>Block 21 is activated!</p>
+        </div>
+
+        <div *ngIf="active2Div === 2"> 
+        <p>Block 22 is activated!</p>
+        <button (click)="activate22Div(1)" (click)="countryList()" (click)="jobList()">Book Shift with specific data</button>
+        <button (click)="activate22Div(2)" (click)="countryList()" (click)="jobList()">Book Shift without specific data</button>
+              <div *ngIf="active22Div === 1"> 
+              <p>Block 221 is activated!</p>
+              <form #shiftform="ngForm" (ngSubmit)="requestShift(shiftform.value)">
+              <label for="customername">Enter your name</label>
+              <input type="text" name="customername" [(ngModel)]="customername" required><br>
+              <label for="contact">Enter contact number</label>
+              <input type="number" name="contact" [(ngModel)]="contact" required><br>
+              <label for="jobdate">Enter Date</label>
+              <input type="date" name="jobdate" [(ngModel)]="jobdate" required><br>
+              <label for="country">Select country</label>
+              <select id="itemSelect1" [(ngModel)]="selectedItem1" name="country" (change)="stateByCountryCode()">
+              <option *ngFor="let dataItem1 of response1" [ngValue]="dataItem1">{{ dataItem1.countryname }}</option>
+              </select><br>
+              <label for="state">Select state</label>
+              <select id="itemSelect2" [(ngModel)]="selectedItem2" name="state" (change)="districtByStateCode()">
+              <option *ngFor="let dataItem2 of response2" [ngValue]="dataItem2">{{ dataItem2.state }}</option>
+              </select><br>
+              <label for="district">Select district</label>
+              <select id="itemSelect3" [(ngModel)]="selectedItem3" name="district" (change)="talukbyDistrictCode()">
+              <option *ngFor="let dataItem3 of response3" [ngValue]="dataItem3">{{ dataItem3.districtname }}</option>
+              </select><br>
+              <label for="taluk">Select taluk</label>
+              <select id="itemSelect4" [(ngModel)]="selectedItem4" name="taluk">
+              <option *ngFor="let dataItem4 of response4" [ngValue]="dataItem4">{{ dataItem4.thalukname }}</option>
+              </select><br>
+              <label for="job">Select job</label>
+              <select id="itemSelect5" [(ngModel)]="selectedItem5" name="job" (change)="findShifts()">
+              <option *ngFor="let dataItem5 of response5" [ngValue]="dataItem5">{{ dataItem5.jobname }}</option>
+              </select><br>
+              <label for="shift">Select shift</label>
+              <select id="itemSelect6" [(ngModel)]="selectedItem6" name="shift">
+              <option *ngFor="let dataItem6 of response6" [ngValue]="dataItem6">{{ dataItem6.expertname }}</option>
+              </select><br>
+              <input type="submit" value="Request Shift" >
+              </form>
+              </div>
+
+              <div *ngIf="active22Div === 2"> 
+                <p>Block 222 is activated!</p>
+                <form #shiftform="ngForm" (ngSubmit)="requestShift(shiftform.value)">
+                  <label for="customername">Enter your name</label>
+                  <input type="text" name="customername" [(ngModel)]="customername" required><br>
+                  <label for="contact">Enter contact number</label>
+                  <input type="number" name="contact" [(ngModel)]="contact" required><br>
+                  <label for="country">Select country</label>
+                  <select id="itemSelect1" [(ngModel)]="selectedItem1" name="country" (change)="stateByCountryCode()">
+                  <option *ngFor="let dataItem1 of response1" [ngValue]="dataItem1">{{ dataItem1.countryname }}</option>
+                  </select><br>
+                  <label for="state">Select state</label>
+                  <select id="itemSelect2" [(ngModel)]="selectedItem2" name="state" (change)="districtByStateCode()">
+                  <option *ngFor="let dataItem2 of response2" [ngValue]="dataItem2">{{ dataItem2.state }}</option>
+                  </select><br>
+                  <label for="district">Select district</label>
+                  <select id="itemSelect3" [(ngModel)]="selectedItem3" name="district" (change)="talukbyDistrictCode()">
+                  <option *ngFor="let dataItem3 of response3" [ngValue]="dataItem3">{{ dataItem3.districtname }}</option>
+                  </select><br>
+                  <label for="taluk">Select taluk</label>
+                  <select id="itemSelect4" [(ngModel)]="selectedItem4" name="taluk">
+                  <option *ngFor="let dataItem4 of response4" [ngValue]="dataItem4">{{ dataItem4.thalukname }}</option>
+                  </select><br>
+                  <label for="job">Select job</label>
+                  <select id="itemSelect5" [(ngModel)]="selectedItem5" name="job" (change)="findShifts1()">
+                  <option *ngFor="let dataItem5 of response5" [ngValue]="dataItem5">{{ dataItem5.jobname }}</option>
+                  </select><br>
+                  <label for="shift">Select shift</label>
+                  <select id="itemSelect6" [(ngModel)]="selectedItem6" name="shift">
+                  <option *ngFor="let dataItem6 of response7" [ngValue]="dataItem6">{{ dataItem6.expertname }}</option>
+                  </select><br>
+                  <input type="submit" value="Request Shift" >
+                  </form>
+              </div>
+        </div>
+
+        <div *ngIf="active2Div === 3"> 
+        <p>Block 23 is activated!</p>
+        </div>
+    </div>

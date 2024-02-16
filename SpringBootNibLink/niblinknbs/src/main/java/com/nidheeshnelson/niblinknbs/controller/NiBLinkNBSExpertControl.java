@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.nidheeshnelson.niblinknbs.model.NiBLinkNBScPaymentDetailsModel;
 import com.nidheeshnelson.niblinknbs.model.NiBLinkNBSeShiftModel;
 import com.nidheeshnelson.niblinknbs.model.NiBLinkNBSeShiftRequestModel;
+import com.nidheeshnelson.niblinknbs.model.NiBLinkNBSgThalukAndJobModel;
 import com.nidheeshnelson.niblinknbs.service.NiBLinkNBSaiePaymentDetailsService;
 import com.nidheeshnelson.niblinknbs.service.NiBLinkNBSaieShiftService;
 
@@ -33,6 +34,14 @@ public Map<String, String> addPaymentDet (@RequestBody NiBLinkNBScPaymentDetails
 @PostMapping("/createshift")
 public Map<String, String> createShift(@RequestBody NiBLinkNBSeShiftModel sm){
 	return ss.createShiftExpert(sm);
+}
+@PostMapping("/findjobshift")
+public List<NiBLinkNBSeShiftModel> findJobShifts(NiBLinkNBSgThalukAndJobModel tj){
+	return ss.findJobShifts(tj);
+}
+@PostMapping("/findjobshiftbydate")
+public List<NiBLinkNBSeShiftModel> findJobShiftsByDate(NiBLinkNBSgThalukAndJobModel tj){
+	return ss.findJobShiftsByDate(tj);
 }
 
 @PostMapping("/cancel")

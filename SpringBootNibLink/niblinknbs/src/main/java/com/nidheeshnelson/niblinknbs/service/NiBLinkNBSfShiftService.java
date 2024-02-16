@@ -2,6 +2,7 @@ package com.nidheeshnelson.niblinknbs.service;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -39,11 +40,11 @@ public class NiBLinkNBSfShiftService implements NiBLinkNBSaieShiftService{
 	private NiBLinkNBSdPaymentRepository pr;
 	@Autowired
 	private NiBLinkNBSdSalaryRepository slr;
-	private NiBLinkNBSeShiftModel smm;
-	private NiBLinkNBSdCommissionPayedModel cpm;
-	private NiBLinkNBSdPayedModel pm;
-	private NiBLinkNBSdSalaryModel slm;
-	Map<String, String> m;
+	private NiBLinkNBSeShiftModel smm= new NiBLinkNBSeShiftModel();
+	private NiBLinkNBSdCommissionPayedModel cpm= new NiBLinkNBSdCommissionPayedModel();
+	private NiBLinkNBSdPayedModel pm= new NiBLinkNBSdPayedModel();
+	private NiBLinkNBSdSalaryModel slm = new NiBLinkNBSdSalaryModel();
+	Map<String, String> m= new HashMap<String, String>();
 	
 public Map<String, String> createShiftExpert(NiBLinkNBSeShiftModel sm) {
 	try {
@@ -105,6 +106,17 @@ public List<NiBLinkNBSeShiftModel> findJobShifts(NiBLinkNBSgThalukAndJobModel tj
 	return sr.findByThalukcodeAndStatusAndJobcode(tj.getThalukid(), ShiftStatus.ACTIVE, tj.getJobid());
 }
 
+public List<NiBLinkNBSeShiftModel> findJobShiftsByDate(NiBLinkNBSgThalukAndJobModel tj){
+	List<NiBLinkNBSeShiftModel> sm=sr.findByThalukcodeAndStatusAndJobcodeAndShiftdate(tj.getThalukid(), ShiftStatus.ACTIVE, tj.getJobid(), tj.getJobdate());	
+	for(NiBLinkNBSeShiftModel stm:sm) {
+		if(stm.getShiftdate().isBefore(LocalDate.now())){
+			stm.setStatus(ShiftStatus.EXPIRED);
+			sr.save(stm);
+		}
+	}
+	return null;
+}
+
 public NiBLinkNBSeShiftRequestModel requestShiftCustomer(NiBLinkNBSeShiftRequestModel srm) {
 	srm.setStatus(ShiftStatus.PENDING);
 	srm.setRequesteddatetime(LocalDateTime.now());
@@ -139,6 +151,10 @@ public NiBLinkNBSeShiftModel acceptRequestExpert(NiBLinkNBSeShiftRequestModel sr
 			srr.save(srm);
 			smm=sr.findByGeneratedshiftid(srm.getShiftid());
 			smm.setCustomerid(srm.getCustomerid());
+			smm.setAddress(srm.getAddress());
+			smm.setLandmark(srm.getLandmark());
+			smm.setCustomercontact(srm.getCustomercontact());
+			smm.setCustomername(srm.getCustomername());
 			smm.setStatus(ShiftStatus.BOOKED);
 			smm.setAccepteddatetime(LocalDateTime.now());
 			smm=sr.save(smm);

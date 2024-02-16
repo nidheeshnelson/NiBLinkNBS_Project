@@ -32,4 +32,33 @@ export class ExpertService {
     })
   }
 
+  createShift=(data:any)=>{
+    console.log(`in expert payment details${data}`)
+    return new Promise((resolve,reject)=>{
+      let url='http://localhost:8080/expert/createshift'
+      let encode={
+        method:"POST",
+        headers:{'Content-Type': 'application/json'},
+        body:JSON.stringify({
+          expertname:data.expertname,
+          shiftdate:data.shiftdate,
+          shifttime:data.shifttime,
+          expertcontact:data.contact,
+          thalukcode:data.thalukcode,
+          jobcode:data.jobcode,
+          expertid:data.expertid
+        })
+      }
+      fetch(url,encode)
+      .then(async(response)=>{
+        response=await response.json()
+        console.log(`response from spring add data${JSON.stringify(response)}`)
+        resolve(response)
+      })
+      .catch((error)=>{
+        reject(error)
+      })
+    })
+  }
+
 }

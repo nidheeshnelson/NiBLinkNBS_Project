@@ -29,6 +29,8 @@ export class ExpertComponent implements OnInit{
   payment:number=0;
   shiftdate: Date | null = null;
   shifttime: Time | null = null;
+  expertname:string | null = null;
+  contact:number=0; 
   activeDiv: number | null = null; // Variable to track active div, initially set to null
   active1Div: number | null = null;
   active12Div: number | null = null;
@@ -111,13 +113,15 @@ async jobList(){
 async createShift(data:any){
   try{
   console.log("In createshift",data);
+  const expertname =data.expertname;
   const shiftdate=data.shiftdate;
   const shifttime=data.shifttime;
+  const contact=data.contact;
   const thalukcode=data.taluk?.thalukcode;
   const jobcode=data.job?.jobcode;
   const expertid=this.expertid;
   console.log("In paymentrelated",shiftdate, shifttime,thalukcode, jobcode, expertid);
-  this.response=await this.es.paymentDetails({shiftdate, shifttime, thalukcode, jobcode, expertid});
+  this.response=await this.es.createShift({expertname, shiftdate, shifttime, contact, thalukcode, jobcode, expertid});
   console.log(`in expert.component.ts ${this.response.SHIFTID}`);
   } 
   catch (error) {

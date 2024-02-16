@@ -1,5 +1,6 @@
 package com.nidheeshnelson.niblinknbs.repositary;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -16,6 +17,7 @@ public interface NiBLinkNBSeShiftRepository extends JpaRepository<NiBLinkNBSeShi
 	List<NiBLinkNBSeShiftModel> findByExpertid(String s);
 	List<NiBLinkNBSeShiftModel> findByCustomerid(String s);
 	List<NiBLinkNBSeShiftModel> findByThalukcodeAndStatusAndJobcode(String s, ShiftStatus ss, String sss);
+	List<NiBLinkNBSeShiftModel> findByThalukcodeAndStatusAndJobcodeAndShiftdate(String s, ShiftStatus ss, String sss, LocalDate d);
 	List<NiBLinkNBSeShiftModel> findByExpertidAndStatus(String s, ShiftStatus ss);
 	List<NiBLinkNBSeShiftModel> findByCustomeridAndStatus(String s, ShiftStatus ss);
 	List<NiBLinkNBSeShiftModel> findByJobcodeAndStatus(String s, ShiftStatus ss);

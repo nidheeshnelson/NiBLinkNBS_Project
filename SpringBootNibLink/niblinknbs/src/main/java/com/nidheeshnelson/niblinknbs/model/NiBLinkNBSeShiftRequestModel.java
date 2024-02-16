@@ -21,6 +21,10 @@ public class NiBLinkNBSeShiftRequestModel {
 	private LocalDateTime acceptorrejectdatetime;
 	private String expertid;
 	private String customerid;
+	private String address;
+	private String landmark;
+	private String customername;
+	private long customercontact;
 	private ShiftStatus status;
 	public int getShiftrequestid() {
 		return shiftrequestid;
@@ -76,12 +80,37 @@ public class NiBLinkNBSeShiftRequestModel {
 	public void setStatus(ShiftStatus status) {
 		this.status = status;
 	}
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	public String getLandmark() {
+		return landmark;
+	}
+	public void setLandmark(String landmark) {
+		this.landmark = landmark;
+	}
+	public long getCustomercontact() {
+		return customercontact;
+	}
+	public void setCustomercontact(long customercontact) {
+		this.customercontact = customercontact;
+	}
+	public String getCustomername() {
+		return customername;
+	}
+	public void setCustomername(String customername) {
+		this.customername = customername;
+	}
 	@Override
 	public String toString() {
 		return "NiBLinkNBSeShiftRequestModel [shiftrequestid=" + shiftrequestid + ", shiftid=" + shiftid
 				+ ", requesteddatetime=" + requesteddatetime + ", shiftdate=" + shiftdate + ", shifttime=" + shifttime
 				+ ", acceptorrejectdatetime=" + acceptorrejectdatetime + ", expertid=" + expertid + ", customerid="
-				+ customerid + ", status=" + status + "]";
+				+ customerid + ", address=" + address + ", landmark=" + landmark + ", customername=" + customername
+				+ ", customercontact=" + customercontact + ", status=" + status + "]";
 	}
 	
 }

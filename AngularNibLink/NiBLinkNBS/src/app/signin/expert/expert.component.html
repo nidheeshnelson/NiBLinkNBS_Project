@@ -77,30 +77,34 @@
         <div *ngIf="active2Div === 2"> 
         <p>Block 22 is activated!</p>
         <form #shiftform="ngForm" (ngSubmit)="createShift(shiftform.value)">
+          <label for="expertname">Enter expert name</label>
+          <input type="text" name="expertname" [(ngModel)]="expertname" required><br>
           <label for="shiftdate">Enter Shift Date</label>
           <input type="date" name="shiftdate" [(ngModel)]="shiftdate" required><br>
           <label for="shifttime">Enter Shift Time</label>
           <input type="time" name="shifttime" [(ngModel)]="shifttime" required><br>
+          <label for="contact">Enter contact number</label>
+          <input type="number" name="contact" [(ngModel)]="contact" required><br>
           <label for="country">Select country</label>
           <select id="itemSelect1" [(ngModel)]="selectedItem1" name="country" (change)="stateByCountryCode()">
           <option *ngFor="let dataItem1 of response2" [ngValue]="dataItem1">{{ dataItem1.countryname }}</option>
-          </select>
+          </select><br>
           <label for="state">Select state</label>
           <select id="itemSelect2" [(ngModel)]="selectedItem2" name="state" (change)="districtByStateCode()">
           <option *ngFor="let dataItem2 of response3" [ngValue]="dataItem2">{{ dataItem2.state }}</option>
-          </select>
+          </select><br>
           <label for="district">Select district</label>
           <select id="itemSelect3" [(ngModel)]="selectedItem3" name="district" (change)="talukbyDistrictCode()">
           <option *ngFor="let dataItem3 of response4" [ngValue]="dataItem3">{{ dataItem3.districtname }}</option>
-          </select>
+          </select><br>
           <label for="taluk">Select taluk</label>
           <select id="itemSelect4" [(ngModel)]="selectedItem4" name="taluk">
           <option *ngFor="let dataItem4 of response5" [ngValue]="dataItem4">{{ dataItem4.thalukname }}</option>
-          </select>
+          </select><br>
           <label for="job">Select job</label>
           <select id="itemSelect5" [(ngModel)]="selectedItem5" name="job">
           <option *ngFor="let dataItem5 of response6" [ngValue]="dataItem5">{{ dataItem5.jobname }}</option>
-          </select>
+          </select><br>
           <input type="submit" value="Submit" >
         </form>
         </div>

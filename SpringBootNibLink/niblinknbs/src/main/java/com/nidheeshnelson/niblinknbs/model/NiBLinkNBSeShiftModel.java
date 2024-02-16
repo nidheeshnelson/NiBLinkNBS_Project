@@ -33,6 +33,12 @@ public class NiBLinkNBSeShiftModel {
 	private String expertid;
 	private String customerid;
 	private String commissionid;
+	private String address;
+	private String landmark;
+	private String expertname;
+	private String customername;
+	private long customercontact;
+	private long expertcontact;
 	private ShiftStatus status;
 	public int getShiftid() {
 		return shiftid;
@@ -161,6 +167,43 @@ public class NiBLinkNBSeShiftModel {
 	public void setCommissionid(String commissionid) {
 		this.commissionid = commissionid;
 	}
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	public String getLandmark() {
+		return landmark;
+	}
+	public void setLandmark(String landmark) {
+		this.landmark = landmark;
+	}
+	
+	public long getCustomercontact() {
+		return customercontact;
+	}
+	public void setCustomercontact(long customercontact) {
+		this.customercontact = customercontact;
+	}
+	public long getExpertcontact() {
+		return expertcontact;
+	}
+	public void setExpertcontact(long expertcontact) {
+		this.expertcontact = expertcontact;
+	}
+	public String getExpertname() {
+		return expertname;
+	}
+	public void setExpertname(String expertname) {
+		this.expertname = expertname;
+	}
+	public String getCustomername() {
+		return customername;
+	}
+	public void setCustomername(String customername) {
+		this.customername = customername;
+	}
 	@Override
 	public String toString() {
 		return "NiBLinkNBSeShiftModel [shiftid=" + shiftid + ", generatedshiftid=" + generatedshiftid
@@ -170,7 +213,9 @@ public class NiBLinkNBSeShiftModel {
 				+ commissionpercent + ", enddatetime=" + enddatetime + ", hoursforwork=" + hoursforwork
 				+ ", payedbycustomer=" + payedbycustomer + ", commission=" + commission + ", salary=" + salary
 				+ ", thalukcode=" + thalukcode + ", jobcode=" + jobcode + ", expertid=" + expertid + ", customerid="
-				+ customerid + ", commissionid=" + commissionid + ", status=" + status + "]";
+				+ customerid + ", commissionid=" + commissionid + ", address=" + address + ", landmark=" + landmark
+				+ ", expertname=" + expertname + ", customername=" + customername + ", customercontact="
+				+ customercontact + ", expertcontact=" + expertcontact + ", status=" + status + "]";
 	}
 	
 }
