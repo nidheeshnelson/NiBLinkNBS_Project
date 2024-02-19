@@ -13,8 +13,9 @@ public interface NiBLinkNBSaieShiftService {
 	public NiBLinkNBSeShiftModel CancelShiftExpert(String s);
 	public List<NiBLinkNBSeShiftModel> findJobShifts(NiBLinkNBSgThalukAndJobModel tj);
 	public List<NiBLinkNBSeShiftModel> findJobShiftsByDate(NiBLinkNBSgThalukAndJobModel tj);
-	public NiBLinkNBSeShiftRequestModel requestShiftCustomer(NiBLinkNBSeShiftRequestModel srm);
-	public List<NiBLinkNBSeShiftRequestModel> allRequestByIdExpert(NiBLinkNBSeShiftRequestModel srm);
+	public Map<String,String> requestShiftCustomer(NiBLinkNBSeShiftRequestModel srm);
+	public List<NiBLinkNBSeShiftModel> allShiftsByExpertId(String expert);
+	public List<NiBLinkNBSeShiftRequestModel> allPendingRequestByIdExpert(NiBLinkNBSeShiftRequestModel srm);
 	public List<NiBLinkNBSeShiftRequestModel> allRequestedShifts(String expertid);
 	public NiBLinkNBSeShiftModel acceptRequestExpert(NiBLinkNBSeShiftRequestModel srm);
 	public List<NiBLinkNBSeShiftModel> allBookedShiftsExpert(String expertid);

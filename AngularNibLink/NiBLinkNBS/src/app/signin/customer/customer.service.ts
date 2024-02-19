@@ -7,7 +7,7 @@ export class CustomerService {
   constructor() { }
 
   findShiftByDate=(data:any)=>{
-    console.log(`in admin country${data}`)
+    console.log("in find shift by date",data.thalukid,data.jobid,data.jobdate)
     return new Promise((resolve,reject)=>{
       let url='http://localhost:8080/expert/findjobshiftbydate'
       let encode={
@@ -22,7 +22,7 @@ export class CustomerService {
       fetch(url,encode)
       .then(async(response)=>{
         response=await response.json()
-        console.log(`response from spring add data${JSON.stringify(response)}`)
+        console.log(`response from findShiftByDate data${JSON.stringify(response)}`)
         resolve(response)
       })
       .catch((error)=>{
@@ -31,15 +31,45 @@ export class CustomerService {
     })
   }
   findShift=(data:any)=>{
-    console.log(`in admin country${data}`)
+    console.log("in find shift by date",data.thalukid,data.jobid)
     return new Promise((resolve,reject)=>{
-      let url='http://localhost:8080/expert/findJobShifts'
+      let url='http://localhost:8080/expert/findjobshift'
       let encode={
         method:"POST",
         headers:{'Content-Type': 'application/json'},
         body:JSON.stringify({
           thalukid:data.thalukid,
-          jobdate:data.jobdate
+          jobid:data.jobid
+        })
+      }
+      fetch(url,encode)
+      .then(async(response)=>{
+        response=await response.json()
+        console.log(`response from spring add data${JSON.stringify(response)}`)
+        resolve(response)
+      })
+      .catch((error)=>{
+        reject(error)
+      })
+    })
+  }
+  requestShift=(data:any)=>{
+    console.log("in find shift by date",data.shiftid,data.shiftdate)
+    return new Promise((resolve,reject)=>{
+      let url='http://localhost:8080/customer/requestshift'
+      let encode={
+        method:"POST",
+        headers:{'Content-Type': 'application/json'},
+        body:JSON.stringify({
+          shiftid:data.shiftid,
+          shiftdate:data.shiftdate,
+          shifttime:data.shifttime,
+          expertid:data.expertid,
+          customerid:data.customerid,
+          address:data.address,
+          landmark:data.landmark,
+          customername:data.customername,
+          customercontact:data.customercontact
         })
       }
       fetch(url,encode)

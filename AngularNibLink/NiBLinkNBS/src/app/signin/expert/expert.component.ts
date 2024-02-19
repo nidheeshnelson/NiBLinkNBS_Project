@@ -3,6 +3,7 @@ import { CommonModule, Time } from '@angular/common';
 import {ExpertService} from './expert.service';
 import {AdminService} from '../admin/admin.service';
 import {FormsModule} from '@angular/forms';
+import { filter } from 'rxjs/operators';
 @Component({
   selector: 'app-expert',
   standalone: true,
@@ -20,6 +21,7 @@ export class ExpertComponent implements OnInit{
   response4:any;
   response5:any;
   response6:any;
+  response7:any[] = [];
   selectedItem:any;
   selectedItem1:any;
   selectedItem2:any;
@@ -127,6 +129,15 @@ async createShift(data:any){
   catch (error) {
   console.error("Error in paymentrelated:", error);
   }
+}
+async findShiftsByExpert(){
+  try{
+    this.response7=await this.es.findShiftsByExpert(this.expertid)
+    console.log(`in expert.component.ts ${this.response7}`);
+  }catch(error){console.error(`Error in countryList:`, error);}
+}
+filterByStatus(status: string) {
+  this.response7 = this.response7.filter( item =>item.status === status);
 }
   activateDiv(divNumber: number): void {
     this.activeDiv = divNumber;

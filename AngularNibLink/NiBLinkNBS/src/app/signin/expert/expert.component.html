@@ -66,12 +66,26 @@
 <!-- SHIFT SHIFT SHIFT SHIFT SHIFT SHIFT SHIFT SHIFT SHIFT -->
     <div *ngIf="activeDiv === 2"> 
     <p>Block 2 is activated!</p>
-    <button (click)="activate2Div(1)">My Shifts</button>
+    <button (click)="activate2Div(1)" (click)="findShiftsByExpert()">My Shifts</button>
     <button (click)="activate2Div(2)" (click)="countryList()" (click)="jobList()">Create Shift</button>
-    <button (click)="activate2Div(3)">Shift Requests</button>
     
         <div *ngIf="active2Div === 1"> 
         <p>Block 21 is activated!</p>
+        <div>
+          <button (click)="filterByStatus('ACTIVE')">Active Shifts</button>
+          <button (click)="filterByStatus('BOOKED')">Shifts Booked</button>
+          <button (click)="filterByStatus('EXPIRED')">Expired Shifts</button>
+          <button (click)="filterByStatus('INCOMPLETE')">Incomplete Shifts</button>
+          <button (click)="filterByStatus('RUNNING')">Running Shift</button>
+          <button (click)="filterByStatus('FINISHED')">Finished Shifts</button>
+          <!-- Add more buttons based on your status values -->
+        
+              <div *ngFor="let item of response7">
+              <!-- Display the item properties as needed -->
+              {{ item.generatedshiftid }} - {{ item.status }}
+              </div>
+        </div>
+
         </div>
 
         <div *ngIf="active2Div === 2"> 
@@ -109,7 +123,5 @@
         </form>
         </div>
 
-        <div *ngIf="active2Div === 3"> 
-        <p>Block 23 is activated!</p>
-        </div>
+        
     </div>

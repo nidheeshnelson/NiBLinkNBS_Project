@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.nidheeshnelson.niblinknbs.model.NiBLinkNBSbbExpertModel;
 import com.nidheeshnelson.niblinknbs.model.NiBLinkNBScPaymentDetailsModel;
 import com.nidheeshnelson.niblinknbs.model.NiBLinkNBSeShiftModel;
 import com.nidheeshnelson.niblinknbs.model.NiBLinkNBSeShiftRequestModel;
@@ -36,13 +37,21 @@ public Map<String, String> createShift(@RequestBody NiBLinkNBSeShiftModel sm){
 	return ss.createShiftExpert(sm);
 }
 @PostMapping("/findjobshift")
-public List<NiBLinkNBSeShiftModel> findJobShifts(NiBLinkNBSgThalukAndJobModel tj){
+public List<NiBLinkNBSeShiftModel> findJobShifts(@RequestBody NiBLinkNBSgThalukAndJobModel tj){
+	System.out.println(tj);
 	return ss.findJobShifts(tj);
 }
 @PostMapping("/findjobshiftbydate")
-public List<NiBLinkNBSeShiftModel> findJobShiftsByDate(NiBLinkNBSgThalukAndJobModel tj){
+public List<NiBLinkNBSeShiftModel> findJobShiftsByDate(@RequestBody NiBLinkNBSgThalukAndJobModel tj){
+	System.out.println(tj);
 	return ss.findJobShiftsByDate(tj);
 }
+@PostMapping("/findshiftbyexpert")
+public List<NiBLinkNBSeShiftModel> findShiftsByExpert(@RequestBody NiBLinkNBSbbExpertModel em){
+	System.out.println(em);
+	return ss.allShiftsByExpertId(em.getExpertid());
+}
+
 
 @PostMapping("/cancel")
 public NiBLinkNBSeShiftModel cancelShift(@RequestParam String s) {
@@ -50,6 +59,6 @@ public NiBLinkNBSeShiftModel cancelShift(@RequestParam String s) {
 }
 @PostMapping("/pendingReq")
 public List<NiBLinkNBSeShiftRequestModel> pendingRequest(NiBLinkNBSeShiftRequestModel srm){
-	return ss.allRequestByIdExpert(srm);
+	return ss.allPendingRequestByIdExpert(srm);
 }
 }

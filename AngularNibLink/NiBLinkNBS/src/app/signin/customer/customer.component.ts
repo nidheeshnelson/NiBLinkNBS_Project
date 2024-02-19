@@ -26,6 +26,7 @@ export class CustomerComponent implements OnInit{
   response5:any;
   response6:any;
   response7:any;
+  response8:any;
   selectedItem1:any;
   selectedItem2:any;
   selectedItem3:any;
@@ -34,6 +35,9 @@ export class CustomerComponent implements OnInit{
   selectedItem6:any;
   customername:string='';
   contact:string='';
+  address:string='';
+  landmark:string='';
+
   jobdate:Date | null = null;
   constructor(private cs:CustomerService, private as:AdminService){}
   ngOnInit(): void {
@@ -108,7 +112,20 @@ this.response7 = await this.cs.findShift({thalukid,jobid});
   }catch(error){console.error(`Error in countryList:`, error);}
 }
 async requestShift(data:any){
-
+try{
+  const shiftid = this.selectedItem6?.generatedshiftid;
+  const shiftdate = this.selectedItem6?.shiftdate;
+  const shifttime = this.selectedItem6?.shifttime;
+  const expertid = this.selectedItem6?.expertid;
+  const customerid = this.customerid;
+  const address = this.address;
+  const landmark = this.landmark;
+  const customername = this.customername;
+  const customercontact = this.contact;
+  console.log("in request shift customer component",shiftid,shiftdate,shifttime,expertid,customerid,address,landmark,customername,customercontact);
+  this.response8 = await this.cs.requestShift({shiftid,shiftdate,shifttime,expertid,customerid,address,landmark,customername,customercontact});
+  console.log("response from request shifts",this.response8.SHIFTREQID);
+}catch(error){console.error(`Error in countryList:`, error);}
 }
   activateDiv(divNumber: number): void {
     this.activeDiv = divNumber;

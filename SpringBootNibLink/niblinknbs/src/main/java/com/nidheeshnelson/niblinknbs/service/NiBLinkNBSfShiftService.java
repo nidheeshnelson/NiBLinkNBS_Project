@@ -45,6 +45,7 @@ public class NiBLinkNBSfShiftService implements NiBLinkNBSaieShiftService{
 	private NiBLinkNBSdPayedModel pm= new NiBLinkNBSdPayedModel();
 	private NiBLinkNBSdSalaryModel slm = new NiBLinkNBSdSalaryModel();
 	Map<String, String> m= new HashMap<String, String>();
+	List<NiBLinkNBSeShiftModel> l;
 	
 public Map<String, String> createShiftExpert(NiBLinkNBSeShiftModel sm) {
 	try {
@@ -97,6 +98,7 @@ public NiBLinkNBSeShiftModel CancelShiftExpert(String s) {
 
 public List<NiBLinkNBSeShiftModel> findJobShifts(NiBLinkNBSgThalukAndJobModel tj){
 	List<NiBLinkNBSeShiftModel> sm=sr.findByThalukcodeAndStatusAndJobcode(tj.getThalukid(), ShiftStatus.ACTIVE, tj.getJobid());	
+	System.out.println(sm);
 	for(NiBLinkNBSeShiftModel stm:sm) {
 		if(stm.getShiftdate().isBefore(LocalDate.now())){
 			stm.setStatus(ShiftStatus.EXPIRED);
@@ -114,19 +116,42 @@ public List<NiBLinkNBSeShiftModel> findJobShiftsByDate(NiBLinkNBSgThalukAndJobMo
 			sr.save(stm);
 		}
 	}
-	return null;
+	return sr.findByThalukcodeAndStatusAndJobcodeAndShiftdate(tj.getThalukid(), ShiftStatus.ACTIVE, tj.getJobid(), tj.getJobdate());
 }
 
-public NiBLinkNBSeShiftRequestModel requestShiftCustomer(NiBLinkNBSeShiftRequestModel srm) {
+public Map<String,String> requestShiftCustomer(NiBLinkNBSeShiftRequestModel srm) {
 	srm.setStatus(ShiftStatus.PENDING);
 	srm.setRequesteddatetime(LocalDateTime.now());
 	srm.setShiftdate(sr.findByGeneratedshiftid(srm.getShiftid()).getShiftdate());
 	srm.setShifttime(sr.findByGeneratedshiftid(srm.getShiftid()).getShifttime());
 	srm=srr.save(srm);
-	return srm;
+	System.out.println(srm);
+	return Map.of("SHIFTREQID", Integer.toString(srm.getShiftrequestid()));
 }
 
-public List<NiBLinkNBSeShiftRequestModel> allRequestByIdExpert(NiBLinkNBSeShiftRequestModel srm) {
+public List<NiBLinkNBSeShiftModel> allShiftsByExpertId(String expert){
+	try {
+	l=sr.findByExpertid(expert);
+	for(NiBLinkNBSeShiftModel sm:l) {
+		if(sm.getShiftdate().isBefore(LocalDate.now())) {
+			if(sm.getStatus().equals(ShiftStatus.BOOKED)) {
+				sm.setStatus(ShiftStatus.INCOMPLETE);
+			}
+			if(sm.getCustomerid().equals(null)) {
+				sm.setStatus(ShiftStatus.EXPIRED);
+			}
+			sm=sr.save(sm);
+			System.out.println(sm);
+		}
+	}
+	}
+	catch(Exception e) {
+		System.out.println(e);
+	}
+	return sr.findByExpertid(expert);
+}
+
+public List<NiBLinkNBSeShiftRequestModel> allPendingRequestByIdExpert(NiBLinkNBSeShiftRequestModel srm) {
 	return srr.findByExpertidAndStatusAndShiftid(srm.getExpertid(), ShiftStatus.PENDING, srm.getShiftid());
 }
 
