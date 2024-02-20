@@ -82,5 +82,28 @@ export class ExpertService {
       })
     })
   }
+  findShiftRequestsByShiftId=(data:any)=>{
+    console.log(`in expert find shifts by expert${data}`)
+    return new Promise((resolve,reject)=>{
+      let url='http://localhost:8080/expert/findshiftrequests'
+      let encode={
+        method:"POST",
+        headers:{'Content-Type': 'application/json'},
+        body:JSON.stringify({
+          shiftid:data
+        })
+      }
+      fetch(url,encode)
+      .then(async(response)=>{
+        response=await response.json()
+        console.log(`response from spring add data${JSON.stringify(response)}`)
+        resolve(response)
+      })
+      .catch((error)=>{
+        reject(error)
+      })
+    })
+  }
+
 
 }

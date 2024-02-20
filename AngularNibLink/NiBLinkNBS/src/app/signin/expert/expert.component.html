@@ -72,7 +72,7 @@
         <div *ngIf="active2Div === 1"> 
         <p>Block 21 is activated!</p>
         <div>
-          <button (click)="filterByStatus('ACTIVE')">Active Shifts</button>
+          <button (click)="filterByStatus('ACTIVE')" (click)="showRequests()">Active Shifts</button>
           <button (click)="filterByStatus('BOOKED')">Shifts Booked</button>
           <button (click)="filterByStatus('EXPIRED')">Expired Shifts</button>
           <button (click)="filterByStatus('INCOMPLETE')">Incomplete Shifts</button>
@@ -80,10 +80,17 @@
           <button (click)="filterByStatus('FINISHED')">Finished Shifts</button>
           <!-- Add more buttons based on your status values -->
         
-              <div *ngFor="let item of response7">
+              <div *ngFor="let item of response8">
               <!-- Display the item properties as needed -->
               {{ item.generatedshiftid }} - {{ item.status }}
+              <button *ngIf="isShowRequestsButtonVisible" (click)="findShiftRequestsByShiftId(item.generatedshiftid)">Show Requests</button>
               </div>
+
+                  <div *ngFor="let request of response9">
+                  {{request.customername}} - {{request.address}}
+                    <button>Accept</button>
+                    <button>Reject</button>
+                  </div>
         </div>
 
         </div>

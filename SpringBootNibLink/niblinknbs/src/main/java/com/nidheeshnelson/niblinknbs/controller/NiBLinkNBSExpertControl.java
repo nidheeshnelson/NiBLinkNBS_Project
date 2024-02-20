@@ -9,12 +9,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.nidheeshnelson.niblinknbs.model.NiBLinkNBSbbExpertModel;
 import com.nidheeshnelson.niblinknbs.model.NiBLinkNBScPaymentDetailsModel;
 import com.nidheeshnelson.niblinknbs.model.NiBLinkNBSeShiftModel;
 import com.nidheeshnelson.niblinknbs.model.NiBLinkNBSeShiftRequestModel;
+import com.nidheeshnelson.niblinknbs.model.NiBLinkNBSgIDs;
 import com.nidheeshnelson.niblinknbs.model.NiBLinkNBSgThalukAndJobModel;
 import com.nidheeshnelson.niblinknbs.service.NiBLinkNBSaiePaymentDetailsService;
 import com.nidheeshnelson.niblinknbs.service.NiBLinkNBSaieShiftService;
@@ -50,6 +52,10 @@ public List<NiBLinkNBSeShiftModel> findJobShiftsByDate(@RequestBody NiBLinkNBSgT
 public List<NiBLinkNBSeShiftModel> findShiftsByExpert(@RequestBody NiBLinkNBSbbExpertModel em){
 	System.out.println(em);
 	return ss.allShiftsByExpertId(em.getExpertid());
+}
+@PostMapping("/findshiftrequests")
+public List<NiBLinkNBSeShiftRequestModel> findShiftRequestByShiftId(@RequestBody NiBLinkNBSgIDs id){
+	return ss.allShiftrequestsByShiftId(id.getShiftid());
 }
 
 

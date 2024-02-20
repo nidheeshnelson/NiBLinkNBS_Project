@@ -14,6 +14,7 @@ import { filter } from 'rxjs/operators';
 export class ExpertComponent implements OnInit{
   @Input() expertResponse: any;
   expertid: string='';
+  isShowRequestsButtonVisible= false;
   response:any;
   response1:any;
   response2:any;
@@ -21,7 +22,9 @@ export class ExpertComponent implements OnInit{
   response4:any;
   response5:any;
   response6:any;
-  response7:any[] = [];
+  response7:any;
+  response8:any;
+  response9:any;
   selectedItem:any;
   selectedItem1:any;
   selectedItem2:any;
@@ -137,7 +140,17 @@ async findShiftsByExpert(){
   }catch(error){console.error(`Error in countryList:`, error);}
 }
 filterByStatus(status: string) {
-  this.response7 = this.response7.filter( item =>item.status === status);
+  this.response8 = this.response7.filter((item: { status: string }) => item.status === status);
+  this.isShowRequestsButtonVisible = false;
+}
+showRequests(){
+  this.isShowRequestsButtonVisible = true;
+}
+async findShiftRequestsByShiftId(shiftid: string){
+  try{
+    this.response9=await this.es.findShiftRequestsByShiftId(shiftid)
+    console.log(`in expert.component.ts ${this.response}`);
+  }catch(error){console.error(`Error in countryList:`, error);}
 }
   activateDiv(divNumber: number): void {
     this.activeDiv = divNumber;

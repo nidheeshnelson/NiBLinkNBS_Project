@@ -137,7 +137,7 @@ public List<NiBLinkNBSeShiftModel> allShiftsByExpertId(String expert){
 			if(sm.getStatus().equals(ShiftStatus.BOOKED)) {
 				sm.setStatus(ShiftStatus.INCOMPLETE);
 			}
-			if(sm.getCustomerid().equals(null)) {
+			if(sm.isCustomeridNull()) {
 				sm.setStatus(ShiftStatus.EXPIRED);
 			}
 			sm=sr.save(sm);
@@ -150,6 +150,18 @@ public List<NiBLinkNBSeShiftModel> allShiftsByExpertId(String expert){
 	}
 	return sr.findByExpertid(expert);
 }
+
+public List<NiBLinkNBSeShiftRequestModel> allShiftrequestsByShiftId(String shift){
+	System.out.println(shift);
+	return srr.findByShiftid(shift);
+}
+
+
+
+
+
+
+
 
 public List<NiBLinkNBSeShiftRequestModel> allPendingRequestByIdExpert(NiBLinkNBSeShiftRequestModel srm) {
 	return srr.findByExpertidAndStatusAndShiftid(srm.getExpertid(), ShiftStatus.PENDING, srm.getShiftid());

@@ -40,6 +40,9 @@ public class NiBLinkNBSeShiftModel {
 	private long customercontact;
 	private long expertcontact;
 	private ShiftStatus status;
+	 public boolean isCustomeridNull() {
+	        return customerid == null;
+	    }
 	public int getShiftid() {
 		return shiftid;
 	}
