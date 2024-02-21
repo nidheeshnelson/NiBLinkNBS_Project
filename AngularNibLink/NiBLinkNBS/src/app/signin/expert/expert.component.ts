@@ -15,6 +15,9 @@ export class ExpertComponent implements OnInit{
   @Input() expertResponse: any;
   expertid: string='';
   isShowRequestsButtonVisible= false;
+  isStartBtnVisible=false;
+  isWorkFinishedVisible=false;
+  isfinishformvisible=false;
   response:any;
   response1:any;
   response2:any;
@@ -31,6 +34,7 @@ export class ExpertComponent implements OnInit{
   selectedItem3:any;
   selectedItem4:any;
   selectedItem5:any;
+  hoursforwork:number=0;
   payment:number=0;
   shiftdate: Date | null = null;
   shifttime: Time | null = null;
@@ -142,6 +146,10 @@ async findShiftsByExpert(){
 filterByStatus(status: string) {
   this.response8 = this.response7.filter((item: { status: string }) => item.status === status);
   this.isShowRequestsButtonVisible = false;
+  this.response9=null;
+  this.isStartBtnVisible=false;
+  this.isWorkFinishedVisible=false;
+  this.isfinishformvisible=false;
 }
 showRequests(){
   this.isShowRequestsButtonVisible = true;
@@ -152,6 +160,41 @@ async findShiftRequestsByShiftId(shiftid: string){
     console.log(`in expert.component.ts ${this.response}`);
   }catch(error){console.error(`Error in countryList:`, error);}
 }
+async acceptRequest(request: any){
+  try{
+    this.response=await this.es.acceptRequest(request)
+    console.log(`in expert.component.ts ${this.response.BOOKEDID}`);
+    this.findShiftsByExpert();
+    this.response9=null;
+  }catch(error){console.error(`Error in countryList:`, error);}
+}
+showStartBtn(){
+  this.isStartBtnVisible=true;
+}
+async startWork(item:any){
+  try{
+    this.response=await this.es.startWork(item);
+    console.log(`in expert.component.ts ${this.response.SHIFTRUN}`);
+    this.findShiftsByExpert();
+  }catch(error){console.error(`Error in countryList:`, error);}
+}
+showWorkFinished(){
+  this.isWorkFinishedVisible=true;
+  this.isfinishformvisible=false;
+}
+workFinishing(){
+  this.isfinishformvisible=true;
+}
+async workFinished(item:any){
+  try{
+    const hoursforwork=this.hoursforwork;
+    const generatedshiftid = item.generatedshiftid;
+    this.response=await this.es.workFinished({hoursforwork,generatedshiftid});
+    console.log(`in expert.component.ts ${this.response.FINI}`);
+    this.findShiftsByExpert();
+  }catch(error){console.error(`Error in countryList:`, error);}
+}
+
   activateDiv(divNumber: number): void {
     this.activeDiv = divNumber;
   }

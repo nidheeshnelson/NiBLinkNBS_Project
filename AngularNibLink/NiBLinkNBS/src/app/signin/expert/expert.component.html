@@ -73,10 +73,10 @@
         <p>Block 21 is activated!</p>
         <div>
           <button (click)="filterByStatus('ACTIVE')" (click)="showRequests()">Active Shifts</button>
-          <button (click)="filterByStatus('BOOKED')">Shifts Booked</button>
+          <button (click)="filterByStatus('BOOKED')" (click)="showStartBtn()">Shifts Booked</button>
           <button (click)="filterByStatus('EXPIRED')">Expired Shifts</button>
           <button (click)="filterByStatus('INCOMPLETE')">Incomplete Shifts</button>
-          <button (click)="filterByStatus('RUNNING')">Running Shift</button>
+          <button (click)="filterByStatus('RUNNING')" (click)="showWorkFinished()">Running Shift</button>
           <button (click)="filterByStatus('FINISHED')">Finished Shifts</button>
           <!-- Add more buttons based on your status values -->
         
@@ -84,11 +84,18 @@
               <!-- Display the item properties as needed -->
               {{ item.generatedshiftid }} - {{ item.status }}
               <button *ngIf="isShowRequestsButtonVisible" (click)="findShiftRequestsByShiftId(item.generatedshiftid)">Show Requests</button>
+              <button *ngIf="isStartBtnVisible" (click)="startWork(item)">Start</button>
+              <button *ngIf="isWorkFinishedVisible" (click)="workFinishing()">Finished</button>
+                  <div *ngIf="isfinishformvisible">
+                    <label for="hoursforwork">Item Description:</label>
+                    <input type="number" id="hoursforwork" [(ngModel)]="hoursforwork" />
+                    <button (click)="workFinished(item)">Hours taken to finish the work</button>
+                  </div>
               </div>
 
                   <div *ngFor="let request of response9">
-                  {{request.customername}} - {{request.address}}
-                    <button>Accept</button>
+                  {{request.shiftid}} - {{request.shiftdate}} -{{request.customername}} - {{request.address}}
+                    <button (click)="acceptRequest(request)">Accept</button>
                     <button>Reject</button>
                   </div>
         </div>

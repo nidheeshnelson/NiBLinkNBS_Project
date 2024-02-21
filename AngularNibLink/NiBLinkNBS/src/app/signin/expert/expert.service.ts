@@ -104,6 +104,75 @@ export class ExpertService {
       })
     })
   }
+  acceptRequest=(request:any)=>{
+    console.log(`in expert accept request by expert${request}`)
+    return new Promise((resolve,reject)=>{
+      let url='http://localhost:8080/expert/requestaccept'
+      let encode={
+        method:"POST",
+        headers:{'Content-Type': 'application/json'},
+        body:JSON.stringify({
+          shiftid:request.shiftid,
+          customerid:request.customerid
+        })
+      }
+      fetch(url,encode)
+      .then(async(response)=>{
+        response=await response.json()
+        console.log(`response from spring add data${JSON.stringify(response)}`)
+        resolve(response)
+      })
+      .catch((error)=>{
+        reject(error)
+      })
+    })
+  }
+  startWork=(item:any)=>{
+    console.log(`in expert accept request by expert${item}`)
+    return new Promise((resolve,reject)=>{
+      let url='http://localhost:8080/expert/shiftstarts'
+      let encode={
+        method:"POST",
+        headers:{'Content-Type': 'application/json'},
+        body:JSON.stringify({
+          shiftid:item.generatedshiftid
+        })
+      }
+      fetch(url,encode)
+      .then(async(response)=>{
+        response=await response.json()
+        console.log(`response from spring add data${JSON.stringify(response)}`)
+        resolve(response)
+      })
+      .catch((error)=>{
+        reject(error)
+      })
+    })
+  }
+  workFinished=(item:any)=>{
+    console.log(`in expert accept request by expert${item}`)
+    return new Promise((resolve,reject)=>{
+      let url='http://localhost:8080/expert/shiftfinished'
+      let encode={
+        method:"POST",
+        headers:{'Content-Type': 'application/json'},
+        body:JSON.stringify({
+          shiftid:item.generatedshiftid,
+          hoursforwork:item.hoursforwork
+        })
+      }
+      fetch(url,encode)
+      .then(async(response)=>{
+        response=await response.json()
+        console.log(`response from spring add data${JSON.stringify(response)}`)
+        resolve(response)
+      })
+      .catch((error)=>{
+        reject(error)
+      })
+    })
+  }
+  
 
 
 }

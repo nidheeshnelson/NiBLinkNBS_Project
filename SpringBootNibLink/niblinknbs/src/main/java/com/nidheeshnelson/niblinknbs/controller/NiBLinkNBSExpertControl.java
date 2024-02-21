@@ -57,6 +57,21 @@ public List<NiBLinkNBSeShiftModel> findShiftsByExpert(@RequestBody NiBLinkNBSbbE
 public List<NiBLinkNBSeShiftRequestModel> findShiftRequestByShiftId(@RequestBody NiBLinkNBSgIDs id){
 	return ss.allShiftrequestsByShiftId(id.getShiftid());
 }
+@PostMapping("/requestaccept")
+public Map<String, String> acceptRequestExpert(@RequestBody NiBLinkNBSgIDs srm){
+	System.out.println(srm);
+	return ss.acceptRequestExpert(srm);
+}
+@PostMapping("/shiftstarts")
+public Map<String, String> shiftStarts(@RequestBody NiBLinkNBSgIDs s){
+	System.out.println(s);
+	return ss.shiftStarts(s);
+}
+@PostMapping("/shiftfinished")
+public Map<String, String> shiftFinished(@RequestBody NiBLinkNBSgIDs s){
+	System.out.println(s);
+	return ss.shiftFinished(s);
+}
 
 
 @PostMapping("/cancel")

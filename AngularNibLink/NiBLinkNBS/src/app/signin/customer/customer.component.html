@@ -130,13 +130,12 @@
                   </select><br>
                   <label for="shift">Select shift</label>
                   <select id="itemSelect6" [(ngModel)]="selectedItem6" name="shift">
-                  <option *ngFor="let dataItem6 of response7" [ngValue]="dataItem6">ExpertName:{{ dataItem6.expertname }},ShiftTime:{{dataItem6.shifttime}},Salaryperhour:{{dataItem6.salaryPerHours}}</option>
+                  <option *ngFor="let dataItem6 of response7" [ngValue]="dataItem6">ExpertName:{{ dataItem6.expertname }},ShiftTime:{{dataItem6.shifttime}},ShiftDate:{{dataItem6.shiftdate}},Salaryperhour:{{dataItem6.salaryPerHours}}</option>
                   </select><br>
                   <label for="address">Enter Address of work place</label>
                   <input type="text" name="address" [(ngModel)]="address" required><br>
                   <label for="landmark">Enter landmark of the work area</label>
                   <input type="text" name="landmark" [(ngModel)]="landmark" required><br>
-                  <input type="submit" value="Request Shift" >
                   <input type="submit" value="Request Shift" >
                   </form>
               </div>

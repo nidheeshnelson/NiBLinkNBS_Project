@@ -14,6 +14,7 @@ import com.nidheeshnelson.niblinknbs.model.NiBLinkNBSdPayedModel;
 import com.nidheeshnelson.niblinknbs.model.NiBLinkNBSdSalaryModel;
 import com.nidheeshnelson.niblinknbs.model.NiBLinkNBSeShiftModel;
 import com.nidheeshnelson.niblinknbs.model.NiBLinkNBSeShiftRequestModel;
+import com.nidheeshnelson.niblinknbs.model.NiBLinkNBSgIDs;
 import com.nidheeshnelson.niblinknbs.model.NiBLinkNBSgThalukAndJobModel;
 import com.nidheeshnelson.niblinknbs.model.ShiftStatus;
 import com.nidheeshnelson.niblinknbs.repositary.NiBLinkNBScCommissionRepository;
@@ -156,6 +157,76 @@ public List<NiBLinkNBSeShiftRequestModel> allShiftrequestsByShiftId(String shift
 	return srr.findByShiftid(shift);
 }
 
+public Map<String, String> acceptRequestExpert(NiBLinkNBSgIDs srm){
+	try {
+	List<NiBLinkNBSeShiftRequestModel> rm=srr.findByShiftid(srm.getShiftid());
+	for(NiBLinkNBSeShiftRequestModel srtm :rm) {
+		if(srtm.getCustomerid().equals(srm.getCustomerid())) {
+			srtm.setStatus(ShiftStatus.ACCEPTED);
+			srtm.setAcceptorrejectdatetime(LocalDateTime.now());
+			srtm=srr.save(srtm);
+			System.out.println(srtm);
+			smm=sr.findByGeneratedshiftid(srtm.getShiftid());
+			smm.setCustomerid(srtm.getCustomerid());
+			smm.setAddress(srtm.getAddress());
+			smm.setLandmark(srtm.getLandmark());
+			smm.setCustomercontact(srtm.getCustomercontact());
+			smm.setCustomername(srtm.getCustomername());
+			smm.setStatus(ShiftStatus.BOOKED);
+			smm.setAccepteddatetime(LocalDateTime.now());
+			smm=sr.save(smm);
+			System.out.println(smm);
+		}
+		else {
+			srtm.setStatus(ShiftStatus.REJECTED);
+			srr.save(srtm);
+		}
+	}
+	}
+	catch(Exception e) {
+		System.out.println(e);
+	}
+	return Map.of("BOOKEDID", srm.getShiftid());
+}
+
+public Map<String, String> shiftStarts(NiBLinkNBSgIDs s) {
+	try {
+	smm=sr.findByGeneratedshiftid(s.getShiftid());
+	if(smm.getShiftdate().equals(LocalDate.now())) {
+	smm.setStatus(ShiftStatus.RUNNING);
+	smm=sr.save(smm);
+	System.out.println(smm);
+	return Map.of("SHIFTRUN", "START");
+	}
+	else {
+		return Map.of("SHIFTRUN","STUCK");
+	}
+	}
+	catch(Exception e) {
+		System.out.println(e);
+		return Map.of("SHIFTRUN","ERROR"); 
+	}
+}
+
+public Map<String, String> shiftFinished(NiBLinkNBSgIDs s) {
+	try {
+	smm=sr.findByGeneratedshiftid(s.getShiftid());
+	smm.setHoursforwork(s.getHoursforwork());
+	smm.setStatus(ShiftStatus.FINISHED);
+	smm.setPayedbycustomer(smm.getSalaryPerHours()*smm.getHoursforwork());
+	smm.setSalary((1-smm.getCommissionpercent()/100)*smm.getSalaryPerHours()*smm.getHoursforwork());
+	smm.setCommission((smm.getCommissionpercent()/100)*smm.getSalaryPerHours()*smm.getHoursforwork());
+	smm=sr.save(smm);
+	System.out.println(smm);
+	return Map.of("FINI","FINISHED");
+	}
+	catch(Exception e) {
+		System.out.println(e);
+		return Map.of("FINI","ERROR");
+	}
+}
+
+
 
 
 
@@ -178,35 +249,7 @@ public List<NiBLinkNBSeShiftRequestModel> allRequestedShifts(String expertid){
 	return srr.findByExpertidAndStatus(expertid, ShiftStatus.PENDING);
 }
 
-public NiBLinkNBSeShiftModel acceptRequestExpert(NiBLinkNBSeShiftRequestModel srm){
-	try {
-	List<NiBLinkNBSeShiftRequestModel> rm=srr.findByShiftid(srm.getShiftid());
-	for(NiBLinkNBSeShiftRequestModel srtm :rm) {
-		if(srtm.getCustomerid().equals(srm.getCustomerid())) {
-			srm.setStatus(ShiftStatus.ACCEPTED);
-			srm.setAcceptorrejectdatetime(LocalDateTime.now());
-			srr.save(srm);
-			smm=sr.findByGeneratedshiftid(srm.getShiftid());
-			smm.setCustomerid(srm.getCustomerid());
-			smm.setAddress(srm.getAddress());
-			smm.setLandmark(srm.getLandmark());
-			smm.setCustomercontact(srm.getCustomercontact());
-			smm.setCustomername(srm.getCustomername());
-			smm.setStatus(ShiftStatus.BOOKED);
-			smm.setAccepteddatetime(LocalDateTime.now());
-			smm=sr.save(smm);
-		}
-		else {
-			srtm.setStatus(ShiftStatus.REJECTED);
-			srr.save(srtm);
-		}
-	}
-	}
-	catch(Exception e) {
-		System.out.println(e);
-	}
-	return smm;
-}
+
 
 public List<NiBLinkNBSeShiftModel> allBookedShiftsExpert(String expertid){
 	List<NiBLinkNBSeShiftModel> sm = sr.findByExpertidAndStatus(expertid, ShiftStatus.BOOKED);
@@ -228,21 +271,6 @@ public List<NiBLinkNBSeShiftModel> allBookedShiftsCustomer(String customerid){
 		}
 	}
 	return sr.findByCustomeridAndStatus(customerid, ShiftStatus.BOOKED);
-}
-
-public NiBLinkNBSeShiftModel shiftStarts(String s) {
-	smm=sr.findByGeneratedshiftid(s);
-	smm.setStatus(ShiftStatus.RUNNING);
-	return sr.save(smm);
-}
-
-public NiBLinkNBSeShiftModel shiftFinished(String s) {
-	smm=sr.findByGeneratedshiftid(s);
-	smm.setStatus(ShiftStatus.FINISHED);
-	smm.setPayedbycustomer(smm.getSalaryPerHours()*smm.getHoursforwork());
-	smm.setSalary((1-smm.getCommissionpercent()/100)*smm.getSalaryPerHours()*smm.getHoursforwork());
-	smm.setCommission((smm.getCommissionpercent()/100)*smm.getSalaryPerHours()*smm.getHoursforwork());
-	return sr.save(smm);
 }
 
 public NiBLinkNBSdPayedModel shiftPayed(String s) {

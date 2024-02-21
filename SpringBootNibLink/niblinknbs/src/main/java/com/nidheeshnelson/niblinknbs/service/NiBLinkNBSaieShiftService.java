@@ -6,6 +6,7 @@ import java.util.Map;
 import com.nidheeshnelson.niblinknbs.model.NiBLinkNBSdPayedModel;
 import com.nidheeshnelson.niblinknbs.model.NiBLinkNBSeShiftModel;
 import com.nidheeshnelson.niblinknbs.model.NiBLinkNBSeShiftRequestModel;
+import com.nidheeshnelson.niblinknbs.model.NiBLinkNBSgIDs;
 import com.nidheeshnelson.niblinknbs.model.NiBLinkNBSgThalukAndJobModel;
 
 public interface NiBLinkNBSaieShiftService {
@@ -16,13 +17,13 @@ public interface NiBLinkNBSaieShiftService {
 	public Map<String,String> requestShiftCustomer(NiBLinkNBSeShiftRequestModel srm);
 	public List<NiBLinkNBSeShiftModel> allShiftsByExpertId(String expert);
 	public List<NiBLinkNBSeShiftRequestModel> allShiftrequestsByShiftId(String shift);
+	public Map<String, String> acceptRequestExpert(NiBLinkNBSgIDs srm);
+	public Map<String, String> shiftStarts(NiBLinkNBSgIDs s);
+	public Map<String, String> shiftFinished(NiBLinkNBSgIDs s);
 	
 	public List<NiBLinkNBSeShiftRequestModel> allPendingRequestByIdExpert(NiBLinkNBSeShiftRequestModel srm);
 	public List<NiBLinkNBSeShiftRequestModel> allRequestedShifts(String expertid);
-	public NiBLinkNBSeShiftModel acceptRequestExpert(NiBLinkNBSeShiftRequestModel srm);
 	public List<NiBLinkNBSeShiftModel> allBookedShiftsExpert(String expertid);
 	public List<NiBLinkNBSeShiftModel> allBookedShiftsCustomer(String customerid);
-	public NiBLinkNBSeShiftModel shiftStarts(String s);
-	public NiBLinkNBSeShiftModel shiftFinished(String s);
 	public NiBLinkNBSdPayedModel shiftPayed(String s);
 }
