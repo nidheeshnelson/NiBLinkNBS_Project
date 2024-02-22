@@ -83,5 +83,27 @@ export class CustomerService {
       })
     })
   }
+  totalAmount=(data:string)=>{
+    console.log("in total amount service",data)
+    return new Promise((resolve,reject)=>{
+      let url='http://localhost:8080/paymentgateway/amountpayable'
+      let encode={
+        method:"POST",
+        headers:{'Content-Type': 'application/json'},
+        body:JSON.stringify({
+          customerid:data
+        })
+      }
+      fetch(url,encode)
+      .then(async(response)=>{
+        response=await response.json()
+        console.log(`response from spring add data${JSON.stringify(response)}`)
+        resolve(response)
+      })
+      .catch((error)=>{
+        reject(error)
+      })
+    })
+  }
 
 }

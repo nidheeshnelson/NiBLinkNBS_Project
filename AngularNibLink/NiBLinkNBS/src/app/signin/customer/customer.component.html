@@ -51,6 +51,7 @@
     <button (click)="activate2Div(1)">My Bookings</button>
     <button (click)="activate2Div(2)">Book Shift</button>
     <button (click)="activate2Div(3)">Shift Requests</button>
+    <button (click)="activate2Div(4)">Payments</button>
     
         <div *ngIf="active2Div === 1"> 
         <p>Block 21 is activated!</p>
@@ -143,5 +144,67 @@
 
         <div *ngIf="active2Div === 3"> 
         <p>Block 23 is activated!</p>
+        </div>
+
+        <div *ngIf="active2Div === 4"> 
+        <p>Block 24 is activated!</p>
+        <button (click)="activate24Div(1)">Pending Payments</button>
+        <button (click)="activate24Div(2)">Transaction history</button>
+        <button (click)="activate24Div(3)">Pay now</button>
+
+            <div *ngIf="active24Div === 1"> 
+            <p>Block 241 is activated!</p>
+            </div>
+
+            <div *ngIf="active24Div === 2"> 
+            <p>Block 242 is activated!</p>
+            </div>
+            
+            <div *ngIf="active24Div === 3"> 
+            <p>Block 243 is activated!</p>
+            <button (click)="activate243Div(1)" (click)="totalamount()">card payment</button>
+            <button (click)="activate243Div(2)" (click)="totalamount()">Net Banking</button>
+            <button (click)="activate243Div(3)" (click)="totalamount()">UPI id</button>
+
+                <div *ngIf="active243Div === 1"> 
+                <p>Block 2431 is activated!</p>
+                <form #cardform="ngForm" (ngSubmit)="card(cardform.value)">
+                  <label for="cardnumber">Enter card number</label>
+                  <input type="text" name="cardnumber" ngModel required><br>
+                  <label for="expire">Enter expiring date</label>
+                  <input type="text" name="expire" ngModel required><br>
+                  <label for="cvc">Enter cvc</label>
+                  <input type="number" name="cvc" ngModel required><br>
+                  <label for="payment">Amount for pay</label>
+                  <input type="number" id="payment" name="payment" [value]="response9" readonly><br>
+                  <input type="submit" value="Submit" >
+                  </form>
+                </div>
+
+                <div *ngIf="active243Div === 2"> 
+                <p>Block 2432 is activated!</p>
+                <form #netbankingform="ngForm" (ngSubmit)="netbanking(netbankingform.value)">
+                  <label for="username">Enter username</label>
+                  <input type="text" name="username" ngModel required><br>
+                  <label for="password">Enter password</label>
+                  <input type="password" name="password" ngModel required><br>
+                  <label for="payment">Amount for pay</label>
+                  <input type="number" id="payment" name="payment" [value]="response9" readonly><br>
+                  <input type="submit" value="Submit" >
+                  </form>
+                </div>
+
+                <div *ngIf="active243Div === 3"> 
+                <p>Block 2433 is activated!</p>
+                <form #upiform="ngForm" (ngSubmit)="upi(upiform.value)">
+                  <label for="upiid">Enter upi id</label>
+                  <input type="text" name="upiid" ngModel required><br>
+                  <label for="payment">Amount for pay</label>
+                  <input type="number" id="payment" name="payment" [value]="response9" readonly><br>
+                  <input type="submit" value="Submit" >
+                  </form>
+                </div>
+
+            </div>
         </div>
     </div>

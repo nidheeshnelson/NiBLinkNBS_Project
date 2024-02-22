@@ -18,6 +18,8 @@ export class CustomerComponent implements OnInit{
   active12Div: number | null = null;
   active2Div: number | null = null;
   active22Div: number | null = null;
+  active24Div: number | null = null;
+  active243Div: number | null = null;
   response:any;
   response1:any;
   response2:any;
@@ -27,6 +29,7 @@ export class CustomerComponent implements OnInit{
   response6:any;
   response7:any;
   response8:any;
+  response9:any;
   selectedItem1:any;
   selectedItem2:any;
   selectedItem3:any;
@@ -37,7 +40,7 @@ export class CustomerComponent implements OnInit{
   contact:string='';
   address:string='';
   landmark:string='';
-
+  
   jobdate:Date | null = null;
   constructor(private cs:CustomerService, private as:AdminService){}
   ngOnInit(): void {
@@ -127,6 +130,23 @@ try{
   console.log("response from request shifts",this.response8.SHIFTREQID);
 }catch(error){console.error(`Error in countryList:`, error);}
 }
+async totalamount(){
+  try{
+    const customerid = this.customerid;
+    console.log('in total amount',customerid)
+    this.response9 = await this.cs.totalAmount(customerid);
+    console.log(this.response9)
+  }catch(error){console.error(`Error in countryList:`, error);}
+}
+card(data:any){
+
+}
+netbanking(data:any){
+
+}
+upi(data:any){
+
+}
   activateDiv(divNumber: number): void {
     this.activeDiv = divNumber;
   }
@@ -141,5 +161,11 @@ try{
   }
   activate22Div(divNumber: number): void {
     this.active22Div = divNumber;
+  }
+  activate24Div(divNumber: number): void {
+    this.active24Div = divNumber;
+  }
+  activate243Div(divNumber: number): void {
+    this.active243Div = divNumber;
   }
 }

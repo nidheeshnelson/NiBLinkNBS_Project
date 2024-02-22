@@ -17,7 +17,8 @@ public class NiBLinkNBSdPayedModel {
 	private String shiftid;
 	private String customerid;
 	private String expertid;
-	private LocalDateTime commissiondatetime;
+	private LocalDateTime paymentdatetime;
+	private double payment;
 	private String thalukcode;
 	private ShiftStatus status;
 	public int getPaymentid() {
@@ -50,11 +51,14 @@ public class NiBLinkNBSdPayedModel {
 	public void setExpertid(String expertid) {
 		this.expertid = expertid;
 	}
-	public LocalDateTime getCommissiondatetime() {
-		return commissiondatetime;
+	public LocalDateTime getPaymentdatetime() {
+		return paymentdatetime;
 	}
-	public void setCommissiondatetime(LocalDateTime commissiondatetime) {
-		this.commissiondatetime = commissiondatetime;
+	public void setPaymentdatetime(LocalDateTime commissiondatetime) {
+		this.paymentdatetime = commissiondatetime;
+	}
+	public boolean isPaymentdatetimeNull() {
+		return this.paymentdatetime==null;
 	}
 	public String getThalukcode() {
 		return thalukcode;
@@ -68,10 +72,16 @@ public class NiBLinkNBSdPayedModel {
 	public void setStatus(ShiftStatus status) {
 		this.status = status;
 	}
+	public double getPayment() {
+		return payment;
+	}
+	public void setPayment(double payment) {
+		this.payment = payment;
+	}
 	@Override
 	public String toString() {
 		return "NiBLinkNBSdPayedModel [paymentid=" + paymentid + ", commissionid=" + commissionid + ", shiftid="
-				+ shiftid + ", customerid=" + customerid + ", expertid=" + expertid + ", commissiondatetime="
-				+ commissiondatetime + ", thalukcode=" + thalukcode + ", status=" + status + "]";
+				+ shiftid + ", customerid=" + customerid + ", expertid=" + expertid + ", paymentdatetime="
+				+ paymentdatetime + ", payment=" + payment + ", thalukcode=" + thalukcode + ", status=" + status + "]";
 	}
 }

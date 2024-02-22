@@ -63,6 +63,8 @@ public Map<String, String> createShiftExpert(NiBLinkNBSeShiftModel sm) {
 	cpm.setExpertid(sm.getExpertid());
 	cpm.setCustomerid(sm.getCustomerid());
 	cpm.setCommissionid(sm.getCommissionid());
+	cpm.setCommissionpersentage(sm.getCommissionpercent());
+	cpm.setThalukcode(sm.getThalukcode());
 	cpm.setStatus(ShiftStatus.NOTPAYED);
 	cpm=cpr.save(cpm);
 	System.out.println(cpm);
@@ -70,6 +72,7 @@ public Map<String, String> createShiftExpert(NiBLinkNBSeShiftModel sm) {
 	pm.setExpertid(sm.getExpertid());
 	pm.setCustomerid(sm.getCustomerid());
 	pm.setCommissionid(sm.getCommissionid());
+	pm.setThalukcode(sm.getThalukcode());
 	pm.setStatus(ShiftStatus.NOTPAYED);
 	pm=pr.save(pm);
 	System.out.println(pm);
@@ -77,6 +80,7 @@ public Map<String, String> createShiftExpert(NiBLinkNBSeShiftModel sm) {
 	slm.setExpertid(sm.getExpertid());
 	slm.setCustomerid(sm.getCustomerid());
 	slm.setCommissionid(sm.getCommissionid());
+	slm.setThalukcode(sm.getThalukcode());
 	slm.setStatus(ShiftStatus.NOTPAYED);
 	slm=slr.save(slm);
 	System.out.println(slm);
@@ -217,11 +221,27 @@ public Map<String, String> shiftFinished(NiBLinkNBSgIDs s) {
 	smm.setSalary((1-smm.getCommissionpercent()/100)*smm.getSalaryPerHours()*smm.getHoursforwork());
 	smm.setCommission((smm.getCommissionpercent()/100)*smm.getSalaryPerHours()*smm.getHoursforwork());
 	smm=sr.save(smm);
+	cpm=cpr.findByShiftid(s.getShiftid());
+	cpm.setCommissionamount(smm.getCommission());
+	cpm.setCustomerid(smm.getCustomerid());
+	cpm=cpr.save(cpm);
+	System.out.println(cpm);
+	pm=pr.findByShiftid(s.getShiftid());
+	pm.setPayment(smm.getPayedbycustomer());
+	pm.setCustomerid(smm.getCustomerid());
+	pm=pr.save(pm);
+	System.out.println(pm);
+	slm=slr.findByShiftid(s.getShiftid());
+	slm.setSalary(smm.getSalary());
+	slm.setCustomerid(smm.getCustomerid());
+	slm=slr.save(slm);
+	System.out.println(slm);
 	System.out.println(smm);
 	return Map.of("FINI","FINISHED");
 	}
 	catch(Exception e) {
 		System.out.println(e);
+		
 		return Map.of("FINI","ERROR");
 	}
 }
@@ -277,7 +297,7 @@ public NiBLinkNBSdPayedModel shiftPayed(String s) {
 	try {
 	pm=pr.findByShiftid(s);
 	pm.setStatus(ShiftStatus.PAYED);
-	pm.setCommissiondatetime(LocalDateTime.now());
+	pm.setPaymentdatetime(LocalDateTime.now());
 	pm=pr.save(pm);
 	cpm=cpr.findByShiftid(s);
 	cpm.setStatus(ShiftStatus.PAYED);

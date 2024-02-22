@@ -18,7 +18,8 @@ public class NiBLinkNBSdSalaryModel {
 	private String expertid;
 	private String customerid;
 	private String thalukcode;
-	private LocalDateTime salarypayeddatetime;
+	private LocalDateTime salarydatetime;
+	private double salary;
 	private ShiftStatus status;
 	public int getSalaryid() {
 		return salaryid;
@@ -57,10 +58,10 @@ public class NiBLinkNBSdSalaryModel {
 		this.thalukcode = thalukcode;
 	}
 	public LocalDateTime getSalarypayeddatetime() {
-		return salarypayeddatetime;
+		return salarydatetime;
 	}
 	public void setSalarypayeddatetime(LocalDateTime salarypayeddatetime) {
-		this.salarypayeddatetime = salarypayeddatetime;
+		this.salarydatetime = salarypayeddatetime;
 	}
 		public ShiftStatus getStatus() {
 		return status;
@@ -68,11 +69,17 @@ public class NiBLinkNBSdSalaryModel {
 	public void setStatus(ShiftStatus status) {
 		this.status = status;
 	}
+		public double getSalary() {
+		return salary;
+	}
+	public void setSalary(double salary) {
+		this.salary = salary;
+	}
 		@Override
 		public String toString() {
 			return "NiBLinkNBSdSalaryModel [salaryid=" + salaryid + ", commissionid=" + commissionid + ", shiftid="
 					+ shiftid + ", expertid=" + expertid + ", customerid=" + customerid + ", thalukcode=" + thalukcode
-					+ ", salarypayeddatetime=" + salarypayeddatetime + ", status=" + status + "]";
+					+ ", salarydatetime=" + salarydatetime + ", salary=" + salary + ", status=" + status + "]";
 		}
 	
 }
