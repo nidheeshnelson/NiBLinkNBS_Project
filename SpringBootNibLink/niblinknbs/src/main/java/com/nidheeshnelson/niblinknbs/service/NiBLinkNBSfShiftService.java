@@ -9,6 +9,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.nidheeshnelson.niblinknbs.model.NiBLinkNBSaLivePaymentModel;
 import com.nidheeshnelson.niblinknbs.model.NiBLinkNBSdCommissionPayedModel;
 import com.nidheeshnelson.niblinknbs.model.NiBLinkNBSdPayedModel;
 import com.nidheeshnelson.niblinknbs.model.NiBLinkNBSdSalaryModel;
@@ -16,7 +17,9 @@ import com.nidheeshnelson.niblinknbs.model.NiBLinkNBSeShiftModel;
 import com.nidheeshnelson.niblinknbs.model.NiBLinkNBSeShiftRequestModel;
 import com.nidheeshnelson.niblinknbs.model.NiBLinkNBSgIDs;
 import com.nidheeshnelson.niblinknbs.model.NiBLinkNBSgThalukAndJobModel;
+import com.nidheeshnelson.niblinknbs.model.PaymentMode;
 import com.nidheeshnelson.niblinknbs.model.ShiftStatus;
+import com.nidheeshnelson.niblinknbs.repositary.NiBLinkNBSaLivePaymentGatewayRepository;
 import com.nidheeshnelson.niblinknbs.repositary.NiBLinkNBScCommissionRepository;
 import com.nidheeshnelson.niblinknbs.repositary.NiBLinkNBScPaymentDetailsRepository;
 import com.nidheeshnelson.niblinknbs.repositary.NiBLinkNBSdCommissionPayedRepository;
@@ -41,6 +44,9 @@ public class NiBLinkNBSfShiftService implements NiBLinkNBSaieShiftService{
 	private NiBLinkNBSdPaymentRepository pr;
 	@Autowired
 	private NiBLinkNBSdSalaryRepository slr;
+	@Autowired
+	private NiBLinkNBSaLivePaymentGatewayRepository lpr;
+	private NiBLinkNBSaLivePaymentModel lpm;
 	private NiBLinkNBSeShiftModel smm= new NiBLinkNBSeShiftModel();
 	private NiBLinkNBSdCommissionPayedModel cpm= new NiBLinkNBSdCommissionPayedModel();
 	private NiBLinkNBSdPayedModel pm= new NiBLinkNBSdPayedModel();
@@ -246,6 +252,45 @@ public Map<String, String> shiftFinished(NiBLinkNBSgIDs s) {
 	}
 }
 
+public Map<String, String> shiftPayed(NiBLinkNBSaLivePaymentModel pml) {
+	try {
+	pm=pr.findByShiftid(pml.getShiftid());
+	pm.setStatus(ShiftStatus.PAYED);
+	pm.setPaymentdatetime(LocalDateTime.now());
+	pm=pr.save(pm);
+	System.out.println(pm);
+	cpm=cpr.findByShiftid(pml.getShiftid());
+	cpm.setStatus(ShiftStatus.PAYED);
+	cpm.setDatetimeofcommission(LocalDateTime.now());
+	cpm=cpr.save(cpm);
+	System.out.println(cpm);
+	lpm.setAmountsave(cpm.getCommissionamount());
+	lpm.setCommissionid(cpm.getCommissionid());
+	lpm.setShiftid(pml.getShiftid());
+	lpm.setMode(PaymentMode.TRANSFER);
+	lpm.setTransactiondatetime(LocalDateTime.now());
+	lpm=lpr.save(lpm);
+	System.out.println(lpm);
+	lpm=null;
+	slm=slr.findByShiftid(pml.getShiftid());
+	slm.setStatus(ShiftStatus.PAYED);
+	slm.setSalarypayeddatetime(LocalDateTime.now());
+	slm=slr.save(slm);
+	lpm.setAmountput(slm.getSalary());
+	lpm.setShiftid(pml.getShiftid());
+	lpm.setWorkerid(slm.getExpertid());
+	lpm.setMode(PaymentMode.TRANSFER);
+	lpm.setTransactiondatetime(LocalDateTime.now());
+	lpm=lpr.save(lpm);
+	System.out.println(lpm);
+	return Map.of("TRANSACTION", "SUCCESS");
+	}
+	catch(Exception e) {
+		System.out.println(e);
+		return Map.of("TRANSACTION", "FAILED");
+	}
+}
+
 
 
 
@@ -293,24 +338,7 @@ public List<NiBLinkNBSeShiftModel> allBookedShiftsCustomer(String customerid){
 	return sr.findByCustomeridAndStatus(customerid, ShiftStatus.BOOKED);
 }
 
-public NiBLinkNBSdPayedModel shiftPayed(String s) {
-	try {
-	pm=pr.findByShiftid(s);
-	pm.setStatus(ShiftStatus.PAYED);
-	pm.setPaymentdatetime(LocalDateTime.now());
-	pm=pr.save(pm);
-	cpm=cpr.findByShiftid(s);
-	cpm.setStatus(ShiftStatus.PAYED);
-	cpm.setDatetimeofcommission(LocalDateTime.now());
-	cpm=cpr.save(cpm);
-	slm=slr.findByShiftid(s);
-	slm.setStatus(ShiftStatus.PAYED);
-	slm.setSalarypayeddatetime(LocalDateTime.now());
-	slm=slr.save(slm);
-	}
-	catch(Exception e) {
-		System.out.println(e);
-	}
-	return pm;
-}
+
+
+
 }

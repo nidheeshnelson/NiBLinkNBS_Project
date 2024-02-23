@@ -29,13 +29,16 @@ export class CustomerComponent implements OnInit{
   response6:any;
   response7:any;
   response8:any;
-  response9:any;
+  public response9:any[]=[];
   selectedItem1:any;
   selectedItem2:any;
   selectedItem3:any;
   selectedItem4:any;
   selectedItem5:any;
   selectedItem6:any;
+  shiftid: string='';
+  amount: number=0;
+  payamount:any;
   customername:string='';
   contact:string='';
   address:string='';
@@ -132,14 +135,38 @@ try{
 }
 async totalamount(){
   try{
+    this.response9 = [];
+    console.log('after null',this.response9);
     const customerid = this.customerid;
     console.log('in total amount',customerid)
-    this.response9 = await this.cs.totalAmount(customerid);
+    this.response9 = await this.cs.totalAmount(customerid) as any[];
     console.log(this.response9)
   }catch(error){console.error(`Error in countryList:`, error);}
 }
-card(data:any){
+totalamount1(){
 
+}
+transactionHistory(){
+
+}
+updateSelectedValues(event: any){
+  this.shiftid=event.mss.SHIFT;
+  this.amount=event.msd.someKey;
+  console.log(this.shiftid,this.amount)
+}
+card(data:any){
+  // this.shiftid = cardFormValue;
+  //   this.amount = cardFormValue;
+    const payeeid=this.customerid;
+    const shiftid=data.payamount.mss.value;
+    const debitcardnumber=data.cardnumber;
+    const expirationdate=data.expire;
+    const cvc=data.cvc;
+    const password=data.password;
+    const amountget=data.payamount.msd.entry.value;
+    console.log(payeeid,shiftid,debitcardnumber,expirationdate,cvc,password,amountget)
+
+    
 }
 netbanking(data:any){
 

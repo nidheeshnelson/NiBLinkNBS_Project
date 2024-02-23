@@ -3,6 +3,7 @@ package com.nidheeshnelson.niblinknbs.service;
 import java.util.List;
 import java.util.Map;
 
+import com.nidheeshnelson.niblinknbs.model.NiBLinkNBSaLivePaymentModel;
 import com.nidheeshnelson.niblinknbs.model.NiBLinkNBSdPayedModel;
 import com.nidheeshnelson.niblinknbs.model.NiBLinkNBSeShiftModel;
 import com.nidheeshnelson.niblinknbs.model.NiBLinkNBSeShiftRequestModel;
@@ -20,10 +21,11 @@ public interface NiBLinkNBSaieShiftService {
 	public Map<String, String> acceptRequestExpert(NiBLinkNBSgIDs srm);
 	public Map<String, String> shiftStarts(NiBLinkNBSgIDs s);
 	public Map<String, String> shiftFinished(NiBLinkNBSgIDs s);
+	public Map<String, String> shiftPayed(NiBLinkNBSaLivePaymentModel pml);
 	
 	public List<NiBLinkNBSeShiftRequestModel> allPendingRequestByIdExpert(NiBLinkNBSeShiftRequestModel srm);
 	public List<NiBLinkNBSeShiftRequestModel> allRequestedShifts(String expertid);
 	public List<NiBLinkNBSeShiftModel> allBookedShiftsExpert(String expertid);
 	public List<NiBLinkNBSeShiftModel> allBookedShiftsCustomer(String customerid);
-	public NiBLinkNBSdPayedModel shiftPayed(String s);
+	
 }

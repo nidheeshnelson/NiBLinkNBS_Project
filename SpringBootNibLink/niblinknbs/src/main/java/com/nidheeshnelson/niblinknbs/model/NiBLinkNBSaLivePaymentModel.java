@@ -1,5 +1,7 @@
 package com.nidheeshnelson.niblinknbs.model;
 
+import java.time.LocalDateTime;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -12,6 +14,9 @@ public class NiBLinkNBSaLivePaymentModel {
 	@GeneratedValue
 private int livepaymentid;
 private String payeeid;
+private String shiftid;
+private String workerid;
+private String commissionid;
 private String debitcardnumber;
 private String expirationdate;
 private int cvc;
@@ -21,6 +26,8 @@ private String password;
 private double amountget;
 private double amountput;
 private double amountsave;
+private LocalDateTime transactiondatetime;
+private PaymentMode mode;
 public int getLivepaymentid() {
 	return livepaymentid;
 }
@@ -87,12 +94,44 @@ public double getAmountsave() {
 public void setAmountsave(double amountsave) {
 	this.amountsave = amountsave;
 }
+public String getShiftid() {
+	return shiftid;
+}
+public void setShiftid(String shiftid) {
+	this.shiftid = shiftid;
+}
+public String getWorkerid() {
+	return workerid;
+}
+public void setWorkerid(String workerid) {
+	this.workerid = workerid;
+}
+public String getCommissionid() {
+	return commissionid;
+}
+public void setCommissionid(String commissionid) {
+	this.commissionid = commissionid;
+}
+public LocalDateTime getTransactiondatetime() {
+	return transactiondatetime;
+}
+public void setTransactiondatetime(LocalDateTime transactiondatetime) {
+	this.transactiondatetime = transactiondatetime;
+}
+public PaymentMode getMode() {
+	return mode;
+}
+public void setMode(PaymentMode mode) {
+	this.mode = mode;
+}
 @Override
 public String toString() {
-	return "NiBLinkNBSaLivePaymentModel [livepaymentid=" + livepaymentid + ", payeeid=" + payeeid + ", debitcardnumber="
+	return "NiBLinkNBSaLivePaymentModel [livepaymentid=" + livepaymentid + ", payeeid=" + payeeid + ", shiftid="
+			+ shiftid + ", workerid=" + workerid + ", commissionid=" + commissionid + ", debitcardnumber="
 			+ debitcardnumber + ", expirationdate=" + expirationdate + ", cvc=" + cvc + ", upiid=" + upiid
 			+ ", netbankingid=" + netbankingid + ", password=" + password + ", amountget=" + amountget + ", amountput="
-			+ amountput + ", amountsave=" + amountsave + "]";
+			+ amountput + ", amountsave=" + amountsave + ", transactiondatetime=" + transactiondatetime + ", mode="
+			+ mode + "]";
 }
 
 }

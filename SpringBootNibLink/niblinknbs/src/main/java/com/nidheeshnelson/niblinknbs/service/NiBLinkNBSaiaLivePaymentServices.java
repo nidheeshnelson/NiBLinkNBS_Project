@@ -1,11 +1,15 @@
 package com.nidheeshnelson.niblinknbs.service;
 
+import java.util.List;
+import java.util.Map;
+
+import com.nidheeshnelson.niblinknbs.model.NiBLinkNBSLists;
 import com.nidheeshnelson.niblinknbs.model.NiBLinkNBSaLivePaymentModel;
 import com.nidheeshnelson.niblinknbs.model.NiBLinkNBSgIDs;
 
 public interface NiBLinkNBSaiaLivePaymentServices {
-	public double totalAmount(NiBLinkNBSgIDs id);
-	public boolean cardPayment(NiBLinkNBSaLivePaymentModel pm);
-	public boolean netbankingPayment(NiBLinkNBSaLivePaymentModel pm);
-	public boolean upiPayment(NiBLinkNBSaLivePaymentModel pm);
+	public List<NiBLinkNBSLists> totalAmount(NiBLinkNBSgIDs id);
+	public Map<String, String> cardPayment(NiBLinkNBSaLivePaymentModel pm);
+	public Map<String, String> netbankingPayment(NiBLinkNBSaLivePaymentModel pm);
+	public Map<String, String> upiPayment(NiBLinkNBSaLivePaymentModel pm);
 }

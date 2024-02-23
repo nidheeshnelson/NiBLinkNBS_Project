@@ -175,8 +175,18 @@
                   <input type="text" name="expire" ngModel required><br>
                   <label for="cvc">Enter cvc</label>
                   <input type="number" name="cvc" ngModel required><br>
-                  <label for="payment">Amount for pay</label>
-                  <input type="number" id="payment" name="payment" [value]="response9" readonly><br>
+                  <label for="password">Enter password</label>
+                  <input type="password" name="password" ngModel required><br>
+                  <label for="totalAmount">Select Total Amount:</label>
+                  <select id="totalAmount" [(ngModel)]="payamount" (change)="updateSelectedValues($event)">
+                  <option *ngFor="let item of response9" [ngValue]="item">
+                  {{ item?.mss?.SHIFT || 'N/A' }}
+                  <div *ngFor="let entry of item?.msd | keyvalue">
+                  {{ entry.key }}: {{ entry.value }}
+                  </div>
+                  </option>
+                  </select>
+                  <!-- <input type="number" id="payment" name="payment" [value]="response9" readonly><br> -->
                   <input type="submit" value="Submit" >
                   </form>
                 </div>
@@ -189,7 +199,14 @@
                   <label for="password">Enter password</label>
                   <input type="password" name="password" ngModel required><br>
                   <label for="payment">Amount for pay</label>
-                  <input type="number" id="payment" name="payment" [value]="response9" readonly><br>
+                  <div *ngFor="let item of response9">
+                    <div>{{ item.mss.SHIFT }}</div>
+                    <div *ngFor="let entry of item.msd | keyvalue">
+                      {{ entry.key }}: {{ entry.value }}
+                    </div>
+                    <!-- Add any other properties you want to display -->
+                  </div>
+                  <!-- <input type="number" id="payment" name="payment" [value]="response9" readonly><br> -->
                   <input type="submit" value="Submit" >
                   </form>
                 </div>
@@ -199,8 +216,17 @@
                 <form #upiform="ngForm" (ngSubmit)="upi(upiform.value)">
                   <label for="upiid">Enter upi id</label>
                   <input type="text" name="upiid" ngModel required><br>
+                  <label for="password">Enter password</label>
+                  <input type="password" name="password" ngModel required><br>
                   <label for="payment">Amount for pay</label>
-                  <input type="number" id="payment" name="payment" [value]="response9" readonly><br>
+                  <div *ngFor="let item of response9">
+                    <div>{{ item.mss.SHIFT }}</div>
+                    <div *ngFor="let entry of item.msd | keyvalue">
+                      {{ entry.key }}: {{ entry.value }}
+                    </div>
+                    <!-- Add any other properties you want to display -->
+                  </div>
+                  <!-- <input type="number" id="payment" name="payment" [value]="response9" readonly><br> -->
                   <input type="submit" value="Submit" >
                   </form>
                 </div>
