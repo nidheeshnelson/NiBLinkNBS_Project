@@ -46,7 +46,7 @@ public class NiBLinkNBSfShiftService implements NiBLinkNBSaieShiftService{
 	private NiBLinkNBSdSalaryRepository slr;
 	@Autowired
 	private NiBLinkNBSaLivePaymentGatewayRepository lpr;
-	private NiBLinkNBSaLivePaymentModel lpm;
+	private NiBLinkNBSaLivePaymentModel lpm= new NiBLinkNBSaLivePaymentModel();
 	private NiBLinkNBSeShiftModel smm= new NiBLinkNBSeShiftModel();
 	private NiBLinkNBSdCommissionPayedModel cpm= new NiBLinkNBSdCommissionPayedModel();
 	private NiBLinkNBSdPayedModel pm= new NiBLinkNBSdPayedModel();
@@ -271,11 +271,13 @@ public Map<String, String> shiftPayed(NiBLinkNBSaLivePaymentModel pml) {
 	lpm.setTransactiondatetime(LocalDateTime.now());
 	lpm=lpr.save(lpm);
 	System.out.println(lpm);
-	lpm=null;
 	slm=slr.findByShiftid(pml.getShiftid());
+	System.out.println(slm);
 	slm.setStatus(ShiftStatus.PAYED);
 	slm.setSalarypayeddatetime(LocalDateTime.now());
 	slm=slr.save(slm);
+	System.out.println(slm);
+	lpm=new NiBLinkNBSaLivePaymentModel();
 	lpm.setAmountput(slm.getSalary());
 	lpm.setShiftid(pml.getShiftid());
 	lpm.setWorkerid(slm.getExpertid());

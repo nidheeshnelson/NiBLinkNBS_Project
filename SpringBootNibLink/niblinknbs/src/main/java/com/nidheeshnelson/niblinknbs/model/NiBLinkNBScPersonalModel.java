@@ -1,5 +1,7 @@
 package com.nidheeshnelson.niblinknbs.model;
 
+import java.time.LocalDate;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
@@ -10,12 +12,33 @@ public class NiBLinkNBScPersonalModel {
 	@Id
 	private String personalid;
 	private int age;
-	private String dateofbirth;
+	private LocalDate dateofbirth;
 	private String gender;
 	private String father;
 	private String mother;
 	private String spouse;
 	private int children;
+	public boolean isAgeNull() {
+		return age==0;
+	}
+	public boolean isDateofbirthNull() {
+		return dateofbirth==null;
+	}
+	public boolean isGenderNull() {
+		return gender==null;
+	}
+	public boolean isFatherNull() {
+		return father==null;
+	}
+	public boolean isMotherNull() {
+		return mother==null;
+	}
+	public boolean isChildrenNull() {
+		return children==0;
+	}
+	public boolean isSpouseNull() {
+		return spouse==null;
+	}
 	public String getPersonalid() {
 		return personalid;
 	}
@@ -28,10 +51,10 @@ public class NiBLinkNBScPersonalModel {
 	public void setAge(int age) {
 		this.age = age;
 	}
-	public String getDateofbirth() {
+	public LocalDate getDateofbirth() {
 		return dateofbirth;
 	}
-	public void setDateofbirth(String dateofbirth) {
+	public void setDateofbirth(LocalDate dateofbirth) {
 		this.dateofbirth = dateofbirth;
 	}
 	public String getGender() {

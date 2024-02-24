@@ -7,5 +7,5 @@ import com.nidheeshnelson.niblinknbs.model.NiBLinkNBSbcCustomerModel;
 
 @Repository
 public interface NiBLinkNBSbCustomerRepository extends JpaRepository<NiBLinkNBSbcCustomerModel, String>{
-
+	NiBLinkNBSbcCustomerModel findByCustomerid(String s);
 }

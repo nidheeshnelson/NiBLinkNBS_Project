@@ -7,5 +7,5 @@ import com.nidheeshnelson.niblinknbs.model.NiBLinkNBSbaAdminModel;
 
 @Repository
 public interface NiBLinkNBSbAdminRepository extends JpaRepository<NiBLinkNBSbaAdminModel, String>{
-
+	NiBLinkNBSbaAdminModel findByAdminid(String s);
 }

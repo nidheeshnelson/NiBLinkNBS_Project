@@ -7,5 +7,5 @@ import com.nidheeshnelson.niblinknbs.model.NiBLinkNBSbbExpertModel;
 
 @Repository
 public interface NiBLinkNBSbExpertRepository extends JpaRepository<NiBLinkNBSbbExpertModel, String>{
-
+	NiBLinkNBSbbExpertModel findByExpertid(String s);
 }

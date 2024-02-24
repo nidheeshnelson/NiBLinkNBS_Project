@@ -20,6 +20,39 @@ public class NiBLinkNBScAddressModel {
 	private String districtcode;
 	private String statecode;
 	private String countrycode;
+	public boolean isDistrictcodeNull() {
+		return districtcode==null;
+	}
+	public boolean isStatecodeNull() {
+		return statecode==null;
+	}
+	public boolean isCountrycodeNull() {
+		return countrycode==null;
+	}
+	public boolean isLocalbodyNull() {
+		return localbody==null;
+	}
+	public boolean isThalukcodeNull() {
+		return thalukcode==null;
+	}
+	public boolean isPlaceNull() {
+		return place==null;
+	}
+	public boolean isPostofficeNull() {
+		return postoffice==null;
+	}
+	public boolean isPincodeNull() {
+		return pincode==0;
+	}
+	public boolean isHousenameNull() {
+		return housename==null;
+	}
+	public boolean isStreetNull() {
+		return street==null;
+	}
+	public boolean isLandmarkNull() {
+		return landmark==null;
+	}
 	public String getAddressid() {
 		return addressid;
 	}

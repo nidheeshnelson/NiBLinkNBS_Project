@@ -15,6 +15,24 @@ public class NiBLinkNBScBankingDetailsModel {
 	private String accountnumber;
 	private int secretpin;
 	private String upiid;
+	public boolean isBankNull() {
+		return bank==null;
+	}
+	public boolean isBranchNull() {
+		return branch==null;
+	}
+	public boolean isIfscNull() {
+		return ifsc==null;
+	}
+	public boolean isAccountnumberNull() {
+		return accountnumber==null;
+	}
+	public boolean isSecretpinNull() {
+		return secretpin==0;
+	}
+	public boolean isUpiidNull() {
+		return upiid==null;
+	}
 	public String getBankid() {
 		return bankid;
 	}

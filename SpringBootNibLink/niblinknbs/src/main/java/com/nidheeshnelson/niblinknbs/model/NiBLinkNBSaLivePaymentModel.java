@@ -1,5 +1,6 @@
 package com.nidheeshnelson.niblinknbs.model;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import jakarta.persistence.Entity;
@@ -18,7 +19,7 @@ private String shiftid;
 private String workerid;
 private String commissionid;
 private String debitcardnumber;
-private String expirationdate;
+private LocalDate expirationdate;
 private int cvc;
 private String upiid;
 private String netbankingid;
@@ -57,12 +58,6 @@ public String getDebitcardnumber() {
 }
 public void setDebitcardnumber(String debitcardnumber) {
 	this.debitcardnumber = debitcardnumber;
-}
-public String getExpirationdate() {
-	return expirationdate;
-}
-public void setExpirationdate(String expirationdate) {
-	this.expirationdate = expirationdate;
 }
 public int getCvc() {
 	return cvc;
@@ -123,6 +118,12 @@ public PaymentMode getMode() {
 }
 public void setMode(PaymentMode mode) {
 	this.mode = mode;
+}
+public LocalDate getExpirationdate() {
+	return expirationdate;
+}
+public void setExpirationdate(LocalDate expirationdate) {
+	this.expirationdate = expirationdate;
 }
 @Override
 public String toString() {

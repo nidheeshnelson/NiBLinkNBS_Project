@@ -36,8 +36,6 @@ export class CustomerComponent implements OnInit{
   selectedItem4:any;
   selectedItem5:any;
   selectedItem6:any;
-  shiftid: string='';
-  amount: number=0;
   payamount:any;
   customername:string='';
   contact:string='';
@@ -149,30 +147,37 @@ totalamount1(){
 transactionHistory(){
 
 }
-updateSelectedValues(event: any){
-  this.shiftid=event.mss.SHIFT;
-  this.amount=event.msd.someKey;
-  console.log(this.shiftid,this.amount)
-}
-card(data:any){
-  // this.shiftid = cardFormValue;
-  //   this.amount = cardFormValue;
+async card(data:any){
     const payeeid=this.customerid;
-    const shiftid=data.payamount.mss.value;
+    const shiftid=this.payamount?.shiftid;
     const debitcardnumber=data.cardnumber;
     const expirationdate=data.expire;
     const cvc=data.cvc;
     const password=data.password;
-    const amountget=data.payamount.msd.entry.value;
+    const amountget=this.payamount?.hoursforwork;
     console.log(payeeid,shiftid,debitcardnumber,expirationdate,cvc,password,amountget)
-
-    
+    this.response = await this.cs.cardPay({payeeid,shiftid,debitcardnumber,expirationdate,cvc,password,amountget});
+    console.log('in card customer component',this.response.TRANSACTION)
 }
-netbanking(data:any){
-
+async netbanking(data:any){
+    const payeeid=this.customerid;
+    const shiftid=this.payamount?.shiftid;
+    const netbankingid=data.username;
+    const password=data.password;
+    const amountget=this.payamount?.hoursforwork;
+    console.log(payeeid,shiftid,netbankingid,password,amountget)
+    this.response = await this.cs.cardPay({payeeid,shiftid,netbankingid,password,amountget});
+    console.log('in netbanking customer component',this.response.TRANSACTION)
 }
-upi(data:any){
-
+async upi(data:any){
+  const payeeid=this.customerid;
+  const shiftid=this.payamount?.shiftid;
+  const upiid=data.upiid;
+  const password=data.password;
+  const amountget=this.payamount?.hoursforwork;
+  console.log(payeeid,shiftid,upiid,password,amountget)
+  this.response = await this.cs.cardPay({payeeid,shiftid,upiid,password,amountget});
+  console.log('in upi customer component',this.response.TRANSACTION)
 }
   activateDiv(divNumber: number): void {
     this.activeDiv = divNumber;

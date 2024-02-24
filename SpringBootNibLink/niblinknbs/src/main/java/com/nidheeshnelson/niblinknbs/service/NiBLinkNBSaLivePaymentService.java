@@ -8,7 +8,6 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.nidheeshnelson.niblinknbs.model.NiBLinkNBSLists;
 import com.nidheeshnelson.niblinknbs.model.NiBLinkNBSaLivePaymentModel;
 import com.nidheeshnelson.niblinknbs.model.NiBLinkNBSdPayedModel;
 import com.nidheeshnelson.niblinknbs.model.NiBLinkNBSgIDs;
@@ -22,20 +21,20 @@ public class NiBLinkNBSaLivePaymentService implements NiBLinkNBSaiaLivePaymentSe
 	private NiBLinkNBSdPaymentRepository pr;
 	@Autowired
 	private NiBLinkNBSaLivePaymentGatewayRepository lpr;
+	private NiBLinkNBSgIDs id = new NiBLinkNBSgIDs();
+	private List<NiBLinkNBSgIDs> idl = new ArrayList<NiBLinkNBSgIDs>();
 	private List<NiBLinkNBSdPayedModel> pm;
-	private List<NiBLinkNBSLists> list=new ArrayList<NiBLinkNBSLists>();
-	private NiBLinkNBSLists lis=new NiBLinkNBSLists();
-	public List<NiBLinkNBSLists> totalAmount(NiBLinkNBSgIDs id) {
+	public List<NiBLinkNBSgIDs> totalAmount(NiBLinkNBSgIDs id) {
 		try {
 		pm=pr.findByCustomerid(id.getCustomerid());
 		for(NiBLinkNBSdPayedModel pdm:pm) {
 			if(pdm.isPaymentdatetimeNull()) {
-				lis.setMss(Map.of("SHIFT", pdm.getShiftid()));
-				lis.setMsd(Map.of(pdm.getShiftid(), pdm.getPayment()));
-				list.add(lis);
-				System.out.println(list);
+				this.id.setShiftid(pdm.getShiftid());
+				this.id.setHoursforwork(pdm.getPayment());
+				idl.add(this.id);
+				System.out.println(idl);
 			}
-		}return list;
+		}return idl;
 		}
 		catch(Exception e) {
 			System.out.println(e);

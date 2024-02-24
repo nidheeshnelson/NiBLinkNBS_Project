@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.nidheeshnelson.niblinknbs.model.NiBLinkNBSLists;
 import com.nidheeshnelson.niblinknbs.model.NiBLinkNBSaLivePaymentModel;
 import com.nidheeshnelson.niblinknbs.model.NiBLinkNBSgIDs;
 import com.nidheeshnelson.niblinknbs.service.NiBLinkNBSaiaLivePaymentServices;
@@ -25,9 +24,9 @@ public class NiBLinkNBSaPaymentGatewayControl {
 	private NiBLinkNBSaiaLivePaymentServices ps;
 	@Autowired
 	private NiBLinkNBSaieShiftService ss;
-	private List<NiBLinkNBSLists> nn = new ArrayList<>();
+	private List<NiBLinkNBSgIDs> nn = new ArrayList<>();
 	@PostMapping("/amountpayable")
-	public List<NiBLinkNBSLists> totalAmount(@RequestBody NiBLinkNBSgIDs id) {
+	public List<NiBLinkNBSgIDs> totalAmount(@RequestBody NiBLinkNBSgIDs id) {
 		try {
 		System.out.println(id);
 		nn=ps.totalAmount(id);
@@ -38,19 +37,19 @@ public class NiBLinkNBSaPaymentGatewayControl {
 		return nn;
 	}
 	@PostMapping("/cardpay")
-	public Map<String, String> cardPayment(NiBLinkNBSaLivePaymentModel pm) {
+	public Map<String, String> cardPayment(@RequestBody NiBLinkNBSaLivePaymentModel pm) {
 		System.out.println(pm);
 		System.out.println(ss.shiftPayed(pm));
 		return ps.cardPayment(pm);
 	}
 	@PostMapping("/netbank")
-	public Map<String, String> netbankingPayment(NiBLinkNBSaLivePaymentModel pm){
+	public Map<String, String> netbankingPayment(@RequestBody NiBLinkNBSaLivePaymentModel pm){
 		System.out.println(pm);
 		System.out.println(ss.shiftPayed(pm));
 		return ps.netbankingPayment(pm);
 	}
 	@PostMapping("/upipay")
-	public Map<String, String> upiPayment(NiBLinkNBSaLivePaymentModel pm){
+	public Map<String, String> upiPayment(@RequestBody NiBLinkNBSaLivePaymentModel pm){
 		System.out.println(pm);
 		System.out.println(ss.shiftPayed(pm));
 		return ps.upiPayment(pm);

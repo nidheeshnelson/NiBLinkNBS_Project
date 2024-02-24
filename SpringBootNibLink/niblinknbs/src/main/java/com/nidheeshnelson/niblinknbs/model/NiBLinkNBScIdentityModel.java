@@ -16,6 +16,15 @@ public class NiBLinkNBScIdentityModel {
 	private String pancard;
 	@Column(unique = true)
 	private String electionid;
+	public boolean isAdharNull() {
+		return adhar==null;
+	}
+	public boolean isPancardNull() {
+		return pancard==null;
+	}
+	public boolean isElectionidNull() {
+		return electionid==null;
+	}
 	public String getIdentityid() {
 		return identityid;
 	}

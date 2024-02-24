@@ -49,6 +49,15 @@ public class NiBLinkNBSbcCustomerModel {
 	public static int getStatus() {
 		return status;
 	}
+	public boolean isFirstnameNull() {
+		return firstname==null;
+	}
+	public boolean isMiddlenameNull() {
+		return middlename==null;
+	}
+	public boolean isLastnameNull() {
+		return lastname==null;
+	}
 
 	@Override
 	public String toString() {

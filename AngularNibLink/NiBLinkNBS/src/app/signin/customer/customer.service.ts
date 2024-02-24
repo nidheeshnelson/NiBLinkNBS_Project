@@ -113,13 +113,13 @@ export class CustomerService {
         method:"POST",
         headers:{'Content-Type': 'application/json'},
         body:JSON.stringify({
-          payeeid:data,
-          shiftid:data,
-          debitcardnumber:data,
-          expirationdate:data,
-          cvc:data,
-          password:data,
-          amountget:data
+          payeeid:data.payeeid,
+          shiftid:data.shiftid,
+          debitcardnumber:data.debitcardnumber,
+          expirationdate:data.expirationdate,
+          cvc:data.cvc,
+          password:data.password,
+          amountget:data.amountget
         })
       }
       fetch(url,encode)
@@ -141,11 +141,11 @@ export class CustomerService {
         method:"POST",
         headers:{'Content-Type': 'application/json'},
         body:JSON.stringify({
-          payeeid:data,
-          shiftid:data,
-          netbankingid:data,
-          password:data,
-          amountget:data
+          payeeid:data.payeeid,
+          shiftid:data.shiftid,
+          netbankingid:data.netbankingid,
+          password:data.password,
+          amountget:data.amountget
         })
       }
       fetch(url,encode)
@@ -167,11 +167,11 @@ export class CustomerService {
         method:"POST",
         headers:{'Content-Type': 'application/json'},
         body:JSON.stringify({
-          payeeid:data,
-          shiftid:data,
-          upiid:data,
-          password:data,
-          amountget:data
+          payeeid:data.payeeid,
+          shiftid:data.shiftid,
+          upiid:data.upiid,
+          password:data.password,
+          amountget:data.amountget
         })
       }
       fetch(url,encode)

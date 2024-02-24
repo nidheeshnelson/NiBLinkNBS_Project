@@ -335,6 +335,289 @@ export class AdminService {
     })
   }
 
+  showAdminName=(data:any)=>{
+    console.log(`in show admin ${data}`)
+    return new Promise((resolve,reject)=>{
+      let url=`http://localhost:8080/profile/showadminname`
+      let encode={
+        method:"POST",
+        headers:{'Content-Type': 'application/json'},
+        body: JSON.stringify(data) 
+      }
+      fetch(url,encode)
+      .then(async(response)=>{
+        response=await response.json()
+        console.log(`response from spring add data${JSON.stringify(response)}`)
+        resolve(response)
+      })
+      .catch((error)=>{
+        reject(error)
+      })
+    })
+  }
+  editAdminName=(data:any)=>{
+    console.log(`in edit admin name ${data}`)
+    return new Promise((resolve,reject)=>{
+      let url=`http://localhost:8080/profile/editadminname`
+      let encode={
+        method:"POST",
+        headers:{'Content-Type': 'application/json'},
+        body: JSON.stringify(data) 
+      }
+      fetch(url,encode)
+      .then(async(response)=>{
+        response=await response.json()
+        console.log(`response from spring add data${JSON.stringify(response)}`)
+        resolve(response)
+      })
+      .catch((error)=>{
+        reject(error)
+      })
+    })
+  }
+  showExpertName=(data:any)=>{
+    console.log(`in show expert name ${data}`)
+    return new Promise((resolve,reject)=>{
+      let url=`http://localhost:8080/profile/showexpertname`
+      let encode={
+        method:"POST",
+        headers:{'Content-Type': 'application/json'},
+        body: JSON.stringify(data) 
+      }
+      fetch(url,encode)
+      .then(async(response)=>{
+        response=await response.json()
+        console.log(`response from spring add data${JSON.stringify(response)}`)
+        resolve(response)
+      })
+      .catch((error)=>{
+        reject(error)
+      })
+    })
+  }
+  editExpertName=(data:any)=>{
+    console.log(`in edit expert name ${data}`)
+    return new Promise((resolve,reject)=>{
+      let url=`http://localhost:8080/profile/editexpertname`
+      let encode={
+        method:"POST",
+        headers:{'Content-Type': 'application/json'},
+        body: JSON.stringify(data) 
+      }
+      fetch(url,encode)
+      .then(async(response)=>{
+        response=await response.json()
+        console.log(`response from spring add data${JSON.stringify(response)}`)
+        resolve(response)
+      })
+      .catch((error)=>{
+        reject(error)
+      })
+    })
+  }
+  showCustomerName=(data:any)=>{
+    console.log(`in show customer name ${data}`)
+    return new Promise((resolve,reject)=>{
+      let url=`http://localhost:8080/profile/showcustomername`
+      let encode={
+        method:"POST",
+        headers:{'Content-Type': 'application/json'},
+        body: JSON.stringify(data) 
+      }
+      fetch(url,encode)
+      .then(async(response)=>{
+        response=await response.json()
+        console.log(`response from spring add data${JSON.stringify(response)}`)
+        resolve(response)
+      })
+      .catch((error)=>{
+        reject(error)
+      })
+    })
+  }
+  editCustomerName=(data:any)=>{
+    console.log(`in edit customer name ${data}`)
+    return new Promise((resolve,reject)=>{
+      let url=`http://localhost:8080/profile/editcustomername`
+      let encode={
+        method:"POST",
+        headers:{'Content-Type': 'application/json'},
+        body: JSON.stringify(data) 
+      }
+      fetch(url,encode)
+      .then(async(response)=>{
+        response=await response.json()
+        console.log(`response from spring add data${JSON.stringify(response)}`)
+        resolve(response)
+      })
+      .catch((error)=>{
+        reject(error)
+      })
+    })
+  }
+  showAddress=(data:any)=>{
+    console.log(`in show address ${data}`)
+    return new Promise((resolve,reject)=>{
+      let url=`http://localhost:8080/profile/showaddress`
+      let encode={
+        method:"POST",
+        headers:{'Content-Type': 'application/json'},
+        body: JSON.stringify(data) 
+      }
+      fetch(url,encode)
+      .then(async(response)=>{
+        response=await response.json()
+        console.log(`response from spring add data${JSON.stringify(response)}`)
+        resolve(response)
+      })
+      .catch((error)=>{
+        reject(error)
+      })
+    })
+  }
+  editAddress=(data:any)=>{
+    console.log(`in edit address ${data}`)
+    return new Promise((resolve,reject)=>{
+      let url=`http://localhost:8080/profile/editaddress`
+      let encode={
+        method:"POST",
+        headers:{'Content-Type': 'application/json'},
+        body: JSON.stringify(data) 
+      }
+      fetch(url,encode)
+      .then(async(response)=>{
+        response=await response.json()
+        console.log(`response from spring add data${JSON.stringify(response)}`)
+        resolve(response)
+      })
+      .catch((error)=>{
+        reject(error)
+      })
+    })
+  }
+  showBanking=(data:any)=>{
+    console.log(`in show banking ${data}`)
+    return new Promise((resolve,reject)=>{
+      let url=`http://localhost:8080/profile/showbanking`
+      let encode={
+        method:"POST",
+        headers:{'Content-Type': 'application/json'},
+        body: JSON.stringify(data) 
+      }
+      fetch(url,encode)
+      .then(async(response)=>{
+        response=await response.json()
+        console.log(`response from spring add data${JSON.stringify(response)}`)
+        resolve(response)
+      })
+      .catch((error)=>{
+        reject(error)
+      })
+    })
+  }
+  editBanking=(data:any)=>{
+    console.log(`in edit banking ${data}`)
+    return new Promise((resolve,reject)=>{
+      let url=`http://localhost:8080/profile/editbanking`
+      let encode={
+        method:"POST",
+        headers:{'Content-Type': 'application/json'},
+        body: JSON.stringify(data) 
+      }
+      fetch(url,encode)
+      .then(async(response)=>{
+        response=await response.json()
+        console.log(`response from spring add data${JSON.stringify(response)}`)
+        resolve(response)
+      })
+      .catch((error)=>{
+        reject(error)
+      })
+    })
+  }
+  showIdentity=(data:any)=>{
+    console.log(`in show identity ${data}`)
+    return new Promise((resolve,reject)=>{
+      let url=`http://localhost:8080/profile/showidentity`
+      let encode={
+        method:"POST",
+        headers:{'Content-Type': 'application/json'},
+        body: JSON.stringify(data) 
+      }
+      fetch(url,encode)
+      .then(async(response)=>{
+        response=await response.json()
+        console.log(`response from spring add data${JSON.stringify(response)}`)
+        resolve(response)
+      })
+      .catch((error)=>{
+        reject(error)
+      })
+    })
+  }
+  editIdentity=(data:any)=>{
+    console.log(`in edit identity ${data}`)
+    return new Promise((resolve,reject)=>{
+      let url=`http://localhost:8080/profile/editidentity`
+      let encode={
+        method:"POST",
+        headers:{'Content-Type': 'application/json'},
+        body: JSON.stringify(data) 
+      }
+      fetch(url,encode)
+      .then(async(response)=>{
+        response=await response.json()
+        console.log(`response from spring add data${JSON.stringify(response)}`)
+        resolve(response)
+      })
+      .catch((error)=>{
+        reject(error)
+      })
+    })
+  }
+  showPersonal=(data:any)=>{
+    console.log(`in show personal ${data}`)
+    return new Promise((resolve,reject)=>{
+      let url=`http://localhost:8080/profile/showpersonal`
+      let encode={
+        method:"POST",
+        headers:{'Content-Type': 'application/json'},
+        body: JSON.stringify(data) 
+      }
+      fetch(url,encode)
+      .then(async(response)=>{
+        response=await response.json()
+        console.log(`response from spring add data${JSON.stringify(response)}`)
+        resolve(response)
+      })
+      .catch((error)=>{
+        reject(error)
+      })
+    })
+  }
+  editPersonal=(data:any)=>{
+    console.log(`in edit personal ${data}`)
+    return new Promise((resolve,reject)=>{
+      let url=`http://localhost:8080/profile/editpersonal`
+      let encode={
+        method:"POST",
+        headers:{'Content-Type': 'application/json'},
+        body: JSON.stringify(data) 
+      }
+      fetch(url,encode)
+      .then(async(response)=>{
+        response=await response.json()
+        console.log(`response from spring add data${JSON.stringify(response)}`)
+        resolve(response)
+      })
+      .catch((error)=>{
+        reject(error)
+      })
+    })
+  }
+
+
+
 }
 
 
