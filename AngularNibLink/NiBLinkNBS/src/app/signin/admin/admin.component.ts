@@ -18,6 +18,8 @@ export class AdminComponent {
     this.adminid = this.adminResponse?.ID;
   }
   activeDiv: number | null = null; // Variable to track active div, initially set to null
+  active1Div: number | null = null;
+  active12Div: number | null = null;
   active2Div: number | null = null;
   active22Div: number | null = null;
   active4Div: number | null = null;
@@ -37,10 +39,18 @@ export class AdminComponent {
   response8:any[]=[];
   response9:any[]=[];
   response10:any[]=[];
+  response11:any;
+  response12:any;
+  response13:any;
+  response14:any;
+  response15:any;
+  response16:any;
+  response17:any;
   selectedItem:any;
   selectedItem1:any;
   selectedItem2:any;
   selectedItem3:any;
+  selectedItem4:any;
   statename:string='';
   districtname:string='';
   talukname:string='';
@@ -137,7 +147,7 @@ async talukList(){
   }catch(error){console.error(`Error in countryList:`, error);}
 }
 async byDistrictCode() {
-  const districtcode = this.selectedItem2?.districtcode;
+  const districtcode = this.selectedItem3?.districtcode;
   if (districtcode) {
       console.log(`Selected Country Code: ${districtcode}`);
       const result = await this.as.talukListByDistrict(districtcode);
@@ -176,9 +186,87 @@ async commissionList(){
   console.log(`in signin.component.ts ${this.response9}`);
   }catch(error){console.error(`Error in countryList:`, error);}
 }
+async showAdminName(){
+  const adminid = this.adminid;
+  this.response11=await this.as.showAdminName(adminid);
+}
+async showAddress(){
+  const adminid= this.adminid;
+  this.response12=await this.as.showAddress(adminid);
+}
+async showBanking(){
+  const adminid= this.adminid;
+  this.response13=await this.as.showBanking(adminid);
+}
+async showIdentity(){
+  const adminid= this.adminid;
+  this.response14=await this.as.showIdentity(adminid);
+}
+async showPersonal(){
+  const adminid=this.adminid;
+  this.response14=await this.as.showPersonal(adminid);
+}
+async editAdminName(data:any){
+  const adminid=this.adminid;
+  const firstname=data.firstname;
+  const middlename=data.middlename;
+  const lastname=data.lastname;
+  this.response=await this.as.editAdminName({adminid,firstname,middlename,lastname}) ;
+}
+async editAddress(data:any){
+  const addressid= this.adminid;
+  const housename= data.housename;
+  const street=data.street;
+  const landmark=data.landmark;
+  const place=data.place;
+  const postoffice=data.postoffice;
+  const pincode=data.pincode;
+  const localbody=data.localbody;
+  const districtcode = data.selectedItem3.districtcode;
+  const countrycode = data.selectedItem1.countrycode;
+  const statecode = data.selectedItem2.statecode;
+  const thalukcode= data.selectedItem4.thalukcode;
+  this.response=await this.as.editAddress({addressid,housename,street,landmark,place,postoffice,pincode,localbody,districtcode,countrycode,statecode,thalukcode});
+}
+async editBanking(data:any){
+  const bankid= this.adminid;
+  const bank=data.bank;
+  const branch=data.branch;
+  const ifsc =data.ifsc;
+  const accountnumber=data.accountnumber;
+  const secretpin=data.secretpin;
+  const upiid=data.upiid;
+  this.response=await this.as.editBanking({bankid,bank,branch,ifsc,accountnumber,secretpin,upiid});
+}
+async editIdentity(data:any){
+  const identityid= this.adminid;
+  const adhar=data.adhar;
+  const pancard=data.pancard;
+  const electionid=data.electionid;
+  this.response=await this.as.editIdentity({identityid,adhar,pancard,electionid});
+}
+async editPersonal(data:any){
+  const personalid=this.adminid;
+  const age=data.age;
+  const dateofbirth=data.dateofbirth;
+  const gender=data.gender;
+  const father=data.father;
+  const mother=data.mother;
+  const spouse=data.spouse;
+  const children=data.children;
+  this.response=await this.as.editPersonal({personalid,age,dateofbirth,gender,father,mother,spouse,children});
+}
+
+
 
   activateDiv(divNumber: number): void {
     this.activeDiv = divNumber;
+  }
+  activate1Div(divNumber: number): void {
+    this.active1Div = divNumber;
+  }
+  activate12Div(divNumber: number): void {
+    this.active12Div = divNumber;
   }
   activate2Div(divNumber: number): void {
     this.active2Div = divNumber;

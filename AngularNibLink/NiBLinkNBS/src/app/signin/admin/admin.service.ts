@@ -362,7 +362,12 @@ export class AdminService {
       let encode={
         method:"POST",
         headers:{'Content-Type': 'application/json'},
-        body: JSON.stringify(data) 
+        body: JSON.stringify({
+          adminid:data.adminid,
+          firstname:data.firstname,
+          middlename:data.middlename,
+          lastname:data.lastname
+        }) 
       }
       fetch(url,encode)
       .then(async(response)=>{
@@ -402,7 +407,12 @@ export class AdminService {
       let encode={
         method:"POST",
         headers:{'Content-Type': 'application/json'},
-        body: JSON.stringify(data) 
+        body: JSON.stringify({
+          expertid:data.expertid,
+          firstname:data.firstname,
+          middlename:data.middlename,
+          lastname:data.lastname
+        }) 
       }
       fetch(url,encode)
       .then(async(response)=>{
@@ -442,7 +452,12 @@ export class AdminService {
       let encode={
         method:"POST",
         headers:{'Content-Type': 'application/json'},
-        body: JSON.stringify(data) 
+        body: JSON.stringify({
+          customerid:data.customerid,
+          firstname:data.firstname,
+          middlename:data.middlename,
+          lastname:data.lastname
+        }) 
       }
       fetch(url,encode)
       .then(async(response)=>{
@@ -482,7 +497,20 @@ export class AdminService {
       let encode={
         method:"POST",
         headers:{'Content-Type': 'application/json'},
-        body: JSON.stringify(data) 
+        body: JSON.stringify({
+          addressid:data.addressid,
+          housename:data.housename,
+          street:data.street,
+          landmark:data.landmark,
+          place:data.place,
+          postoffice:data.postoffice,
+          pincode:data.pincode,
+          localbody:data.localbody,
+          thalukcode:data.thalukcode,
+          districtcode:data.districtcode,
+          statecode:data.statecode,
+          countrycode:data.countrycode
+        }) 
       }
       fetch(url,encode)
       .then(async(response)=>{
@@ -522,7 +550,15 @@ export class AdminService {
       let encode={
         method:"POST",
         headers:{'Content-Type': 'application/json'},
-        body: JSON.stringify(data) 
+        body: JSON.stringify({
+          bankid:data.bankid,
+          bank:data.bank,
+          branch:data.branch,
+          ifsc:data.ifsc,
+          accountnumber:data.accountnumber,
+          secretpin:data.secretpin,
+          upiid:data.upiid
+        }) 
       }
       fetch(url,encode)
       .then(async(response)=>{
@@ -562,7 +598,12 @@ export class AdminService {
       let encode={
         method:"POST",
         headers:{'Content-Type': 'application/json'},
-        body: JSON.stringify(data) 
+        body: JSON.stringify({
+          identityid:data,
+          adhar:data,
+          pancard:data,
+          electionid:data
+        }) 
       }
       fetch(url,encode)
       .then(async(response)=>{
@@ -602,7 +643,16 @@ export class AdminService {
       let encode={
         method:"POST",
         headers:{'Content-Type': 'application/json'},
-        body: JSON.stringify(data) 
+        body: JSON.stringify({
+          personalid:data.personalid,
+          age:data.age,
+          dateofbirth:data.dateofbirth,
+          gender:data.gender,
+          father:data.father,
+          mother:data.mother,
+          spouse:data.spouse,
+          children:data.children
+        }) 
       }
       fetch(url,encode)
       .then(async(response)=>{

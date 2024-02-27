@@ -17,27 +17,92 @@
         <div *ngIf="active1Div === 2"> 
         <p>Block 12 is activated!</p>
         <button (click)="activate12Div(1)">Name</button>
-        <button (click)="activate12Div(2)">Address</button>
+        <button (click)="activate12Div(2)" (click)="countryList()">Address</button>
         <button (click)="activate12Div(3)">Banking</button>
         <button (click)="activate12Div(4)">Identity</button>
         <button (click)="activate12Div(5)" (click)="commissionList()">Payment Related</button>
-        <button (click)="activate12Div(6)">Identity</button>
-        <button (click)="activate12Div(7)">Personal</button>
+        <button (click)="activate12Div(6)">Personal</button>
 
               <div *ngIf="active12Div === 1"> 
               <p>Block 121 is activated!</p>
+              <form #nameform="ngForm" (ngSubmit)="editExpertName(nameform.value)">
+                <label for="firstname">First Name</label>
+                <input type="text" name="firstname" ngModel required><br>
+                <label for="middlename">Middle Name</label>
+                <input type="text" name="middlename" ngModel required><br>
+                <label for="lasttname">Last Name</label>
+                <input type="text" name="lastname" ngModel required><br>
+                <input type="submit" value="Submit" >
+                </form>
               </div>
 
               <div *ngIf="active12Div === 2"> 
               <p>Block 122 is activated!</p>
+              <form #nameform="ngForm" (ngSubmit)="editAddress(nameform.value)">
+                <label for="housename">House Name/Number</label>
+                <input type="text" name="housename" ngModel required><br>
+                <label for="street">Street Name</label>
+                <input type="text" name="street" ngModel required><br>
+                <label for="landmark">Landmark</label>
+                <input type="text" name="landmark" ngModel required><br>
+                <label for="place">Place</label>
+                <input type="text" name="place" ngModel required><br>
+                <label for="postoffice">Post Office</label>
+                <input type="text" name="postoffice" ngModel required><br>
+                <label for="pincode">Pincode</label>
+                <input type="number" name="pincode" ngModel required><br>
+                <label for="localbody">Local Body</label>
+                <input type="text" name="localbody" ngModel required><br>
+                <label for="country">Select country</label>
+                <select id="itemSelect1" [(ngModel)]="selectedItem1" name="country" (change)="stateByCountryCode()">
+                <option *ngFor="let dataItem1 of response2" [ngValue]="dataItem1">{{ dataItem1.countryname }}</option>
+                </select><br>
+                <label for="state">Select state</label>
+                <select id="itemSelect2" [(ngModel)]="selectedItem2" name="state" (change)="districtByStateCode()">
+                <option *ngFor="let dataItem2 of response3" [ngValue]="dataItem2">{{ dataItem2.state }}</option>
+                </select><br>
+                <label for="district">Select district</label>
+                <select id="itemSelect3" [(ngModel)]="selectedItem3" name="district" (change)="talukbyDistrictCode()">
+                <option *ngFor="let dataItem3 of response4" [ngValue]="dataItem3">{{ dataItem3.districtname }}</option>
+                </select><br>
+                <label for="taluk">Select taluk</label>
+                <select id="itemSelect4" [(ngModel)]="selectedItem4" name="taluk">
+                <option *ngFor="let dataItem4 of response5" [ngValue]="dataItem4">{{ dataItem4.thalukname }}</option>
+                </select><br>
+                <input type="submit" value="Submit" >
+                </form>
               </div>
 
               <div *ngIf="active12Div === 3"> 
               <p>Block 123 is activated!</p>
+              <form #bankform="ngForm" (ngSubmit)="editBanking(bankform.value)">
+                <label for="bank">Bank Name</label>
+                <input type="text" name="bank" ngModel required><br>
+                <label for="branch">Branch</label>
+                <input type="text" name="branch" ngModel required><br>
+                <label for="ifsc">IFSC code</label>
+                <input type="text" name="ifsc" ngModel required><br>
+                <label for="accountnumber">Account Number</label>
+                <input type="text" name="accountnumber" ngModel required><br>
+                <label for="secretpin">Secret Pin</label>
+                <input type="number" name="secretpin" ngModel required><br>
+                <label for="upiid">UPI ID</label>
+                <input type="text" name="upiid" ngModel required><br>
+                <input type="submit" value="Submit" >
+                </form>
               </div>
               
               <div *ngIf="active12Div === 4"> 
               <p>Block 124 is activated!</p>
+              <form #identityform="ngForm" (ngSubmit)="editIdentity(identityform.value)">
+                <label for="adhar">Adhar Number</label>
+                <input type="text" name="adhar" ngModel required><br>
+                <label for="pancard">Pancard Number</label>
+                <input type="text" name="pancard" ngModel required><br>
+                <label for="electionid">Election id</label>
+                <input type="text" name="electionid" ngModel required><br>
+                <input type="submit" value="Submit" >
+                </form>
               </div>
 
               <div *ngIf="active12Div === 5"> 
@@ -54,11 +119,24 @@
               </div>
 
               <div *ngIf="active12Div === 6"> 
-              <p>Block 126 is activated!</p>
-              </div>
-
-              <div *ngIf="active12Div === 7"> 
               <p>Block 127 is activated!</p>
+              <form #personalform="ngForm" (ngSubmit)="editPersonal(personalform.value)">
+                <label for="age">Age</label>
+                <input type="number" name="age" ngModel required><br>
+                <label for="dob">Date of birth</label>
+                <input type="date" name="dob" ngModel required><br>
+                <label for="gender">Gender</label>
+                <input type="text" name="gender" ngModel required><br>
+                <label for="father">Father's Name</label>
+                <input type="text" name="father" ngModel required><br>
+                <label for="mother">Mother's Name</label>
+                <input type="text" name="mother" ngModel required><br>
+                <label for="spouse">Spouse Name</label>
+                <input type="text" name="spouse" ngModel required><br>
+                <label for="children">Number of children</label>
+                <input type="text" name="children" ngModel required><br>
+                <input type="submit" value="Submit" >
+                </form>
               </div>
         </div>
     </div>

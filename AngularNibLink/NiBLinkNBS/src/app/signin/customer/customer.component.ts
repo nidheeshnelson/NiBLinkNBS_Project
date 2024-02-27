@@ -30,6 +30,11 @@ export class CustomerComponent implements OnInit{
   response7:any;
   response8:any;
   public response9:any[]=[];
+  response10:any;
+  response11:any;
+  response12:any;
+  response13:any;
+  response14:any;
   selectedItem1:any;
   selectedItem2:any;
   selectedItem3:any;
@@ -179,6 +184,71 @@ async upi(data:any){
   this.response = await this.cs.cardPay({payeeid,shiftid,upiid,password,amountget});
   console.log('in upi customer component',this.response.TRANSACTION)
 }
+async showCustomerName(){
+  const customerid = this.customerid;
+  this.response10=await this.as.showCustomerName(customerid);
+  console.log(this.response10)
+}
+async showAddress(){
+  const customerid= this.customerid;
+  this.response11=await this.as.showAddress(customerid);
+}
+async showBanking(){
+  const customerid= this.customerid;
+  this.response12=await this.as.showBanking(customerid);
+}
+async showIdentity(){
+  const customerid= this.customerid;
+  this.response13=await this.as.showIdentity(customerid);
+}
+async showPersonal(){
+  const customerid=this.customerid;
+  this.response14=await this.as.showPersonal(customerid);
+}
+async editCustomerName(data:any){
+  const customerid=this.customerid;
+  const firstname=data.firstname;
+  const middlename=data.middlename;
+  const lastname=data.lastname;
+  this.response=await this.as.editCustomerName({customerid,firstname,middlename,lastname}) ;
+}
+async editAddress(data:any){
+  const addressid= this.customerid;
+  const housename= data.housename;
+  const street=data.street;
+  const landmark=data.landmark;
+  const place=data.place;
+  const postoffice=data.postoffice;
+  const pincode=data.pincode;
+  const localbody=data.localbody;
+  const districtcode = data.selectedItem3.districtcode;
+  const countrycode = data.selectedItem1.countrycode;
+  const statecode = data.selectedItem2.statecode;
+  const thalukcode= data.selectedItem4.thalukcode;
+  this.response=await this.as.editAddress({addressid,housename,street,landmark,place,postoffice,pincode,localbody,districtcode,countrycode,statecode,thalukcode});
+}
+async editBanking(data:any){
+  const bankid= this.customerid;
+  const bank=data.bank;
+  const branch=data.branch;
+  const ifsc =data.ifsc;
+  const accountnumber=data.accountnumber;
+  const secretpin=data.secretpin;
+  const upiid=data.upiid;
+  this.response=await this.as.editBanking({bankid,bank,branch,ifsc,accountnumber,secretpin,upiid});
+}
+async editIdentity(data:any){
+  const identityid= this.customerid;
+  const adhar=data.adhar;
+  const pancard=data.pancard;
+  const electionid=data.electionid;
+  this.response=await this.as.editIdentity({identityid,adhar,pancard,electionid});
+}
+async editPersonal(data:any){
+  const customerid=this.customerid;
+  this.response=await this.as.editPersonal(customerid);
+}
+
   activateDiv(divNumber: number): void {
     this.activeDiv = divNumber;
   }

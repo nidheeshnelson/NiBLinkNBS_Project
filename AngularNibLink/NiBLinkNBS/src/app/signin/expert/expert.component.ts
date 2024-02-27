@@ -28,6 +28,11 @@ export class ExpertComponent implements OnInit{
   response7:any;
   response8:any;
   response9:any;
+  response10:any;
+  response11:any;
+  response12:any;
+  response13:any;
+  response14:any;
   selectedItem:any;
   selectedItem1:any;
   selectedItem2:any;
@@ -193,6 +198,69 @@ async workFinished(item:any){
     console.log(`in expert.component.ts ${this.response.FINI}`);
     this.findShiftsByExpert();
   }catch(error){console.error(`Error in countryList:`, error);}
+}
+async showExpertName(){
+  const expertid = this.expertid;
+  this.response9=await this.as.showExpertName(expertid);
+}
+async showAddress(){
+  const expertid= this.expertid;
+  this.response11=await this.as.showAddress(expertid);
+}
+async showBanking(){
+  const expertid= this.expertid;
+  this.response12=await this.as.showBanking(expertid);
+}
+async showIdentity(){
+  const expertid= this.expertid;
+  this.response13=await this.as.showIdentity(expertid);
+}
+async showPersonal(){
+  const expertid=this.expertid;
+  this.response14=await this.as.showPersonal(expertid);
+}
+async editExpertName(data:any){
+  const expertid=this.expertid;
+  const firstname=data.firstname;
+  const middlename=data.middlename;
+  const lastname=data.lastname;
+  this.response=await this.as.editExpertName({expertid,firstname,middlename,lastname}) ;
+}
+async editAddress(data:any){
+  const addressid= this.expertid;
+  const housename= data.housename;
+  const street=data.street;
+  const landmark=data.landmark;
+  const place=data.place;
+  const postoffice=data.postoffice;
+  const pincode=data.pincode;
+  const localbody=data.localbody;
+  const districtcode = data.selectedItem3.districtcode;
+  const countrycode = data.selectedItem1.countrycode;
+  const statecode = data.selectedItem2.statecode;
+  const thalukcode= data.selectedItem4.thalukcode;
+  this.response=await this.as.editAddress({addressid,housename,street,landmark,place,postoffice,pincode,localbody,districtcode,countrycode,statecode,thalukcode});
+}
+async editBanking(data:any){
+  const bankid= this.expertid;
+  const bank=data.bank;
+  const branch=data.branch;
+  const ifsc =data.ifsc;
+  const accountnumber=data.accountnumber;
+  const secretpin=data.secretpin;
+  const upiid=data.upiid;
+  this.response=await this.as.editBanking({bankid,bank,branch,ifsc,accountnumber,secretpin,upiid});
+}
+async editIdentity(data:any){
+  const identityid= this.expertid;
+  const adhar=data.adhar;
+  const pancard=data.pancard;
+  const electionid=data.electionid;
+  this.response=await this.as.editIdentity({identityid,adhar,pancard,electionid});
+}
+async editPersonal(data:any){
+  const expertid=this.expertid;
+  this.response14=await this.as.editPersonal(expertid);
 }
 
   activateDiv(divNumber: number): void {
